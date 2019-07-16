@@ -66,13 +66,13 @@ li {
     padding: 0.4em;
 }
 
-ol {
+ul {
     list-style: none;
     margin: auto;
     padding: 1em;
 }
 
-ol > li:before {
+ul > li:before {
     content: attr(seq) ": ";
     font-weight: bold;
 }
@@ -87,7 +87,7 @@ p {
     text-align: justify;
 }
 
-ul {
+ol {
     list-style: none;
     margin: auto;
     padding-left: 3em;
