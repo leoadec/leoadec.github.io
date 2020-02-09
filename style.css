@@ -87,6 +87,10 @@ p {
     text-align: justify;
 }
 
+p.short_paragraph {
+    text-align: center;
+}
+
 ol {
     list-style: none;
     margin: auto;
@@ -106,7 +110,7 @@ ol {
     padding-top: 3em;
 }
 
-#tocbox {
+.tocbox {
     background-attachment: fixed;
     background-color: #000022;
     background-image: url("tocbg.jpg");
