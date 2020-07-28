@@ -51,6 +51,7 @@ ul > li:before {
 }
 
 p {
+    font-size: max(12pt, 1em);
     max-width: 72em;
     margin: auto;
     padding-left: 3em;
@@ -76,6 +77,6 @@ p.short_paragraph {
 }
 
 .linklist {
-    font-size: 1em;
+    font-size: max(12pt, 1em);
     text-align: center;
 }
