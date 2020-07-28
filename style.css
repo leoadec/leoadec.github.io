@@ -1,6 +1,7 @@
 body {
-    background-color: #d0d0c5;
-    color: #404050;
+    background-image: url("titlebg.jpg");
+    background-repeat: no-repeat;
+    background-color: #141415;
     font-family: sans-serif;
     height: 100%;
     margin: 0px;
@@ -32,24 +33,6 @@ a, a:active, a:visited {
     text-decoration: none;
 }
 
-
-#tocbox a, h2 a {
-    color: #b0b0c0;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-#tocbox a:active, h2 a:active  {
-    color: #b0b0c0;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-#tocbox a:visited, h2 a:visited {
-    color: #b0b0c0;
-    font-weight: bold;
-    text-decoration: none;
-} 
 
 div {
     margin: 0px;
@@ -91,39 +74,15 @@ p.short_paragraph {
     text-align: center;
 }
 
-ol {
-    list-style: none;
-    margin: auto;
-    padding-left: 3em;
-    padding-right: 3em;
-}
-
-#titlebox {
-    background-attachment: fixed;
-    background-color: #000022;
-    background-image: url("titlebg.jpg");
-    background-position: center;
-    background-size: cover;
-    color: #ccccdd;
-    margin: 0em;
-    padding-bottom: 3em;
-    padding-top: 3em;
-}
-
-.tocbox {
-    background-attachment: fixed;
-    background-color: #000022;
-    background-image: url("tocbg.jpg");
-    background-position: center;
-    background-size: cover;
-    color: #ccccdd;
-    padding: 2em;
-    text-align: center;
-}
 
 .box {
-    padding-bottom: 2em;
-    padding-top: 2em;
+    margin-top: 3em;
+    padding-bottom: 1em;
+    padding-top: 1em;
+    background-color: rgba(208, 208, 256, 0.9);
+    max-width: 56em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .linklist {
