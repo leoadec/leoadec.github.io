@@ -1,0 +1,46 @@
+---
+section: Leonardo Andreta de Castro
+content:
+- section: Professional experience
+  content:
+  - period: 2019–current
+    job-title: Senior Quantum Control Engineer
+    employer: Q-CTRL Pty Ltd
+    location: Sydney, NSW, Australia
+  - period: 2018–2019
+    job-title: Postdoctoral Associate
+    employer: Duke University
+    location: Durham, NC, United States
+  - period: 2014
+    job-title: Teaching Intern
+    employer: University of São Paulo
+    location: São Carlos, SP, Brazil
+- section: Education
+  content:
+  - period: 2012–2016
+    degree: Doctorate in physics
+    university: University of São Paulo
+    location: São Carlos, SP, Brazil
+  - period: 2010–2012
+    degree: Master's degree in physics
+    university: University of São Paulo
+    location: São Carlos, SP, Brazil
+  - period: 2006–2009
+    degree: Bachelor's degree in physics
+    university: University of São Paulo
+    location: São Carlos, SP, Brazil
+- section: Participation in conferences
+  content:
+  - section: Talks presented
+    contents:
+    - authors:
+      - Leonardo Andreta de Castro
+      - Pak Hong Leung
+      - Pavithran Sridharan Iyer
+      - Kenneth R. Brown
+    - conference: American Physical Society March Meeting
+    - year: 2019
+    - location: Boston, MA, United States
+  - section: Posters presented
+    contents:
+...
