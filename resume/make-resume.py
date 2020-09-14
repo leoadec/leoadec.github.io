@@ -6,65 +6,117 @@ input_file = open("resume.yaml", "r")
 cv_data = yaml.load(input_file, Loader=yaml.Loader)
 
 class MakeDocument():
-    def __init__(self):
+    _preamble = ""
+    _footer = ""
+    _title = None
+
+    def __init__(self, raw_data, callable):
         self._code = ""
-
-    def _finish(self):
+        self._raw = deepcopy(raw_data)
+        self._print = callable
         return
 
-    def _render_text(self, text):
-        self._code += str(text)
+    def write(self):
+        self._print(self._preamble)
+        if self._is_section(self._raw):
+            self._parse_section(self._raw, 1)
+        self._print(self._footer)
         return
 
-    def _render_list(self, data_list, callable):
-        for element in data_list:
-            self._code += "- "
-            callable(element)
-            self._code += "\n"
+    def _render_text(self, text, name):
+        return text + ". "
+
+    def _render_link(self, link_text, url):
+        return f"[{link_text}]({url})"
+
+    def _render_bold(self, text):
+        return f"**{text}**"
+
+    def _render_header(self, title, level):
+        return f"{'#'*level} {title}\n"
+
+    def _render_item(self, item_text, item_number, list_size, seq=""):
+        line_break = "\n"
+        return f" - {item_text.replace(line_break, ' ')}\n"
+
+    def _parse_header(self, title, level):
+        title = str(title)
+        level = int(level)
+        if level == 1:
+            self._title = title
+        self._print(self._render_header(title, level))
         return
 
-    def _render_header(self, section, level):
-        self._code += f"{'#'*level} {section}\n"
-        return 
+    def _parse_snippet(self, snippet):
+        if isinstance(snippet, dict):
+            link_text = snippet.pop("text")
+            link_url = snippet.pop("link")
+            text = self._render_link(link_text, link_url)
+        else:
+            text = str(snippet)
 
-    def _render_dict(self, seq, dictionary, callable):
-        self._code += f" {seq}:"
-        for element in dictionary.values():
-            self._code += " " 
-            callable(element)
-            self._code += "."
+        if text == self._title:
+            self._print(self._render_bold(text))
+            return
+        self._print(self._render_text(text, None))
         return
 
-    def _render(self, data, level):
-        if isinstance(data, (float, int, str)):
-            self._render_text(data)
-        if isinstance(data, list):
-            if level<=2:
-                for element in data:
-                    self._render(element, level)
-            if level>2:
-                self._render_list(data, lambda x: self._render(x, level))
-        if isinstance(data, dict):
-            if ("section" in data) and ("content" in data):
-                self._render_header(data["section"], level)
-                self._render(data["content"], level+1)
+    def _parse_item(self, item):
+        item_text = ""
+        seq = item.pop("period", "")
+
+        for name, value in item.items():
+            if isinstance(value, str):
+                item_text += self._render_text(value, name)
+
+        return item_text, seq
+
+    def _parse_list(self, items):
+        list_size = len(items)
+        seq = ""
+        for item_number, item in enumerate(items):
+            if isinstance(item, (str, float, int)):
+                item_text = self._print(self._parse_snippet(str(item)))
+            if isinstance(item, dict):
+                item_text, seq = self._parse_item(item)
+            self._print(
+                self._render_item(item_text, item_number, list_size, seq=seq)
+            )
+        return
+
+    def _parse_section(self, section, level):
+        title = section["section"]
+        contents = section["content"]
+
+        self._parse_header(title, level)
+
+        if isinstance(contents, (float, int, str)):
+            self._parse_text(str(contents))
+
+        if isinstance(contents, list):
+            if all([self._is_section(item) for item in contents]):
+                for item in contents:
+                    self._parse_section(item, level+1)
             else:
-                seq = data.pop("period", "")
-                self._render_dict(
-                    seq,
-                    data,
-                    lambda x: self._render(x, level)
-                )
-        return 
+                self._parse_list(contents)
 
-    def render(self, data):
-        self._render(data, level=1)
-        self._finish()
-        return self._code
+        if isinstance(contents, dict):
+            if self._is_section(contents):
+                self._parse_section(contents, level+1)
+            else:
+                self._parse_item(contents)
+        return
+
+    def _is_section(self, item):
+        if not isinstance(item, dict):
+            return False
+        if ("section" not in item) or ("content" not in item):
+            return False
+        return True
+
 
 class MakeTeX(MakeDocument):
-    def __init__(self):
-        self._code = r"""
+    _preamble = r"""
 \documentclass[a4paper]{article}                                            
                                                                             
 \usepackage{hyperref}                                                       
@@ -75,9 +127,7 @@ class MakeTeX(MakeDocument):
                                                                             
 \begin{document}
 """
-
-    def _finish(self):
-        self._code += "\end{document}"
+    _footer = "\end{document}"
 
     def _render_list(self, data_list, callable):
         self._code += r"\begin{itemize}"
@@ -102,8 +152,7 @@ class MakeTeX(MakeDocument):
         return
 
 class MakeHTML(MakeDocument):
-    def __init__(self):
-        self._code = u"""
+    _preamble = u"""
         <!DOCTYPE html>
         <html lang="en">
 
@@ -115,13 +164,12 @@ class MakeHTML(MakeDocument):
 
         <body>
         <div class="box">
-"""
+    """
 
-    def _finish(self):
-        self._code += u"""
+    _footer = u"""
         <p><a href="resume.pdf">Résumé in PDF</a></p>
-"""
-        self._code += "</div></body></html>"
+        </div></body></html>
+    """
 
     def _render_list(self, data_list, callable):
         self._code += "<ul>\n"
@@ -149,13 +197,13 @@ class MakeHTML(MakeDocument):
 
 
 markdown_output = open("../README.md", "w")
-make_document = MakeDocument()
-markdown_output.write(make_document.render(deepcopy(cv_data)))
+make_document = MakeDocument(cv_data, markdown_output.write)
+make_document.write()
 
 tex_output = open("resume.tex", "w")
-make_tex = MakeTeX()
-tex_output.write(make_tex.render(deepcopy(cv_data)))
+make_tex = MakeTeX(cv_data, tex_output.write)
+# make_tex.write()
 
 html_output = open("../index.html", "w")
-make_html = MakeHTML()
-html_output.write(make_html.render(deepcopy(cv_data)))
+make_html = MakeHTML(cv_data, html_output.write)
+# make_html.write()

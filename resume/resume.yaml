@@ -32,7 +32,7 @@ content:
 - section: Participation in conferences
   content:
   - section: Talks presented
-    contents:
+    content:
     - authors:
       - Leonardo Andreta de Castro
       - Pak Hong Leung
@@ -42,5 +42,5 @@ content:
     - year: 2019
     - location: Boston, MA, United States
   - section: Posters presented
-    contents:
+    content:
 ...
