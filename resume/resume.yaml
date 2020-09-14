@@ -38,9 +38,25 @@ content:
       - Pak Hong Leung
       - Pavithran Sridharan Iyer
       - Kenneth R. Brown
-    - conference: American Physical Society March Meeting
-    - year: 2019
-    - location: Boston, MA, United States
+      title: Characterizing unwanted motional coupling in Mølmer-Sørensen
+             Gates
+      conference: American Physical Society March Meeting
+      year: 2019
+      location: Boston, MA, United States
   - section: Posters presented
     content:
+    - authors: Leonardo Andreta de Castro
+      title: Quantum error correction with continuous measurements
+      conference: Australian Institute of Physics Summer Meeting
+      year: 2017
+      location: Sydney, NSW, Australia
+    - authors:
+      - Leonardo Andreta de Castro
+      - Reginaldo de Jesus Napolitano
+      title: Quantum error correction theory during logical gates and
+             finite syndrome measurements
+      conference: International Conference on Squeezed States and
+                  Uncertainty Relations – ICSSUR
+      year: 2011
+      location: Foz do Iguaçu, PR, Brazil
 ...

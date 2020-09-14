@@ -23,21 +23,12 @@ class MakeDocument():
         self._print(self._footer)
         return
 
-    def _render_text(self, text, name):
-        return text + ". "
-
-    def _render_link(self, link_text, url):
-        return f"[{link_text}]({url})"
-
-    def _render_bold(self, text):
-        return f"**{text}**"
-
-    def _render_header(self, title, level):
-        return f"{'#'*level} {title}\n"
-
-    def _render_item(self, item_text, item_number, list_size, seq=""):
-        line_break = "\n"
-        return f" - {item_text.replace(line_break, ' ')}\n"
+    def _is_section(self, item):
+        if not isinstance(item, dict):
+            return False
+        if ("section" not in item) or ("content" not in item):
+            return False
+        return True
 
     def _parse_header(self, title, level):
         title = str(title)
@@ -68,6 +59,9 @@ class MakeDocument():
         for name, value in item.items():
             if isinstance(value, str):
                 item_text += self._render_text(value, name)
+            if isinstance(value, list):
+                for element in value:
+                    item_text += f"{str(element)}, "
 
         return item_text, seq
 
@@ -80,7 +74,7 @@ class MakeDocument():
             if isinstance(item, dict):
                 item_text, seq = self._parse_item(item)
             self._print(
-                self._render_item(item_text, item_number, list_size, seq=seq)
+                self._render_item(item_text, item_number+1, list_size, seq)
             )
         return
 
@@ -91,7 +85,7 @@ class MakeDocument():
         self._parse_header(title, level)
 
         if isinstance(contents, (float, int, str)):
-            self._parse_text(str(contents))
+            self._parse_snippet(str(contents))
 
         if isinstance(contents, list):
             if all([self._is_section(item) for item in contents]):
@@ -107,49 +101,66 @@ class MakeDocument():
                 self._parse_item(contents)
         return
 
-    def _is_section(self, item):
-        if not isinstance(item, dict):
-            return False
-        if ("section" not in item) or ("content" not in item):
-            return False
-        return True
+    def _render_text(self, text, name):
+        return f"{text}. "
+
+    def _render_link(self, link_text, url):
+        return f"[{link_text}]({url})"
+
+    def _render_bold(self, text):
+        return f"**{text}**"
+
+    def _render_header(self, title, level):
+        return f"{'#'*level} {title}\n"
+
+    def _render_item(self, item_text, item_number, list_size, seq=""):
+        line_break = "\n"
+        return f" - {item_text.replace(line_break, ' ')}\n"
+
 
 
 class MakeTeX(MakeDocument):
     _preamble = r"""
-\documentclass[a4paper]{article}                                            
-                                                                            
-\usepackage{hyperref}                                                       
-\usepackage[utf8]{inputenc}                                                 
-\usepackage[margin=2cm]{geometry}                                           
-                                                                            
-\renewcommand{\familydefault}{\sfdefault}                                   
-                                                                            
+\documentclass[a4paper]{article}
+
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+
+\renewcommand{\familydefault}{\sfdefault}
+
 \begin{document}
 """
     _footer = "\end{document}"
 
-    def _render_list(self, data_list, callable):
-        self._code += r"\begin{itemize}"
-        for element in data_list:
-            self._code += "\item{ "
-            callable(element)
-            self._code += "}\n"
-        self._code += r"\end{itemize}"
-        return
+    def _render_text(self, text, name):
+        return f"{text}. "
 
-    def _render_header(self, section, level):
-        self._code += f"\section*{{{section}}}\n"
-        return 
+    def _render_link(self, link_text, url):
+        return f"\\href{{{url}}}{{{link_text}}}"
 
-    def _render_dict(self, seq, dictionary, callable):
-        self._code += f"\\textbf{{{seq}}}:"
-        for element in dictionary.values():
-            self._code += " " 
-            callable(element)
-            self._code += "."
-        self._code += "\n"
-        return
+    def _render_bold(self, text):
+        return f"\\textbf{{{text}}}"
+
+    def _render_header(self, title, level):
+        if level == 1:
+            return f"\\begin{{center}}\\bf\\huge {title}\\end{{center}}\n"
+        if level == 2:
+            return f"\\section*{{{title}}}\n"
+        return f"\\subsection*{{{title}}}\n"
+
+    def _render_item(self, item_text, item_number, list_size, seq=""):
+        if seq != "":
+            seq = f" \makebox[2cm]{{\\bf {seq}}}"
+
+        if list_size == 1:
+            return f"\\begin{{itemize}} \\item[] {seq} {item_text} \\end{{itemize}}\n"
+        if item_number == 1:
+            return f"\\begin{{itemize}} \\item[] {seq} {item_text}\n"
+        if item_number == list_size:
+            return f"\\item[] {seq} {item_text}\n \\end{{itemize}}"
+        return f"\\item[] {seq} {item_text}\n"
+
 
 class MakeHTML(MakeDocument):
     _preamble = u"""
@@ -163,7 +174,7 @@ class MakeHTML(MakeDocument):
         </head>
 
         <body>
-        <div class="box">
+        <div id="contents">
     """
 
     _footer = u"""
@@ -171,29 +182,31 @@ class MakeHTML(MakeDocument):
         </div></body></html>
     """
 
-    def _render_list(self, data_list, callable):
-        self._code += "<ul>\n"
-        for element in data_list:
-            callable(element)
-        self._code += "</ul>\n"
-        return
+    def _render_text(self, text, name):
+        return f'<span class="{name}">{text}</span>. '
 
-    def _render_header(self, section, level):
-        self._code += f"<h{level}>{section}</h{level}>\n"
-        return 
+    def _render_link(self, link_text, url):
+        return f'<a href="{url}">{link_text}</a>'
 
-    def _render_dict(self, seq, dictionary, callable):
-        self._code += f"<li seq=\"{seq}\">"
-        counter = 0
-        for name, element in dictionary.items():
-            self._code += f" <span class=\"{name}\">" 
-            callable(element)
-            self._code += ".</span>"
-            counter += 1
-            if counter%2==0:
-                self._code += "<br/>"
-        self._code += "</li>\n"
-        return
+    def _render_bold(self, text):
+        return f"<strong>{text}</strong>"
+
+    def _render_header(self, title, level):
+        return f"<h{level}>{title}</h{level}>\n"
+
+    def _render_item(self, item_text, item_number, list_size, seq=""):
+        if seq == "":
+            seq = f'seq="•"'
+        else:
+            seq = f'seq="{seq}:"'
+
+        if list_size == 1:
+            return f"<ul> <li {seq}> {item_text}</li> </ul>\n"
+        if item_number == 1:
+            return f"<ul> <li {seq}> {item_text}</li>\n"
+        if item_number == list_size:
+            return f"<li {seq}> {item_text}</li></ul>\n"
+        return f"<li {seq}> {item_text}</li>\n"
 
 
 markdown_output = open("../README.md", "w")
@@ -202,8 +215,8 @@ make_document.write()
 
 tex_output = open("resume.tex", "w")
 make_tex = MakeTeX(cv_data, tex_output.write)
-# make_tex.write()
+make_tex.write()
 
 html_output = open("../index.html", "w")
 make_html = MakeHTML(cv_data, html_output.write)
-# make_html.write()
+make_html.write()
