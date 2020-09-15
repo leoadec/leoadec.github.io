@@ -18,15 +18,18 @@ content:
 - section: Education
   content:
   - period: 2012–2016
-    degree: Doctorate in physics
+    degree: Doctorate in Physics
     university: University of São Paulo
     location: São Carlos, SP, Brazil
+    thesis: Protection of quantum systems and the measurement postulate
   - period: 2010–2012
-    degree: Master's degree in physics
+    degree: Master's Degree in Physics
     university: University of São Paulo
     location: São Carlos, SP, Brazil
+    dissertation: Quantum error-correction theory during logic gates and
+                  finite-time syndrome measurements
   - period: 2006–2009
-    degree: Bachelor's degree in physics
+    degree: Bachelor's Degree in Physics
     university: University of São Paulo
     location: São Carlos, SP, Brazil
 - section: Participation in conferences
