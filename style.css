@@ -1,80 +1,75 @@
 body {
-    background-color: #e4e4e5;
+    background-color: #f4f0de;
     font-family: sans-serif;
     height: 100%;
-    margin: 0px;
+    margin: 0pt;
 }
 
 h1 {
     font-variant: small-caps;
-    font-size: 48px;
+    font-size: max(32pt, 2.5em);
     padding: 0em;
     text-align: center;
 }
 
 h2 {
    font-variant: small-caps;
+   font-size: max(24pt, 2em);
    padding: 0.5em;
    text-align: center;
 }
 
 h3 {
    font-variant: small-caps;
+   font-size: max(18pt, 1.5em);
    padding: 0.5em;
    text-align: center;
 }
 
 a, a:active, a:visited {
     color: #6060c5;
-    font-weight: bold;
     text-decoration: none;
 }
 
 div {
-    margin: 0px;
-}
-
-li {
-    padding: 0.4em;
+    margin: 0pt;
 }
 
 ul {
-    list-style: none;
+    list-style-type: none;
     margin: auto;
     padding: 1em;
 }
 
-ul > li:before {
+li:before {
     content: attr(seq);
     font-weight: bold;
+    display: block;
+    margin-left: -3em;
+    margin-bottom: 0.25em;
+}
+
+li {
+    display: block;
+    font-size: max(12pt, 1em);
+    max-width: 56em;
+    text-align: justify;
+    padding-bottom: 0.75em;
 }
 
 p {
     font-size: max(12pt, 1em);
-    max-width: 72em;
+    max-width: 56em;
     margin: auto;
-    padding-left: 3em;
-    padding-right: 3em;
-    padding-bottom: 1em;
-    padding-top: 1em;
-    text-align: justify;
-}
-
-p.short_paragraph {
+    padding: 0.5em;
     text-align: center;
 }
-
 
 #contents {
     margin-top: 3em;
     padding-bottom: 1em;
     padding-top: 1em;
-    max-width: 56em;
+    max-width: 60em;
     margin-left: auto;
     margin-right: auto;
-}
-
-.linklist {
-    font-size: max(12pt, 1em);
-    text-align: center;
 }

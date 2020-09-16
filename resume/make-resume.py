@@ -13,7 +13,7 @@ class MakeDocument():
     def __init__(self, raw_data, callable, language):
         self._raw = deepcopy(raw_data)
         self._print = callable
-        self._language = language
+        self._language = str(language)
         return
 
     def write(self):
@@ -40,35 +40,65 @@ class MakeDocument():
 
     def _parse_snippet(self, snippet, name):
         link_url = None
+        raw_text = None
 
         if isinstance(snippet, dict):
             raw_text = snippet.pop("text", None)
-            raw_text = snippet.pop(self._language, None)
+            raw_text = snippet.pop(self._language, raw_text)
             link_url = snippet.pop("link", None)
+            if raw_text is None:
+                raw_text = ""
+                for key, value in snippet.items():
+                    if (len(raw_text) > 0) and (key != "volume") and (key !="year"):
+                        raw_text += ","
+                    raw_text += f" {self._parse_snippet(value, key)}"
         else:
             raw_text = str(snippet)
 
-        if name == "location":
+        if (name == "location") or (name == "year"):
             raw_text = f"({raw_text})"
         if name == "title":
             raw_text = self._render_italic(raw_text)
+        if (name == "job-title") or (name == "degree") or (name == "volume"):
+            raw_text = self._render_bold(raw_text)
+
+        if name == "paragraph-title":
+            raw_text = f"{self._render_bold(raw_text)}: "
+
+        if name == "arXiv":
+            link_url = f"https://arxiv.org/abs/{raw_text}"
+            raw_text = f"arXiv:{raw_text}"
+        if name == "doi":
+            link_url = f"https://doi.org/{raw_text}"
+            raw_text = f"DOI:{raw_text}"
+
+        if link_url is not None:
+            raw_text = self._render_link(raw_text, link_url)
+
+        if self._title in raw_text:
+            raw_text = self._render_bold(raw_text)
+
+      #  if (name == "university") or (name == "employer"):
+      #      raw_text = self._render_linebreak(raw_text) 
         if name == "dissertation":
             raw_text = f'Dissertation: {self._render_italic(f"“{raw_text}”")}'
         if name == "thesis":
-            raw_text = self._render_italic(f"“{raw_text}”")
+            raw_text = f'Thesis: {self._render_italic(f"“{raw_text}”")}'
+        if (name == "dissertation") or (name == "thesis"):
+            raw_text = self._render_linebreak(raw_text) 
 
-        rendered_text = raw_text
-
-        if link_url is not None:
-            rendered_text = self._render_link(raw_text, link_url)
-
-        if self._title in raw_text:
-            rendered_text = self._render_bold(rendered_text)
-
-        return self._render_text(rendered_text, name)
+        return self._render_text(raw_text, name)
 
     def _parse_paragraph(self, text):
-        self._print(self._render_paragraph(f"{text}."))
+        all_text = ""
+
+        if isinstance(text, list):
+            for snippet in text:
+                all_text += f"{self._parse_snippet(snippet, None)} "
+        else:
+            all_text = f"{self._parse_snippet(text, None)} "
+
+        self._print(self._render_paragraph(f"{all_text} "))
         return
 
     def _parse_item(self, item):
@@ -110,8 +140,16 @@ class MakeDocument():
             text = self._parse_snippet(str(contents), None)
             self._parse_paragraph(text)
 
-        if isinstance(contents, list):
-            if all([self._is_section(item) for item in contents]):
+        if isinstance(contents, list) and (level == 1):
+            for item in contents:
+                if self._is_section(item):
+                    self._parse_section(item, level+1)
+                else:
+                    for block in item.values():
+                        self._parse_paragraph(block)
+
+        if isinstance(contents, list) and (level > 1):
+            if all([self._is_section (item) for item in contents]):
                 for item in contents:
                     self._parse_section(item, level+1)
             else:
@@ -135,6 +173,9 @@ class MakeDocument():
 
     def _render_bold(self, text):
         return f"**{text}**"
+
+    def _render_linebreak(self, text):
+        return "\n   {text}"
 
     def _render_paragraph(self, text):
         return f"\n{text}\n"
@@ -206,10 +247,7 @@ class MakeHTML(MakeDocument):
         <div id="contents">
     """
 
-    _footer = u"""
-        <p><a href="resume.pdf">Résumé in PDF</a></p>
-        </div></body></html>
-    """
+    _footer = "\n</div></body></html>\n"
 
     def _render_text(self, text, name):
         return f'<span class="{name}">{text}</span>'
@@ -223,6 +261,9 @@ class MakeHTML(MakeDocument):
     def _render_italic(self, text):
         return f"<em>{text}</em>"
 
+    def _render_linebreak(self, text):
+        return f"<br/>{text}"
+
     def _render_paragraph(self, text):
         return f"<p>{text}</p>\n"
 
@@ -230,9 +271,7 @@ class MakeHTML(MakeDocument):
         return f"<h{level}>{title}</h{level}>\n"
 
     def _render_item(self, item_text, item_number, list_size, seq=""):
-        if seq == "":
-            seq = f'seq="•"'
-        else:
+        if seq != "":
             seq = f'seq="{seq}:"'
 
         if list_size == 1:

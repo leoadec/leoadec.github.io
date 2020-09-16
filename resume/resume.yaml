@@ -1,6 +1,20 @@
 ---
 section: Leonardo Andreta de Castro
 content:
+- external-cvs:
+  - paragraph-title: External CVs
+  - text: "Google Scholar page,"
+    link: https://scholar.google.com/citations?user=7GGkIQgAAAAJ
+  - text: "ORCid: 0000-0003-2491-8126."
+    link: https://orcid.org/0000-0003-2491-8126
+- en-versions:
+  - paragraph-title: Versions of this document
+  - text: HTML,
+    link: https://leoadec.github.io/index.html
+  - text: PDF,
+    link: https://leoadec.github.io/resume.pdf
+  - text: Markdown.
+    link: https://github.com/leoadec/leoadec.github.io/blob/master/README.md
 - section: Professional experience
   content:
   - period: 2019–current
@@ -32,6 +46,150 @@ content:
     degree: Bachelor's Degree in Physics
     university: University of São Paulo
     location: São Carlos, SP, Brazil
+- section: Publications
+  content:
+  - section: Papers published
+    content:
+    - authors:
+      - Michael Newman
+      - Leonardo Andreta de Castro
+      - Kenneth R. Brown
+      title: Generating fault-tolerant cluster states from crystal
+             structures
+      publication:
+        journal: Quantum
+        volume: 4
+        pages: 295
+        year: 2020
+      doi: 10.22331/q-2020-07-13-295
+      arXiv: "1909.11817"
+    - authors:
+      - Swarnadeep Majumder
+      - Leonardo Andreta de Castro
+      - Kenneth R. Brown
+      title: Real-time calibration with spectator qubits
+      publication:
+        journal: npj Quantum Information
+        volume: 6
+        pages: 19
+        year: 2020
+      doi: 10.1038/s41534-020-0251-y
+      arXiv: "1907.03864"
+    - authors:
+      - Leonardo Andreta de Castro
+      - Olímpio Pereira de Sá Neto
+      - Carlos Alexandre Brasil
+      title: An introduction to quantum measurements with a historical
+              motivation
+      publication:
+        journal: Acta Physica Slovaca
+        volume: 69
+        pages: 1
+        year: 2019
+        link: http://www.physics.sk/aps/pub.php?y=2019&pub=aps-19-01
+      arXiv: "1908.03949"
+    - authors:
+      - Leonardo Andreta de Castro
+      - Carlos Alexandre Brasil
+      - Reginaldo de Jesus Napolitano
+      title: Weak values in collision theory
+      publication:
+        journal: Annals of Physics
+        volume: 392
+        pages: 272-286
+        year: 2018
+      doi: 10.1016/j.aop.2018.03.014
+      arXiv: "1803.07110"
+    - authors:
+      - Leonardo Andreta de Castro
+      - Carlos Alexandre Brasil
+      - Reginaldo de Jesus Napolitano
+      title: Elliptical orbits in the phase-space quantization
+      publication:
+        journal: Revista Brasileira de Ensino de Física
+        volume: 38
+        pages: e3318
+        year: 2016
+      doi: 10.1590/1806-9126-RBEF-2016-0067
+      arXiv: "1605.08027"
+    - authors:
+      - Leonardo Andreta de Castro
+      - Reginaldo de Jesus Napolitano
+      title: Error correction in short time steps during the application of
+             quantum gates
+      publication:
+        journal: Annals of Physics
+        volume: 367
+        pages: 199-211
+        year: 2016
+      doi: 20.2016/j.aop.2016.01.014
+      arXiv: "1109.4796"
+    - authors:
+      - Carlos Alexandre Brasil
+      - Leonardo Andreta de Castro
+      title: Understanding the pointer states
+      publication:
+        journal: European Journal of Physics
+        volume: 36
+        pages: 065024
+        year: 2015
+      doi: 10.1088/0143-0807/36/6/065024
+      arXiv: "1508.04101"
+    - authors:
+      - Carlos Alexandre Brasil
+      - Leonardo Andreta de Castro
+      - Reginaldo de Jesus Napolitano
+      title: Efficient finite-time measurements under thermal regimes
+      publication:
+        journal: European Physical Journal Plus
+        volume: 129
+        pages: 206
+        year: 2014
+      doi: 10.1140/epjp/i2014-14206-0
+      arXiv: "1309.3621"
+    - authors:
+      - Carlos Alexandre Brasil
+      - Leonardo Andreta de Castro
+      - Reginaldo de Jesus Napolitano
+      title: How much time does a measurement take?
+      publication:
+        journal: Foundations of Physics
+        volume: 43
+        pages: 642-655
+        year: 2013
+      doi: 10.1007/s10701-013-9707-7
+      arXiv: "1109.4613"
+    - authors:
+      - Carlos Alexandre Brasil
+      - Leonardo Andreta de Castro
+      - Reginaldo de Jesus Napolitano
+      title: Protecting a quantum state from environmental noise by an
+             incompatible finite-time measurement
+      publication: 
+        journal: Physical Review A
+        volume: 84
+        pages: 022112
+        year: 2011
+      doi: 20.1103/PhysRevA.84.02212
+      arXiv: "1106.4537"
+  - section: Preprints
+    content:
+    - authors:
+      - Harrison Ball
+      - Michael J. Biercuk
+      - André R. R. Carvalho
+      - Jiayin Chen
+      - Michael Hush
+      - Leonardo Andreta de Castro
+      - Li Li
+      - Per J. Lieberman
+      - Harry Slatyer
+      - Claire Edmunds
+      - Virginia Frey
+      - Cornelius Hempel
+      - Alistair Milne
+      title: Software tools for quantum control
+      arXiv: "2001.04060"
 - section: Participation in conferences
   content:
   - section: Talks presented
@@ -41,25 +199,28 @@ content:
       - Pak Hong Leung
       - Pavithran Sridharan Iyer
       - Kenneth R. Brown
-      title: Characterizing unwanted motional coupling in Mølmer-Sørensen
-             Gates
-      conference: American Physical Society March Meeting
-      year: 2019
+      title: Characterizing unwanted motional coupling in Mølmer–Sørensen
+             gates
+      presentation:
+        conference: American Physical Society March Meeting
+        year: 2019
       location: Boston, MA, United States
   - section: Posters presented
     content:
     - authors: Leonardo Andreta de Castro
       title: Quantum error correction with continuous measurements
-      conference: Australian Institute of Physics Summer Meeting
-      year: 2017
+      presentation:
+        conference: Australian Institute of Physics Summer Meeting
+        year: 2017
       location: Sydney, NSW, Australia
     - authors:
       - Leonardo Andreta de Castro
       - Reginaldo de Jesus Napolitano
       title: Quantum error correction theory during logical gates and
              finite syndrome measurements
-      conference: International Conference on Squeezed States and
-                  Uncertainty Relations – ICSSUR
-      year: 2011
+      presentation:
+        conference: International Conference on Squeezed States and
+                    Uncertainty Relations – ICSSUR
+        year: 2011
       location: Foz do Iguaçu, PR, Brazil
 ...
