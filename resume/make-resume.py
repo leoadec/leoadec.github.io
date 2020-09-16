@@ -175,17 +175,37 @@ class MakeDocument():
         return f"**{text}**"
 
     def _render_linebreak(self, text):
-        return "\n   {text}"
+        return f"\n   {text}"
 
     def _render_paragraph(self, text):
         return f"\n{text}\n"
 
     def _render_header(self, title, level):
-        return f"{'#'*level} {title}\n"
+        return f"\n{'#'*level} {title}\n"
 
     def _render_item(self, item_text, item_number, list_size, seq=""):
-        line_break = "\n"
-        return f" - {item_text.replace(line_break, ' ')}\n"
+        if seq != "":
+            seq = f"**{seq}**:"
+
+        broken_text = item_text.split()
+        mended_text = ""
+        buffer = ""
+        
+        for word in broken_text:
+            buffer += f"{word} "
+            if len(buffer) > 75:
+                if mended_text == "":
+                    mended_text += buffer
+                else:
+                    mended_text += self._render_linebreak(buffer)
+                buffer = ""
+
+        if mended_text == "":
+            mended_text = buffer
+        elif buffer != "":
+            mended_text += self._render_linebreak(buffer)
+
+        return f"\n - {seq} {mended_text}\n"
 
 
 
@@ -207,10 +227,34 @@ class MakeTeX(MakeDocument):
         return f"\\href{{{url}}}{{{link_text}}}"
 
     def _render_italic(self, text):
-        return f"\\textem{{{text}}}"
+        return f"\\textit{{{text}}}"
 
     def _render_bold(self, text):
         return f"\\textbf{{{text}}}"
+
+    def _render_linebreak(self, text):
+        broken_text = text.split()
+        mended_text = ""
+        buffer = ""
+        
+        for word in broken_text:
+            buffer += f"{word} "
+            if len(buffer) > 80:
+                if mended_text == "":
+                    mended_text += buffer
+                else:
+                    mended_text += self._render_linebreak(buffer)
+                buffer = ""
+
+        if mended_text == "":
+            mended_text = buffer
+        elif buffer != "":
+            mended_text += self._render_linebreak(buffer)
+
+        return f"\n \\\\ \\makebox[2cm]{{}} {mended_text}"
+
+    def _render_paragraph(self, text):
+        return f"\n\\begin{{center}} {text} \\end{{center}}\n"
 
     def _render_header(self, title, level):
         if level == 1:

@@ -45,7 +45,7 @@ li:before {
     content: attr(seq);
     font-weight: bold;
     display: block;
-    margin-left: -3em;
+    margin-left: -2em;
     margin-bottom: 0.25em;
 }
 
@@ -55,6 +55,8 @@ li {
     max-width: 56em;
     text-align: justify;
     padding-bottom: 0.75em;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 p {
