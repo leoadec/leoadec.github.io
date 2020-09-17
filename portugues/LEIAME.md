@@ -1,35 +1,34 @@
 
 # Leonardo Andreta de Castro
 
- **External CVs**:  [Google Scholar,](https://scholar.google.com/citations?user=7GGkIQgAAAAJ) [ORCid: 0000-0003-2491-8126.](https://orcid.org/0000-0003-2491-8126)  
+ **Currículos externos**:  [Google Scholar,](https://scholar.google.com/citations?user=7GGkIQgAAAAJ) [ORCid: 0000-0003-2491-8126.](https://orcid.org/0000-0003-2491-8126)  
 
- **Versions of this document**:  [HTML,](https://leoadec.github.io/index.html) [PDF,](https://leoadec.github.io/resume.pdf) [Markdown.](https://github.com/leoadec/leoadec.github.io/blob/master/README.md)  
+ **This document in English**:  [HTML,](https://leoadec.github.io/index.html) [PDF,](https://leoadec.github.io/resume.pdf) [Markdown.](https://github.com/leoadec/leoadec.github.io/blob/master/README.md)  
 
- **Este documento em português**:  [HTML,](https://leoadec.github.io/portugues/index.html) [Markdown.](https://github.com/leoadec/leoadec.github.io/blob/master/portuguese/LEIAME.md)  
+ **Versões deste documento**:  [HTML,](https://leoadec.github.io/portugues/index.html) [Markdown.](https://github.com/leoadec/leoadec.github.io/blob/master/portuguese/LEIAME.md)  
 
-## Professional experience
+## Experiência profissional
 
- - **2019–current**: **Senior Quantum Control Engineer**. Q-CTRL Pty Ltd. (Sydney, NSW, Australia). 
+ - **2019–current**: **Engenheiro Sênior de Controle Quântico**. Q-CTRL Pty Ltd. (Sydney, NSW, Austrália). 
 
- - **2018–2019**: **Postdoctoral Associate**. Duke University. (Durham, NC, United States). 
+ - **2018–2019**: **Pós-Doutor Associado**. Universidade Duke. (Durham, NC, Estados Unidos). 
 
- - **2014**: **Teaching Internship**. University of São Paulo. (São Carlos, SP, Brazil). 
+ - **2014**: **Estágio Docente**. Universidade de São Paulo. (São Carlos, SP, Brasil). 
 
-## Education
+## Formação
 
- - **2012–2016**: **Doctorate in Physics**. Universidade de São Paulo. (São Carlos, SP, Brazil). 
-   [ Thesis: *“Protection of quantum systems and the measurement postulate”*](https://teses.usp.br/teses/disponiveis/76/76131/tde-20012017-090107/en.php). 
+ - **2012–2016**: **Doutorado em Física**. University of São Paulo. (São Carlos, SP, Brasil). 
+   [ Thesis: *“Proteção de sistemas quânticos e o postulado da medida”*](https://teses.usp.br/teses/disponiveis/76/76131/tde-20012017-090107/en.php). 
 
- - **2010–2012**: **Master's Degree in Physics**. Universidade de São Paulo. (São Carlos, SP, 
-   Brazil). [ Dissertation: *“Quantum error-correction theory during logic gates 
-   and finite-time syndrome measurements”*](https://teses.usp.br/teses/disponiveis/76/76131/tde-26042012-144241/en.php). 
+ - **2010–2012**: **Mestrado em Física**. University of São Paulo. (São Carlos, SP, Brasil). [ 
+   Dissertation: *“Teoria de correção de erros quânticos durante operações lógicas 
+   e medidas de diagnóstico de duração finita”*](https://teses.usp.br/teses/disponiveis/76/76131/tde-26042012-144241/en.php). 
 
- - **2006–2009**: **Bachelor's Degree in Physics**. Universidade de São Paulo. (São Carlos, SP, 
-   Brazil). 
+ - **2006–2009**: **Bacharelado em Física**. University of São Paulo. (São Carlos, SP, Brasil). 
 
-## Publications
+## Publicações
 
-### Papers published
+### Artigos em periódicos
 
  -  Michael Newman, **Leonardo Andreta de Castro**, Kenneth R. Brown. *Generating 
    fault-tolerant cluster states from crystal structures*. [ Quantum **4**, 295 
@@ -53,7 +52,7 @@
    [arXiv:1803.07110](https://arxiv.org/abs/1803.07110). 
 
  -  **Leonardo Andreta de Castro**, Carlos Alexandre Brasil, Reginaldo de Jesus 
-   Napolitano. *Elliptical orbits in the phase-space quantization*. [ Revista Brasileira 
+   Napolitano. *Órbitas elíticas na quantização do espaço de fase*. [ Revista Brasileira 
    de Ensino de Física **38**, e3318 (2016)](https://www.scielo.br/scielo.php?script=sci_arttext&pid=S1806-11172016000300418). 
    [DOI:10.1590/1806-9126-RBEF-2016-0067](https://doi.org/10.1590/1806-9126-RBEF-2016-0067). 
    [arXiv:1605.08027](https://arxiv.org/abs/1605.08027). 
@@ -94,30 +93,30 @@
    Claire Edmunds, Virginia Frey, Cornelius Hempel, Alistair Milne. *Software tools 
    for quantum control*. [arXiv:2001.04060](https://arxiv.org/abs/2001.04060). 
 
-## Research grants
+## Bolsas de pesquisa
 
- - **2010–2012**: **Master's scholarship**. [ *Quantum error-correction theory during logical 
-   operations and finite-duration syndrome measurements*](https://bv.fapesp.br/en/bolsas/112279/quantum-error-correction-theory-during-logical-operations-and-finite-duration-syndrome-measurements). 
-   The São Paulo Research Foundation – FAPESP. 
+ - **2010–2012**: **Bolsa de mestrado**. [ *Teoria de correção de erros quânticos durante operações 
+   lógicas e medidas de diagnóstico de duração finita*](https://bv.fapesp.br/en/bolsas/112279/quantum-error-correction-theory-during-logical-operations-and-finite-duration-syndrome-measurements). 
+   Agência de Amparo à Pesquisa do Estado de São Paulo – FAPESP. 
 
- - **2008–2009**: **Undegraduate research scholarship**. [ *Decoherence in a two-qubit system 
-   and error correction theory*](https://bv.fapesp.br/en/bolsas/71743/decoherence-in-a-two-qubit-system-and-error-correction-theory/). 
-   The São Paulo Research Foundation – FAPESP. 
+ - **2008–2009**: **Bolsa de iniciação cientĩfica**. [ *Descoerência de sistema de dois qubits 
+   e teoria de correção de erros*](https://bv.fapesp.br/en/bolsas/71743/decoherence-in-a-two-qubit-system-and-error-correction-theory/). 
+   Agência de Amparo à Pesquisa do Estado de São Paulo – FAPESP. 
 
-## Participation in conferences
+## Participação em conferências
 
-### Talks presented
+### Palestras ministradas
 
  -  **Leonardo Andreta de Castro**, Pak Hong Leung, Pavithran Sridharan Iyer, Kenneth 
    R. Brown. *Characterizing unwanted motional coupling in Mølmer–Sørensen gates*. 
-   American Physical Society March Meeting (2019). (Boston, MA, United States). 
+   American Physical Society March Meeting (2019). (Boston, MA, Estados Unidos). 
 
-### Posters presented
+### Pôsteres apresentados
 
  -  **Leonardo Andreta de Castro**. *Quantum error correction with continuous measurements*. 
-   Australian Institute of Physics Summer Meeting (2017). (Sydney, NSW, Australia). 
+   Australian Institute of Physics Summer Meeting (2017). (Sydney, NSW, Austrália). 
 
  -  **Leonardo Andreta de Castro**, Reginaldo de Jesus Napolitano. *Quantum error 
    correction theory during logical gates and finite syndrome measurements*. International 
    Conference on Squeezed States and Uncertainty Relations – ICSSUR (2011). (Foz 
-   do Iguaçu, PR, Brazil). 
+   do Iguaçu, PR, Brasil). 

@@ -267,27 +267,27 @@ content:
     pt: Bolsas de pesquisa
   content:
     - period: 2010–2012
-      title:
+      grant:
+        text: Bolsa de mestrado
+        en: Master's scholarship
+      project:
         text: Teoria de correção de erros quânticos durante operações
               lógicas e medidas de diagnóstico de duração finita
         en: Quantum error-correction theory during logical operations and
             finite-duration syndrome measurements
         link: https://bv.fapesp.br/en/bolsas/112279/quantum-error-correction-theory-during-logical-operations-and-finite-duration-syndrome-measurements
-      type:
-        text: Bolsa de mestrado
-        en: Master's scholarship
       agency:
         text: Agência de Amparo à Pesquisa do Estado de São Paulo – FAPESP
         en: The São Paulo Research Foundation – FAPESP
     - period: 2008–2009
-      title:
+      grant:
+        text: Bolsa de iniciação cientĩfica
+        en: Undegraduate research scholarship
+      project:
         text: Descoerência de sistema de dois qubits e teoria de correção
               de erros
         en: Decoherence in a two-qubit system and error correction theory
         link: https://bv.fapesp.br/en/bolsas/71743/decoherence-in-a-two-qubit-system-and-error-correction-theory/
-      type:
-        text: Bolsa de iniciação cientĩfica
-        en: Undegraduate research scholarship
       agency:
         text: Agência de Amparo à Pesquisa do Estado de São Paulo – FAPESP
         en: The São Paulo Research Foundation – FAPESP

@@ -62,9 +62,9 @@ class MakeDocument():
 
         if (name == "location") or (name == "year"):
             raw_text = f"({raw_text})"
-        if name == "title":
+        if (name == "title") or (name == "project"):
             raw_text = self._render_italic(raw_text)
-        if (name == "job-title") or (name == "degree") or (name == "volume"):
+        if (name == "job-title") or (name == "degree") or (name == "volume") or (name == "grant"):
             raw_text = self._render_bold(raw_text)
 
         if name == "paragraph-title":
@@ -77,9 +77,6 @@ class MakeDocument():
             link_url = f"https://doi.org/{raw_text}"
             raw_text = f"DOI:{raw_text}"
 
-        if link_url is not None:
-            raw_text = self._render_link(raw_text, link_url)
-
         if self._title in raw_text:
             raw_text = self._render_bold(raw_text)
 
@@ -89,8 +86,12 @@ class MakeDocument():
             raw_text = f'Dissertation: {self._render_italic(f"“{raw_text}”")}'
         if name == "thesis":
             raw_text = f'Thesis: {self._render_italic(f"“{raw_text}”")}'
-        if (name == "dissertation") or (name == "thesis"):
+        if (name == "dissertation") or (name == "thesis") or (name == "project"):
             raw_text = self._render_linebreak(raw_text) 
+
+        if link_url is not None:
+            raw_text = self._render_link(raw_text, link_url)
+
 
         return self._render_text(raw_text, name)
 
@@ -237,7 +238,13 @@ class MakeTeX(MakeDocument):
     def _render_bold(self, text):
         return f"\\textbf{{{text}}}"
 
-    def _render_linebreak(self, text):
+    def _render_linebreak(self, input_text):
+        if isinstance(input_text, dict):
+            text = input_text.pop("text", input_text)
+            text = input_text.pop(self._language, text)
+        else:
+            text = str(input_text)
+
         broken_text = text.split()
         mended_text = ""
         buffer = ""
