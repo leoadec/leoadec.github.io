@@ -30,8 +30,13 @@ class MakeDocument():
             return False
         return True
 
-    def _parse_header(self, title, level):
-        title = str(title)
+    def _parse_header(self, header, level):
+        if isinstance(header, dict):
+            title = header.pop("text", None)
+            title = header.pop(self._language, title)
+        else:
+            title = str(header)
+
         level = int(level)
         if level == 1:
             self._title = title
@@ -285,6 +290,7 @@ class MakeHTML(MakeDocument):
         <meta charset="utf-8">
         <title>Leonardo Andreta de Castro &ndash; LeoAdeC</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="../style.css" />
         </head>
 
         <body>
@@ -338,3 +344,11 @@ make_tex.write()
 html_output = open("../index.html", "w")
 make_html = MakeHTML(cv_data, html_output.write, "en")
 make_html.write()
+
+markdown_output_pt = open("../portugues/LEIAME.md", "w")
+make_document_pt = MakeDocument(cv_data, markdown_output_pt.write, "pt")
+make_document_pt.write()
+
+html_output_pt = open("../portugues/index.html", "w")
+make_html_pt = MakeHTML(cv_data, html_output_pt.write, "pt")
+make_html_pt.write()
