@@ -3,9 +3,9 @@
 
  **External CVs**:  [Google Scholar,](https://scholar.google.com/citations?user=7GGkIQgAAAAJ) [ORCid: 0000-0003-2491-8126.](https://orcid.org/0000-0003-2491-8126)  
 
- **Versions of this document**:  [HTML,](https://leoadec.github.io/index.html) [PDF,](https://leoadec.github.io/resume.pdf) [Markdown.](https://github.com/leoadec/leoadec.github.io/blob/master/README.md)  
+ **Versions of this document**:  [HTML,](https://leoadec.github.io/) [PDF,](https://leoadec.github.io/resume.pdf) [Markdown.](https://github.com/leoadec/leoadec.github.io/blob/master/README.md)  
 
- **Este documento em português**:  [HTML,](https://leoadec.github.io/portugues/index.html) [Markdown.](https://github.com/leoadec/leoadec.github.io/blob/master/portuguese/LEIAME.md)  
+ **Este documento em português**:  [HTML,](https://leoadec.github.io/portugues/) [Markdown.](https://github.com/leoadec/leoadec.github.io/blob/master/portugues/LEIAME.md)  
 
 ## Professional experience
 

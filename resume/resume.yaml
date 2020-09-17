@@ -14,7 +14,7 @@ content:
       text: This document in English
       en: Versions of this document
   - text: HTML,
-    link: https://leoadec.github.io/index.html
+    link: https://leoadec.github.io/
   - text: PDF,
     link: https://leoadec.github.io/resume.pdf
   - text: Markdown.
@@ -24,9 +24,9 @@ content:
       text: Este documento em português
       pt: Versões deste documento 
   - text: HTML,
-    link: https://leoadec.github.io/portugues/index.html
+    link: https://leoadec.github.io/portugues/
   - text: Markdown.
-    link: https://github.com/leoadec/leoadec.github.io/blob/master/portuguese/LEIAME.md
+    link: https://github.com/leoadec/leoadec.github.io/blob/master/portugues/LEIAME.md
 - section:
     en: Professional experience
     pt: Experiência profissional
