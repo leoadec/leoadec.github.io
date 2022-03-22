@@ -1,0 +1,20 @@
+boston:
+  city: Boston
+  state: MA
+  country: United States
+durham:
+  city: Durham
+  state: NC
+  country: United States
+foz:
+  city: Foz do Iguaçu
+  state: PR
+  country: Brazil
+sao_carlos:
+  city: São Carlos
+  state: SP
+  country: Brazil
+sydney:
+  city: Sydney
+  state: NSW
+  country: Australia

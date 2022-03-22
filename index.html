@@ -1,0 +1,50 @@
+---
+layout: default
+title: Leonardo Andreta de Castro
+lang: en
+---
+
+{% if site.data.contact %}
+{% assign contact = site.data.contact %}
+<p>
+  {% if contact.email %}
+  <span class="paragraph-title">
+    <strong>Email</strong>: <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+  </span>
+  {% endif %}
+</p>
+{% endif %}
+
+{% if site.data.jobs %}
+<h2>Professional experience</h2>
+{% include dated_list.html list=site.data.jobs %}
+{% endif %}
+
+{% if site.data.degrees %}
+<h2>Education</h2>
+{% include dated_list.html list=site.data.degrees %}
+{% endif %}
+
+{% assign published_papers=site.data.papers | where_exp: "papers", "papers.publication" %}
+{% if published_papers %}
+<h2>Papers published</h2>
+{% include plain_list.html list=published_papers %}
+{% endif %}
+
+{% if site.data.funding %}
+{% assign grants = site.data.funding %}
+<h2>Research grants</h2>
+{% include dated_list.html list=site.data.funding %}
+{% endif %}
+
+{% assign conference_talks = site.data.talks | where_exp: "talk", "talk.conference" %}
+{% if conference_talks %}
+<h2>Talks in conferences</h2>
+{% include plain_list.html list=conference_talks %}
+{% endif %}
+
+{% assign conference_posters = site.data.posters | where_exp: "poster", "poster.conference" %}
+{% if conference_posters  %}
+<h2>Posters presented in conferences</h2>
+{% include plain_list.html list=conference_posters %}
+{% endif %}

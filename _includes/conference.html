@@ -1,0 +1,4 @@
+{% assign conferences = site.data.conferences %}
+{% assign location = conferences[include.conference].years[year].location %}
+{{ conferences[include.conference].name }} {{ include.year }}.
+{% include location.html location=location %}

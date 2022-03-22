@@ -1,0 +1,150 @@
+- authors:
+  - harrison
+  - mike_biercuk
+  - andre
+  - jenny
+  - michael
+  - me
+  - li
+  - per
+  - harry
+  - claire_edmunds
+  - virginia_frey
+  - cornelius_hempel
+  - alistair_milne
+  title: Software tools for quantum control
+  publication:
+    journal: Quantum Science and Technology
+    volume: 6
+    pages: 044011
+    date: 2021
+    url: https://iopscience.iop.org/article/10.1088/2058-9565/abdca6/meta
+    doi: 10.1088/2058-9565
+  arXiv: "2001.04060"
+- authors:
+  - mike_newman
+  - me
+  - ken
+  title: Generating fault-tolerant cluster states from crystal structures
+  publication:
+    journal: Quantum
+    volume: 4
+    pages: 295
+    date: 2020
+    url: https://quantum-journal.org/papers/q-2020-07-13-295
+    doi: 10.22331/q-2020-07-13-295
+  arXiv: "1909.11817"
+- authors:
+  - swarnadeep
+  - me
+  - ken
+  title: Real-time calibration with spectator qubits
+  publication:
+    journal: npj Quantum Information
+    volume: 6
+    pages: 19
+    date: 2020
+    url: https://www.nature.com/articles/s41534-020-0251-y
+    doi: 10.1038/s41534-020-0251-y
+  arXiv: "1907.03864"
+- authors:
+  - me
+  - olimpio
+  - carlos
+  title: An introduction to quantum measurements with a historical motivation
+  publication:
+    journal: Acta Physica Slovaca
+    volume: 69
+    pages: 1
+    date: 2019
+    url: http://www.physics.sk/aps/pub.php?y=2019&pub=aps-19-01
+  arXiv: "1908.03949"
+- authors:
+  - me
+  - carlos
+  - reginaldo
+  title: Weak values in collision theory
+  publication:
+    journal: Annals of Physics
+    volume: 392
+    pages: 272-286
+    date: 2018
+    url: https://www.sciencedirect.com/science/article/abs/pii/S0003491618300691
+    doi: 10.1016/j.aop.2018.03.014
+  arXiv: "1803.07110"
+- authors:
+  - me
+  - carlos
+  - reginaldo
+  title: Elliptical orbits in the phase-space quantization
+  publication:
+    journal: Revista Brasileira de Ensino de Física
+    volume: 38
+    pages: e3318
+    date: 2016
+    url: https://www.scielo.br/scielo.php?script=sci_arttext&pid=S1806-11172016000300418
+    doi: 10.1590/1806-9126-RBEF-2016-0067
+  arXiv: "1605.08027"
+- authors:
+  - me
+  - reginaldo
+  title: Error correction in short time steps during the application of quantum gates
+  publication:
+    journal: Annals of Physics
+    volume: 367
+    pages: 199-211
+    date: 2016
+    url: https://www.sciencedirect.com/science/article/abs/pii/S0003491616000257
+    doi: 10.1016/j.aop.2016.01.014
+  arXiv: "1109.4796"
+- authors:
+  - carlos
+  - me
+  title: Understanding the pointer states
+  publication:
+    journal: European Journal of Physics
+    volume: 36
+    pages: 065024
+    date: 2015
+    url: https://iopscience.iop.org/article/10.1088/0143-0807/36/6/065024
+    doi: 10.1088/0143-0807/36/6/065024
+  arXiv: "1508.04101"
+- authors:
+  - carlos
+  - me
+  - reginaldo
+  title: Efficient finite-time measurements under thermal regimes
+  publication:
+    journal: European Physical Journal Plus
+    volume: 129
+    pages: 206
+    date: 2014
+    url: https://link.springer.com/article/10.1140/epjp/i2014-14206-0
+    doi: 10.1140/epjp/i2014-14206-0
+  arXiv: "1309.3621"
+- authors:
+  - carlos
+  - me
+  - reginaldo
+  title: How much time does a measurement take?
+  publication:
+    journal: Foundations of Physics
+    volume: 43
+    pages: 642-655
+    date: 2013
+    url: https://link.springer.com/article/10.1007%2Fs10701-013-9707-7
+    doi: 10.1007/s10701-013-9707-7
+  arXiv: "1109.4613"
+- authors:
+  - carlos
+  - me
+  - reginaldo
+  title: Protecting a quantum state from environmental noise by an incompatible finite-time measurement
+  publication: 
+    journal: Physical Review A
+    volume: 84
+    pages: 022112
+    date: 2011
+    url: https://journals.aps.org/pra/abstract/10.1103/PhysRevA.84.022112
+    doi: 10.1103/PhysRevA.84.022112
+  arXiv: "1106.4537"

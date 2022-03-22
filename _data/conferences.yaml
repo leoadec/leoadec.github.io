@@ -1,0 +1,15 @@
+aip_summer_meeting:
+  name: AIP Summer Meeting
+  years:
+    "2017":
+      location: sydney
+feynmanfest:
+  name: International Conference on Sequeezed States and Uncertainty Relationa (ICSSUR) and Feynmanfest
+  years:
+    "2011":
+      location: foz
+march_meeting:
+  name: APS March Meeting
+  years:
+    "2019":
+      location: boston
