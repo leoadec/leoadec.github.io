@@ -4,47 +4,53 @@ title: Leonardo Andreta de Castro
 lang: en
 ---
 
-{% if site.data.contact %}
-{% assign contact = site.data.contact %}
+{%- if site.data.contact -%}
+{%- assign contact = site.data.contact -%}
 <p>
-  {% if contact.email %}
+  {%- if contact.email -%}
   <span class="paragraph-title">
     <strong>Email</strong>: <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
   </span>
-  {% endif %}
+  {%- endif -%}
 </p>
-{% endif %}
+{%- endif -%}
 
-{% if site.data.jobs %}
+{%- if site.data.jobs -%}
 <h2>Professional experience</h2>
-{% include dated_list.html list=site.data.jobs %}
-{% endif %}
+{%- include dated_list.html list=site.data.jobs -%}
+{%- endif -%}
 
-{% if site.data.degrees %}
+{%- if site.data.degrees -%}
 <h2>Education</h2>
-{% include dated_list.html list=site.data.degrees %}
-{% endif %}
+{%- include dated_list.html list=site.data.degrees -%}
+{%- endif -%}
 
-{% assign published_papers=site.data.papers | where_exp: "papers", "papers.publication" %}
-{% if published_papers %}
+{%- assign published_papers=site.data.papers | where_exp: "papers", "papers.publication" -%}
+{%- if published_papers -%}
 <h2>Papers published</h2>
-{% include plain_list.html list=published_papers %}
-{% endif %}
+{%- include plain_list.html list=published_papers -%}
+{%- endif -%}
 
-{% if site.data.funding %}
-{% assign grants = site.data.funding %}
+{%- if site.data.reviews -%}
+{%- assign reviews = site.data.reviews -%}
+<h2>Reviews</h2>
+{%- include topical_list.html list=reviews -%}
+{%- endif -%}
+
+{%- if site.data.funding -%}
+{%- assign grants = site.data.funding -%}
 <h2>Research grants</h2>
-{% include dated_list.html list=site.data.funding %}
-{% endif %}
+{%- include dated_list.html list=site.data.funding -%}
+{%- endif -%}
 
-{% assign conference_talks = site.data.talks | where_exp: "talk", "talk.conference" %}
-{% if conference_talks %}
+{%- assign conference_talks = site.data.talks | where_exp: "talk", "talk.conference" -%}
+{%- if conference_talks -%}
 <h2>Talks in conferences</h2>
-{% include plain_list.html list=conference_talks %}
-{% endif %}
+{%- include plain_list.html list=conference_talks -%}
+{%- endif -%}
 
-{% assign conference_posters = site.data.posters | where_exp: "poster", "poster.conference" %}
-{% if conference_posters  %}
+{%- assign conference_posters = site.data.posters | where_exp: "poster", "poster.conference" -%}
+{%- if conference_posters  -%}
 <h2>Posters presented in conferences</h2>
-{% include plain_list.html list=conference_posters %}
-{% endif %}
+{%- include plain_list.html list=conference_posters -%}
+{%- endif -%}

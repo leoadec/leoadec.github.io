@@ -1,21 +1,21 @@
 <ul>
-{% for item in include.list %}
-{% assign year = item.date | split: "-" | first %}
+{%- for item in include.list -%}
+{%- assign year = item.date | split: "-" | first -%}
   <li>
-  {% include authors.html authors=item.authors %}
-  {% if item.publication.url %}<a href="{{ item.publication.url }}" target="_blank">{% endif %}
+  {%- include authors.html authors=item.authors -%}
+  {%- if item.publication.url -%}<a href="{{ item.publication.url }}" target="_blank">{%- endif -%}
     <em>“{{ item.title }}”</em>.
-  {% if item.publication.url %}</a>{% endif %}
-  {% if item.conference %}
-    {% include conference.html conference=item.conference year=year %}
-  {% endif %}
-  {% if item.publication %}
-     {% include publication.html publication=item.publication %}
-  {% endif %}
-  {% if item.arXiv %}
+  {%- if item.publication.url -%}</a>{%- endif -%}
+  {%- if item.conference -%}
+    {%- include conference.html conference=item.conference year=year -%}
+  {%- endif -%}
+  {%- if item.publication -%}
+     {%- include publication.html publication=item.publication -%}
+  {%- endif -%}
+  {%- if item.arXiv -%}
     <a href="https://arxiv.org/abs/{{ item.arXiv }}" target="_blank">
     arXiv:{{ item.arXiv }}</a>.
-  {% endif %}
+  {%- endif -%}
   </li>
-{% endfor %}
+{%- endfor -%}
 </ul>
