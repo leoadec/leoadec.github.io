@@ -4,20 +4,20 @@
   {%- assign end_year = item.end | split: "-" | first | default: "current" -%}
   <li seq="{{ start_year }}&ndash;{{ end_year}}">
   <strong>{{ item.title }}</strong>.
-   {%- if item.affiliation -%}
+   {% if item.affiliation %}
    {%- assign affiliation = site.data.affiliations[item.affiliation] -%}
-   {{ affiliation.name }}. {%- include location.html location=affiliation.location -%}
-   {%- endif -%}
-   {%- if item.agency -%}
+   {{ affiliation.name }}. {% include location.html location=affiliation.location %}
+   {% endif %}
+   {% if item.agency %}
    {%- assign agency = site.data.affiliations[item.agency] -%}
    {{ agency.name }}.
-   {%- endif -%}
+   {% endif %}
    {%- if item.project -%}
    <br/>
    {%- if item.project.url -%}<a href="{{ item.project.url }}" target="_blank">{%- endif -%}
    <em>“{{ item.project.title }}”</em>{%- if item.project.url -%}</a>{%- endif -%}.
    {%- if item.project.supervisor -%}
-   <br/>Supervisor: {%- include authors.html authors=item.project.supervisor -%}
+   <br/>Supervisor: {% include authors.html authors=item.project.supervisor %}
    {%- endif -%}
    {%- endif -%}
    {%- if false -%}

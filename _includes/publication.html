@@ -1,7 +1,7 @@
 {{ include.publication.journal }} <strong>{{ include.publication.volume }}</strong>,
 {%- if include.publication.number -%}({{ include.publication.number}}){%- endif -%}
-{%- if include.publication.id -%}{{ include.publication.id }}.{%- endif -%}
-{%- if include.publication.pages -%}{{ include.publication.pages }}.{%- endif -%}
+{% if include.publication.id %}{{ include.publication.id }}.{% endif %}
+{% if include.publication.pages %}{{ include.publication.pages }}.{% endif %}
 {%- if include.publication.doi -%}
   <a href="https://dx.doi.org/{{ include.publication.doi }}" target="_blank">
   DOI:{{ include.publication.doi }}</a>.
