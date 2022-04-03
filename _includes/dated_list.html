@@ -20,12 +20,8 @@
    <br/>Supervisor: {% include authors.html authors=item.project.supervisor %}
    {%- endif -%}
    {%- endif -%}
-   {%- if false -%}
-   <ul class="details">
-     {%- for duty in item.duties -%}
-     <li>&mdash; {{ duty }}</li>
-     {%- endfor -%}
-   </ul>
+   {%- if item.activities -%}
+   {% include experience.html activities=item.activities %}
    {%- endif -%}
   </li>
 {%- endfor -%}

@@ -1,0 +1,10 @@
+electromagnetism_1_quizzes:
+  test: quizzes
+  course: Electromagnetism I
+  start: 2014
+  end: 2014
+electromagnetism_2_quizzes:
+  test: quizzes
+  course: Electromagnetism II
+  start: 2014
+  end: 2014

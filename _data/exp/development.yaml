@@ -1,0 +1,9 @@
+qctrl_visualizer_bloch_sphere:
+  software: Q-CTRL Visualizer Python package
+  feature: integration with the Bloch sphere JavaScript visualizer
+  start: 2021-04
+  end: 2021-05
+  technologies:
+  - JavaScript
+  - HTML
+  - Python

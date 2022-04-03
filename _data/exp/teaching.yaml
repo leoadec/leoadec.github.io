@@ -1,0 +1,12 @@
+electromagnetism_1_tutorials:
+  type: tutorial sessions
+  public: undergraduate physics students
+  course: Electromagnetism I
+  start: 2014
+  end: 2014
+electromagnetism_2_tutorials:
+  type: tutorial sessions
+  public: undergraduate physics students
+  course: Electromagnetism II
+  start: 2014
+  end: 2014

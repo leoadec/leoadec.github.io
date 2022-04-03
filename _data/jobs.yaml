@@ -1,10 +1,18 @@
 - title: Lead Software Engineer, Quantum Control (Australia)
   affiliation: qctrl
   start: 2021-10-01
+  activities:
+  - black_opal_storyboard_review
+  - black_opal_design_review
 - title: Senior Quantum Control Engineer
   affiliation: qctrl
   start: 2019-11
   end: 2021-09-30
+  activities:
+  - black_opal_storyboard_review
+  - black_opal_design_review
+  - boulder_plan_benchmarks
+  - qctrl_visualizer_bloch_sphere
 - title: Postdoctoral Associate
   affiliation: duke
   start: 2018-09
@@ -13,6 +21,8 @@
   affiliation: usp
   start: 2014
   end: 2014
-  duties:
-  - Held tutorial sessions for undergraduate physics students in Electromagnetism.
-  - Marked quizes and exams.
+  activities:
+  - electromagnetism_1_quizzes
+  - electromagnetism_1_tutorials
+  - electromagnetism_2_quizzes
+  - electromagnetism_2_tutorials

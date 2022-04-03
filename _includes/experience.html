@@ -1,0 +1,33 @@
+<ul class="details">
+{%- for activity in include.activities -%}
+{%- if site.data.exp.benchmarking contains activity -%}
+{%- assign benchmark = site.data.exp.benchmarking[activity] -%}
+<li>&mdash; Benchmarking {{ benchmark.product }} {{ benchmark.target }}
+{% if benchmark.technologies %}
+using
+{% for technology in benchmark.technologies %}{{ technology }}{% unless forloop.last %}, {% endunless %}{% endfor %}{% endif %}.</li>
+{%- endif -%}
+{%- if site.data.exp.development contains activity -%}
+{%- assign development = site.data.exp.development[activity] -%}
+<li>&mdash; Developing {{ development.feature }}
+{% if development.software %} for {{ development.software }}{% endif %}
+{% if development.technologies %}
+using {% for technology in development.technologies %}{{ technology }}{% unless forloop.last %}, {% endunless %}{% endfor %}{% endif %}.</li>
+{%- endif -%}
+{%- if site.data.exp.editing contains activity -%}
+{%- assign review = site.data.exp.editing[activity] -%}
+<li>&mdash; Reviewing {{ review.text }}.</li>
+{%- endif -%}
+{%- if site.data.exp.marking contains activity -%}
+{%- assign mark = site.data.exp.marking[activity] -%}
+<li>&mdash; Marking {% if mark.test %}{{ mark.test }}{% endif %}
+{% if mark.course %} of {{ mark.course }}{% endif %}.</li>
+{%- endif -%}
+{%- if site.data.exp.teaching contains activity -%}
+{%- assign lessons = site.data.exp.teaching[activity] -%}
+<li>&mdash; Teaching {% if lessons.type %}{{ lessons.type }}{% endif %}
+{% if lessons.course %} of {{ lessons.course }}{% endif %}
+{% if lessons.public %} for {{ lessons.public }}{% endif %}.</li>
+{%- endif -%}
+{%- endfor -%}
+</ul>

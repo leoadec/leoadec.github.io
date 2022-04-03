@@ -1,0 +1,8 @@
+boulder_plan_benchmarks:
+  target: single-tenancy cloud plans
+  product: Q-CTRL Boulder Opal
+  start: 2021-03
+  end: 2021-03
+  technologies:
+  - Jupyter
+  - Python
