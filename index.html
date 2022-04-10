@@ -6,13 +6,18 @@ lang: en
 
 {%- if site.data.contact -%}
 {%- assign contact = site.data.contact -%}
-<p>
-  {%- if contact.email -%}
-  <span class="paragraph-title">
-    <strong>Email</strong>: <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
-  </span>
-  {%- endif -%}
+{%- if contact.email -%}
+<p class="paragraph-title">
+  <strong>Email</strong>: <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
 </p>
+{%- endif -%}
+{%- if contact.social_media -%}
+<p class="paragraph-title">
+  {%- for item in contact.social_media -%}
+  <strong><a href="{{ item.url }}">{{ item.name }}</a></strong>
+  {%- endfor -%}
+</p>
+{%- endif -%}
 {%- endif -%}
 
 {%- if site.data.jobs -%}
