@@ -1,3 +1,17 @@
+qctrl_mloop:
+  software: Q-CTRL M-LOOP integration package
+  feature: initial version
+  start: 2021-03
+  end: 2021-04
+  technologies:
+  - Python
+qctrl_qua:
+  software: Q-CTRL QUA integration package
+  feature: infrastructure for the initial version
+  start: 2021-01
+  end: 2021-03
+  technologies:
+  - Python
 qctrl_visualizer_bloch_sphere:
   software: Q-CTRL Visualizer Python package
   feature: integration with the Bloch sphere JavaScript visualizer
