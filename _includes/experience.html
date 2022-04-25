@@ -1,4 +1,8 @@
-<ul class="details">
+<p class="details" id="button{{ include.name }}"
+   onclick="showMore('{{ include.name }}');">
+Show more &darr;
+</p>
+<ul class="details" id="extra{{ include.name }}" style="display: none;">
 {%- for activity in include.activities -%}
 {%- if site.data.exp.benchmarking contains activity -%}
 {%- assign benchmark = site.data.exp.benchmarking[activity] -%}

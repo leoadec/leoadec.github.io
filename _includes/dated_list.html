@@ -21,7 +21,9 @@
    {%- endif -%}
    {%- endif -%}
    {%- if item.activities -%}
-   {% include experience.html activities=item.activities %}
+   {%- if false -%}
+   {% include experience.html activities=item.activities name=start_year %}
+   {%- endif -%}
    {%- endif -%}
   </li>
 {%- endfor -%}
