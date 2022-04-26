@@ -20,9 +20,8 @@
 {%- endfor -%}
 </ul>
 {%- if include.list.size > 5 -%}
-<p class="details" id="button{{ include.name }}"
-   onclick="showMore('{{ include.name }}');">
-Show more &darr;
+<p class="details show-more" id="button{{ include.name }}" onclick="showMore('{{ include.name }}');">
+Show more &#9660;
 </p>
 <ul id="extra{{ include.name }}" class="more">
 {%- for item in include.list | offset: 5 -%}

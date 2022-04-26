@@ -8,13 +8,8 @@ layout: default
 function showMore(name) {
   extraText = document.getElementById("extra" + name);
   button = document.getElementById("button" + name);
-  if (extraText.style.display === "none") {
-    extraText.style.display = "block";
-    button.innerHTML = "Show less &uarr;";
-  } else {
-    extraText.style.display = "none";
-    button.innerHTML = "Show more &darr;";
-  };
+  button.style.display = "none";
+  extraText.style.display = "block";
 }
 </script>
 
@@ -34,7 +29,7 @@ function showMore(name) {
 {%- include plain_list.html list=published_papers name="papers" -%}
 {%- endif -%}
 
-<h2 id="buttoncv" onclick="showMore('cv');">Show more &darr;</h2>
+<h2 id="buttoncv" onclick="showMore('cv');" class="show-more">Show more &#9660;</h2>
 <div id="extracv" class="more">
 
 {%- if site.data.reviews -%}

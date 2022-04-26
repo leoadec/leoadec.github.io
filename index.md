@@ -10,5 +10,5 @@ conventional ones can.
 I became interested in this field during my undergraduate studies in physics,
 and continued studying the theory of how to make quantum tech possible through
 three degrees and two jobs across three countries.
-Currently I am part of the quantum industry, developing software that improves
-quantum tech so it can realize its potential sooner.
+Currently I am part of the quantum industry, leading a team of engineers who
+develop software to extract the maximum performance from quantum tech devices.

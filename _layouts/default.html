@@ -28,10 +28,10 @@
 
   function resizeEverything() {
     scrollPosition = window.pageYOffset;
-    fontSizePenalty = Math.max(1 - scrollPosition * 0.0005, 0.7);
+    fontSizePenalty = Math.max(1 - scrollPosition * 0.0005, 0.6);
 
     h1.style.fontSize = (originalHeaderFontSize * fontSizePenalty) + "em";
-    menu.style.fontSize = (originalMenuFontSize * fontSizePenalty) + "em";
+    menu.style.fontSize = Math.max(originalMenuFontSize * fontSizePenalty, 0.8) + "em";
 
     if (scrollPosition > 0) {
       h1.innerHTML = "LEOADEC";
