@@ -1,0 +1,7 @@
+{% for poster in include.posters %}
+  <li>
+  {% for author in poster.authors %}{{ author }}{% if forloop.last == false %}, {% endif %}{% endfor %}.
+  &quot;{{ poster.title }}&quot;.
+  {{ poster.conference }} {{ poster.year }} ({{ poster.location }}).
+  </li>
+{% endfor %}

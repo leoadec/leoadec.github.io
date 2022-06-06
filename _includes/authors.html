@@ -1,1 +1,0 @@
-{% for author in include.authors %}{% if author != "me" %}{{ site.data.coauthors[author].name }}{% endif %}{% if author == "me" %}<strong>Leonardo Andreta de Castro</strong>{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}.

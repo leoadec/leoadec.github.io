@@ -31,6 +31,10 @@ a, a:active, a:visited {
   text-decoration: none;
 }
 
+a.title {
+  font-weight: bold;
+}
+
 div {
   margin: 0pt;
 }
@@ -74,6 +78,10 @@ p {
 
 p#menu {
   text-align: center;
+}
+
+div.snippet {
+  padding: 20em 0em 0em 0em;
 }
 
 #content {

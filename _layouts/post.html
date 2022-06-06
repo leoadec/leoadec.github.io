@@ -1,0 +1,32 @@
+---
+layout: default
+---
+{{ content }}
+
+{% if page.papers %}
+<h3>Papers published</h3>
+<ul>
+{% include papers.html papers=page.papers %}
+</ul>
+{% endif %}
+
+{% if page.conference_talks %}
+<h3>Conference talks</h3>
+<ul>
+{% include talks.html talks=page.conference_talks %}
+</ul>
+{% endif %}
+
+{% if page.conference_posters %}
+<h3>Conference posters</h3>
+<ul>
+{% include posters.html posters=page.conference_posters %}
+</ul>
+{% endif %}
+
+{% if page.grants %}
+<h3>Grants</h3>
+<ul>
+{% include grants.html grants=page.grants %}
+</ul>
+{% endif %}

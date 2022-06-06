@@ -1,8 +1,0 @@
-{%- for post in site.posts -%}
-{%- if post.tag == include.tag -%}
-<div>
-  <p>{{ post.excerpt }}</p>
-  <p><a href="{{ post.url }}">More</a></p>
-</div>
-{%- endif -%}
-{%- endfor -%}

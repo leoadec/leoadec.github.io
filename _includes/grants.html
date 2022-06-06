@@ -1,0 +1,6 @@
+{% for grant in include.grants %}
+   <li seq="{{ grant.start }}&ndash;{% if grant.end %}{{ grant.end }}{% else %}current{% endif %}">
+     <strong>{{ grant.title }}</strong>. {{ grant.agency }}. <br/>
+     <a href="{{ grant.url }}" class="title">{{ grant.project }}.</a>
+   </li>
+{% endfor %}
