@@ -11,5 +11,7 @@ grants:
    agency: The S&atilde;o Paulo Research Foundation &mdash; FAPESP
    start: 2008
    end: 2009
+bullet_points:
+ - Received an undergraduate research grant to study continuous dynamical decoupling.
 end_date: 2009-12-12
 ---

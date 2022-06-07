@@ -1,5 +1,5 @@
 ---
-title: Curriculum Vit&ae;
+title: Curriculum Vit&aelig;
 layout: default
 ---
 

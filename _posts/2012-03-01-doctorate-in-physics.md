@@ -94,5 +94,8 @@ conference_posters:
    conference: AIP Summer Meeting
    year: 2017
    location: Sydney, NSW, Australia
+bullet_points:
+ - Published papers exploring the relationship between quantum measurement and protection of quantum states.
+ - Published articles on historical and didactic aspects of quantum mechanics.
 end_date: 2012-03-01
 ---

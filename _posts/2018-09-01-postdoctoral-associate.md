@@ -40,4 +40,7 @@ conference_talks:
    conference: APS March Meeting
    location: Boston, MA, United States
    year: 2019
+bullet_points:
+ - Published papers dealing with new approaches to quantum control and quantum error correction.
+ - Developed software in C++ to estimate thresholds for new quantum error correction codes.
 ---
