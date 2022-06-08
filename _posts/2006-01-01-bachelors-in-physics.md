@@ -12,6 +12,17 @@ grants:
    start: 2008
    end: 2009
 bullet_points:
- - Received an undergraduate research grant to study continuous dynamical decoupling.
+ - Was awarded a two-year undergraduate research grant to study continuous dynamical decoupling.
 end_date: 2009-12-12
 ---
+My journey into quantum computing research started in my undergraduate years.
+In this period, I was awarded a research grant to study the protection of
+qubits via continuous dynamical decoupling and error correction.
+As one of the main constraints for the performance of quantum computers is the
+presence of noise, these techniques to protect or correct the state of the
+qubits are to this day important components of quantum control and quantum
+computing.
+At the time, my role as an undergraduate was to learn the proposal for
+continuous dynamical decoupling developed by the local research group and
+identify areas where it could be expanded, preparing the path for my future
+master's degree work.
