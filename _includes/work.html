@@ -1,0 +1,5 @@
+{% for work in include.works %}
+   <li seq="{{ work.start | date: "%Y" }}&ndash;{% if work.end %}{{ work.end | date: "%Y" }}{% else %}current{% endif %}">
+     <strong>{{ work.title }}</strong>. {{ work.employer }}. <br/>
+   </li>
+{% endfor %}

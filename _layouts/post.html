@@ -30,3 +30,10 @@ layout: default
 {% include grants.html grants=page.grants %}
 </ul>
 {% endif %}
+
+{% if page.volunteer_work %}
+<h3>Volunteer work</h3>
+<ul>
+{% include work.html works=page.volunteer_work %}
+</ul>
+{% endif %}

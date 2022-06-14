@@ -62,6 +62,13 @@ layout: default
 {% endfor %}
 </ul>
 
+<h3>Volunteer work</h3>
+<ul>
+{% for post in site.posts %}
+{% include work.html works=post.volunteer_work %}
+{% endfor %}
+</ul>
+
 <h3>Grants</h3>
 <ul>
 {% for post in site.posts %}
