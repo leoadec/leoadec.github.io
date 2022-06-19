@@ -30,5 +30,5 @@ papers:
    arXiv: 2001.04060
    url: https://iopscience.iop.org/article/10.1088/2058-9565/abdca6
 bullet_points:
- - Developed numerical software for quantum control in Python.
+ - Developed numerical software for quantum control and optimization in Python using TensorFlow.
 ---
