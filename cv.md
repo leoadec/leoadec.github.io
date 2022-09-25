@@ -24,20 +24,14 @@ layout: default
 
 <h3>Education</h3>
 <ul>
-{% for post in site.posts %}
-  {% if post.tag == "education" %}
+{% for post in site.degrees %}
    <li seq="{{ post.date | date: '%Y' }}&ndash;{% if post.end_date %}{{ post.end_date | date: '%Y' }}{% else %}current{% endif %}">
      <strong>{{ post.title }}.</strong>
      {{ post.employer }} ({{ post.location }})
-     {% if post.bullet_points %}
-     <ul class="details">
-       {% for point in post.bullet_points %}
-       <li>{{ point }}</li>
-       {% endfor %}
-     </ul>
-     {% endif %}
+     <div class="details">
+       {{ post.content | markdownify }}
+     </div>
    </li>
-  {% endif %}
 {% endfor %}
 </ul>
 
