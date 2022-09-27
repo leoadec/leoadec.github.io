@@ -1,6 +1,7 @@
 ---
 layout: post
-tag: education
+date: 2010-01-01
+end_date: 2012-03-01
 title: Master's Degree in Physics
 university: University of S&atilde;o Paulo
 location: S&atilde;o Carlos, SP, Brazil
@@ -60,6 +61,5 @@ misc_posters:
    conference: Workshop da P&oacute;s do IFSC
    location: S&atilde;o Carlos, SP, Brazil
    year: 2011
-end_date: 2012-03-01
 ---
  - Demonstrated analytically that sufficiently frequent error corrections are capable of eliminating correlated errors arising during quantum gates.

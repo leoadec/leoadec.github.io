@@ -24,7 +24,8 @@ layout: default
 
 <h3>Education</h3>
 <ul>
-{% for post in site.degrees %}
+{% assign degrees = site.degrees | reverse %}
+{% for post in degrees %}
    <li seq="{{ post.date | date: '%Y' }}&ndash;{% if post.end_date %}{{ post.end_date | date: '%Y' }}{% else %}current{% endif %}">
      <strong>{{ post.title }}.</strong>
      {{ post.employer }} ({{ post.location }})
