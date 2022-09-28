@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2010-01-01
 end_date: 2012-03-01
 title: Master's Degree in Physics
@@ -37,13 +36,6 @@ conference_posters:
    conference: International Conference on Squeezed States and Uncertainty Relations (ICSSUR) and Feynmanfest
    year: 2011
    location: Foz do Igua&ccedil;u, Paran&aacute;, Brazil
-grants:
- - title: Master's scholarship
-   project: Quantum error-correction theory during logical operations and finite-duration syndrome measurements
-   url: https://bv.fapesp.br/en/bolsas/112279/quantum-error-correction-theory-during-logical-operations-and-finite-duration-syndrome-measurements
-   agency: The S&atilde;o Paulo Research Foundation &mdash; FAPESP
-   start: 2010
-   end: 2012
 misc_posters:
  - title: Error correction theory during logical gates and finite-time diagnostic measurements
    original_title: Teoria de corre&ccedil;&atilde;o de erros qu&acirc;nticos durante opera&ccedil;&otilde;es l&oacute;gicas e medidas de diagn&oacute;stico de dura&ccedil;&atilde;o finita

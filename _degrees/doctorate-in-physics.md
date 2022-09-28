@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2012-03-01
 end_date: 2016-12-01
 title: Doctorate in Physics
