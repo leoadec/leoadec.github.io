@@ -5,20 +5,15 @@ layout: default
 
 <h3>Professional experience</h3>
 <ul>
-{% for post in site.posts %}
-  {% if post.tag == "career" %}
-   <li seq="{{ post.date | date: '%Y' }}&ndash;{% if post.end_date %}{{ post.end_date | date: '%Y' }}{% else %}current{% endif %}">
-     <strong>{{ post.title }}.</strong>
-     {{ post.employer }} ({{ post.location }})
-     {% if post.bullet_points %}
-     <!--<ul class="details">
-       {% for point in post.bullet_points %}
-       <li>{{ point }}</li>
-       {% endfor %}
-     </ul>-->
-     {% endif %}
-   </li>
-  {% endif %}
+{% assign jobs = site.jobs | reverse %}
+{% for job in jobs %}
+  <li seq="{{ job.date | date: '%Y' }}&ndash;{% if job.end_date %}{{ job.end_date | date: '%Y' }}{% else %}current{% endif %}">
+    <strong>{{ job.title }}.</strong>
+    {{ job.employer }} ({{ job.location }})
+    <!--<div class="details">
+      {{ job.content | markdownify }}
+    </div>-->
+  </li>
 {% endfor %}
 </ul>
 
@@ -26,13 +21,13 @@ layout: default
 <ul>
 {% assign degrees = site.degrees | reverse %}
 {% for degree in degrees %}
-   <li seq="{{ degree.date | date: '%Y' }}&ndash;{% if degree.end_date %}{{ degree.end_date | date: '%Y' }}{% else %}current{% endif %}">
-     <strong>{{ degree.title }}.</strong>
-     {{ degree.employer }} ({{ degree.location }})
-     <!--<div class="details">
-       {{ degree.content | markdownify }}
-     </div>-->
-   </li>
+  <li seq="{{ degree.date | date: '%Y' }}&ndash;{% if degree.end_date %}{{ degree.end_date | date: '%Y' }}{% else %}current{% endif %}">
+    <strong>{{ degree.title }}.</strong>
+    {{ degree.employer }} ({{ degree.location }})
+    <!--<div class="details">
+      {{ degree.content | markdownify }}
+    </div>-->
+  </li>
 {% endfor %}
 </ul>
 
