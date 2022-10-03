@@ -4,13 +4,6 @@ end_date: 2016-12-01
 title: Doctorate in Physics
 university: University of S&atilde;o Paulo
 location: S&atilde;o Carlos, SP, Brazil
-conference_posters:
- - authors:
-    - Leonardo Andreta de Castro
-   title: Quantum error correction with continuous measurements
-   conference: AIP Summer Meeting
-   year: 2017
-   location: Sydney, NSW, Australia
 ---
  - Published papers exploring the relationship between quantum measurement and protection of quantum states.
  - Published articles on historical and didactic aspects of quantum mechanics.

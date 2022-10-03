@@ -47,24 +47,33 @@ layout: default
 
 <h3>Conference talks</h3>
 <ul>
-{% for post in site.posts %}
-{% include talks.html talks=post.conference_talks %}
+{% assign conferences = site.conferences | reverse %}
+{% for conference in conferences %}
+  {{ conference }}
+  {% if conference.talk %}
+  <li>
+  {% for author in conference.talk_authors %}{{ author }}{% if forloop.last == false %}, {% endif %}{% endfor %}.
+  &quot;{{ conference.talk }}&quot;.
+  {{ conference.name }} {{ conference.date | date: '%Y' }} ({{ conference.location }}).
+  </li>
+  {% endif %}
 {% endfor %}
 </ul>
 
 <h3>Conference posters</h3>
 <ul>
-{% for post in site.posts %}
-{% include posters.html posters=post.conference_posters %}
+{% assign conferences = site.conferences | reverse %}
+{% for conference in conferences %}
+  {% if conference.poster %}
+  <li>
+  {% for author in conference.poster_authors %}{{ author }}{% if forloop.last == false %}, {% endif %}{% endfor %}.
+  &quot;{{ conference.poster }}&quot;.
+  {{ conference.name }} {{ conference.date | date: '%Y' }} ({{ conference.location }}).
+  </li>
+  {% endif %}
 {% endfor %}
 </ul>
 
-<h3>Volunteer work</h3>
-<ul>
-{% for post in site.posts %}
-{% include work.html works=post.volunteer_work %}
-{% endfor %}
-</ul>
 
 <h3>Grants</h3>
 <ul>

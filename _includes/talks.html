@@ -1,7 +1,0 @@
-{% for talk in include.talks %}
-  <li>
-  {% for author in talk.authors %}{{ author }}{% if forloop.last == false %}, {% endif %}{% endfor %}.
-  &quot;{{ talk.title }}&quot;.
-  {{ talk.conference }} {{ talk.year }} ({{ talk.location }}).
-  </li>
-{% endfor %}
