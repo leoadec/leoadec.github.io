@@ -33,8 +33,15 @@ layout: default
 
 <h3>Papers published</h3>
 <ul>
-{% for post in site.posts %}
-{% include papers.html papers=post.papers %}
+{% assign papers = site.papers | reverse %}
+{% for paper in papers %}
+  <li>
+  {% for author in paper.authors %}{{ author }}{% if forloop.last == false %}, {% endif %}{% endfor %}.
+  &quot;<a href="{{ paper.external_url }}" target="_blank">{{ paper.title }}{% if paper.subtitle %}: {{ paper.subtitle }}{% endif %}</a>&quot;.
+  {{ paper.journal }} <span class="volume">{{ paper.volume }}</span>, {{ paper.pages }} ({{ paper.date | date: '%Y' }}).
+  {% if paper.doi %}<a href="https://dx.doi.org/{{ paper.doi }}" target="_blank">[DOI:{{ paper.doi }}]</a>{% endif %}
+  <a href="https://arxiv.org/abs/{{ paper.arxiv }}" target="_blank">[arXiv:{{ paper.arXiv }}]</a>
+  </li>
 {% endfor %}
 </ul>
 
