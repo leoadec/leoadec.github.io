@@ -111,6 +111,10 @@ div.snippet {
   cursor: pointer;
 }
 
+.volume {
+  font-weight: bold;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #060f12;
