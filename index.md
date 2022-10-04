@@ -7,7 +7,7 @@ layout: default
 <ul>
 {% assign jobs = site.jobs | reverse %}
 {% for job in jobs %}
-  <li seq="{{ job.date | date: '%Y' }}&ndash;{% if job.end_date %}{{ job.end_date | date: '%Y' }}{% else %}current{% endif %}">
+  <li seq="{% include year_range.html date=job.date end_date=job.end_date -%}">
     <strong>{{ job.title }}.</strong>
     {{ job.employer }} ({{ job.location }})
     <!--<div class="details">
@@ -21,9 +21,13 @@ layout: default
 <ul>
 {% assign degrees = site.degrees | reverse %}
 {% for degree in degrees %}
-  <li seq="{{ degree.date | date: '%Y' }}&ndash;{% if degree.end_date %}{{ degree.end_date | date: '%Y' }}{% else %}current{% endif %}">
+  <li seq="{% include year_range.html date=degree.date end_date=degree.end_date -%}">
     <strong>{{ degree.title }}.</strong>
-    {{ degree.employer }} ({{ degree.location }})
+    {{ degree.university }} ({{ degree.location }}).
+    {% if degree.grant %} <br/>
+     Grant: {{ degree.grant.agency }}. <a href="{{ degree.grant.external_url }}" class="title">{{ degree.grant.project }}</a>.
+     ({% include year_range.html date=degree.grant.date end_date=degree.grant.end_date -%})
+    {% endif %}
     <!--<div class="details">
       {{ degree.content | markdownify }}
     </div>-->
@@ -71,17 +75,5 @@ layout: default
   {{ conference.name }} {{ conference.date | date: '%Y' }} ({{ conference.location }}).
   </li>
   {% endif %}
-{% endfor %}
-</ul>
-
-
-<h3>Grants</h3>
-<ul>
-{% assign grants = site.grants | reverse %}
-{% for grant in grants %}
-   <li seq="{{ grant.date | date: '%Y' }}&ndash;{% if grant.end_date %}{{ grant.end_date | date: '%Y' }}{% else %}current{% endif %}">
-     <strong>{{ grant.title }}</strong>. {{ grant.agency }}. <br/>
-     <a href="{{ grant.external_url }}" class="title">{{ grant.project }}.</a>
-   </li>
 {% endfor %}
 </ul>
