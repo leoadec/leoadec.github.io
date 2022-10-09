@@ -12,4 +12,5 @@ grant:
   date: 2010-03-01
   end_date: 2012-12-31
 ---
- - Demonstrated analytically that sufficiently frequent error corrections are capable of eliminating correlated errors arising during quantum gates.
+ - Researched the intersection between quantum error correction and measurement theory.
+ - Wrote software in C to simulate the effects of frequent quantum measurements.

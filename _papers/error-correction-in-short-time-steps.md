@@ -11,3 +11,4 @@ external_url: https://www.sciencedirect.com/science/article/abs/pii/S00034916160
 doi: 10.1016/j.aop.2016.01.014
 arXiv: "1109.4796"
 ---
+Demonstrated analytically that sufficiently frequent error corrections are capable of eliminating correlated errors arising during quantum gates.

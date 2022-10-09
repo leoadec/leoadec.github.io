@@ -7,3 +7,4 @@ location: S&atilde;o Carlos, SP, Brazil
 ---
  - Published papers exploring the relationship between quantum measurement and protection of quantum states.
  - Published articles on historical and didactic aspects of quantum mechanics.
+ - Tutored undergraduate physics students on Electromagnetism.

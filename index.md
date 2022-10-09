@@ -2,9 +2,9 @@
 layout: default
 ---
 
-Quantum devices have the potential to revolutionize technologies from computers
-to sensors. I work with the development of software that enables quantum
-technology to become more efficient and realize its potential sooner.
+Quantum devices have the potential to revolutionize many areas of technology,
+from computers to sensors. I work with the development of software that enables
+quantum technology to become more efficient and realize its potential sooner.
 
 ---
 
@@ -33,17 +33,17 @@ technology to become more efficient and realize its potential sooner.
      Grant: {{ degree.grant.agency }}. <a href="{{ degree.grant.external_url }}" class="title">{{ degree.grant.project }}</a>.
      ({% include year_range.html date=degree.grant.date end_date=degree.grant.end_date -%})
     {% endif %}
-    <!--<div class="details">
+    <div class="details">
       {{ degree.content | markdownify }}
-    </div>-->
+    </div>
   </li>
 {% endfor %}
 </ul>
 
 ## Papers published
 <ul>
-{% assign papers = site.papers | reverse %}
-{% for paper in papers %}
+{% assign papers = site.papers | reverse  %}
+{% for paper in papers limit:12 %}
   <li>
   {% for author in paper.authors %}{{ author }}{% if forloop.last == false %}, {% endif %}{% endfor %}.
   &quot;<a href="{{ paper.external_url }}" target="_blank">{{ paper.title }}{% if paper.subtitle %}: {{ paper.subtitle }}{% endif %}</a>&quot;.
@@ -57,7 +57,7 @@ technology to become more efficient and realize its potential sooner.
 ## Conference talks
 <ul>
 {% assign conferences = site.conferences | reverse %}
-{% for conference in conferences %}
+{% for conference in conferences limit:5 %}
   {{ conference }}
   {% if conference.talk %}
   <li>
@@ -71,8 +71,7 @@ technology to become more efficient and realize its potential sooner.
 
 ## Conference posters
 <ul>
-{% assign conferences = site.conferences | reverse %}
-{% for conference in conferences %}
+{% for conference in conferences limit:5 %}
   {% if conference.poster %}
   <li>
   {% for author in conference.poster_authors %}{{ author }}{% if forloop.last == false %}, {% endif %}{% endfor %}.

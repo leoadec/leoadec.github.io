@@ -12,4 +12,4 @@ grant:
   date: 2008-01-01
   end_date: 2009-01-01
 ---
- - Was awarded a two-year undergraduate research grant to study continuous dynamical decoupling.
+ - Researched continuous dynamical decoupling as part of an undergraduate research grant award.
