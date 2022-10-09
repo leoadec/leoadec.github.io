@@ -4,4 +4,4 @@ title: Lead Software Engineer, Quantum Control (Australia)
 employer: Q-CTRL Pty. Ltd.
 location: Sydney, NSW, Australia
 ---
- - Manage a team of up to five software engineers.
+ - Managed a team of up to five developers of the quantum control software Boulder Opal.

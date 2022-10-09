@@ -6,3 +6,4 @@ employer: Q-CTRL Pty. Ltd.
 location: Sydney, NSW, Australia
 ---
  - Developed numerical software for quantum control and optimization in Python using TensorFlow.
+ - Wrote public technical documentation for quantum control software.

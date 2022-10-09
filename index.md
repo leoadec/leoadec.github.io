@@ -1,28 +1,33 @@
 ---
-title: Curriculum Vit&aelig;
 layout: default
 ---
 
-<h3>Professional experience</h3>
+Quantum devices have the potential to revolutionize technologies from computers
+to sensors. I work with the development of software that enables quantum
+technology to become more efficient and realize its potential sooner.
+
+---
+
+## Professional experience
 <ul>
 {% assign jobs = site.jobs | reverse %}
 {% for job in jobs %}
   <li seq="{% include year_range.html date=job.date end_date=job.end_date -%}">
-    <strong>{{ job.title }}.</strong>
-    {{ job.employer }} ({{ job.location }})
-    <!--<div class="details">
-      {{ job.content | markdownify }}
-    </div>-->
+    <strong>{{ job.title }}</strong> <br>
+    {{ job.employer }} ({{ job.location }}).
+    <div class="details">
+      {{ job.content }}
+    </div>
   </li>
 {% endfor %}
 </ul>
 
-<h3>Education</h3>
+## Education
 <ul>
 {% assign degrees = site.degrees | reverse %}
 {% for degree in degrees %}
   <li seq="{% include year_range.html date=degree.date end_date=degree.end_date -%}">
-    <strong>{{ degree.title }}.</strong>
+    <strong>{{ degree.title }}</strong> <br>
     {{ degree.university }} ({{ degree.location }}).
     {% if degree.grant %} <br/>
      Grant: {{ degree.grant.agency }}. <a href="{{ degree.grant.external_url }}" class="title">{{ degree.grant.project }}</a>.
@@ -35,7 +40,7 @@ layout: default
 {% endfor %}
 </ul>
 
-<h3>Papers published</h3>
+## Papers published
 <ul>
 {% assign papers = site.papers | reverse %}
 {% for paper in papers %}
@@ -49,7 +54,7 @@ layout: default
 {% endfor %}
 </ul>
 
-<h3>Conference talks</h3>
+## Conference talks
 <ul>
 {% assign conferences = site.conferences | reverse %}
 {% for conference in conferences %}
@@ -64,7 +69,7 @@ layout: default
 {% endfor %}
 </ul>
 
-<h3>Conference posters</h3>
+## Conference posters
 <ul>
 {% assign conferences = site.conferences | reverse %}
 {% for conference in conferences %}
