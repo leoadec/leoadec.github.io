@@ -12,4 +12,5 @@ grant:
   date: 2008-01-01
   end_date: 2009-01-01
 ---
+ - Developed numerical software in FORTRAN for simulation of physical systems as part of coursework.
  - Researched continuous dynamical decoupling as part of an undergraduate research grant award.
