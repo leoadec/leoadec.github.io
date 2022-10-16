@@ -1,3 +1,5 @@
+collections_dir: _collections
+
 collections:
   - conferences
   - degrees

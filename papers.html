@@ -1,0 +1,12 @@
+---
+title: Papers
+layout: default
+---
+<h2>Papers published</h2>
+{%- assign papers = site.papers | reverse -%}
+{%- for paper in papers -%}
+{%- if paper.journal -%}
+<li>{%- include paper.html paper=paper -%}</li>
+{%- endif -%}
+{%- endfor -%}
+</ul>
