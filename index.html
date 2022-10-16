@@ -7,6 +7,13 @@ Quantum devices have the potential to revolutionize many areas of technology,
 from computers to sensors. I work with the development of software that enables
 quantum technology to become more efficient and realize its potential sooner.
 </p>
+{%- if site.data.links -%}
+<p>
+{%- for link in site.data.links -%}
+<a href="{{ link.url }}" target="_blank">{{ link.title }}</a>
+{%- endfor -%}
+</p>
+{%- endif -%}
 
 <hr/>
 
@@ -18,7 +25,7 @@ quantum technology to become more efficient and realize its potential sooner.
     <strong>{{ job.title }}</strong> <br>
     {{ job.employer }} ({{ job.location }}).
     <div class="details">
-      {{ job.content }}
+      {{ job.content | markdownify }}
     </div>
   </li>
 {% endfor %}
@@ -42,18 +49,21 @@ quantum technology to become more efficient and realize its potential sooner.
 {% endfor %}
 </ul>
 
-<h2>Papers published</h2>
-<!--<p>These are my most cited papers:</p>-->
+<h2>Selected papers</h2>
+<p>See also the <a href="/papers">complete list of papers</a>.</p>
 <ul>
 {% assign papers = site.papers | reverse %}
 {% for paper in papers %}
+{%- if paper.citations -%}
   <li>
   {{ paper.authors | join: ", " }}.
   &quot;<a href="{{ paper.external_url }}" target="_blank">{{ paper.title }}{% if paper.subtitle %}: {{ paper.subtitle }}{% endif %}</a>&quot;.
   {{ paper.journal }} <span class="volume">{{ paper.volume }}</span>, {{ paper.pages }} ({{ paper.date | date: '%Y' }}).
   {% if paper.doi %}<a href="https://dx.doi.org/{{ paper.doi }}" target="_blank">[DOI:{{ paper.doi }}]</a>{% endif %}
   <a href="https://arxiv.org/abs/{{ paper.arxiv }}" target="_blank">[arXiv:{{ paper.arXiv }}]</a>
+  <div class="details">{{ paper.content | markdownify }}</div>
   </li>
+{%- endif -%}
 {% endfor %}
 </ul>
 
