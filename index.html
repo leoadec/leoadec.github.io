@@ -2,13 +2,15 @@
 layout: default
 ---
 
+<p>
 Quantum devices have the potential to revolutionize many areas of technology,
 from computers to sensors. I work with the development of software that enables
 quantum technology to become more efficient and realize its potential sooner.
+</p>
 
----
+<hr/>
 
-## Professional experience
+<h2>Professional experience</h2>
 <ul>
 {% assign jobs = site.jobs | reverse %}
 {% for job in jobs %}
@@ -22,7 +24,7 @@ quantum technology to become more efficient and realize its potential sooner.
 {% endfor %}
 </ul>
 
-## Education
+<h2>Education</h2>
 <ul>
 {% assign degrees = site.degrees | reverse %}
 {% for degree in degrees %}
@@ -40,12 +42,13 @@ quantum technology to become more efficient and realize its potential sooner.
 {% endfor %}
 </ul>
 
-## Papers published
+<h2>Papers published</h2>
+<!--<p>These are my most cited papers:</p>-->
 <ul>
-{% assign papers = site.papers | reverse  %}
-{% for paper in papers limit:12 %}
+{% assign papers = site.papers | reverse %}
+{% for paper in papers %}
   <li>
-  {% for author in paper.authors %}{{ author }}{% if forloop.last == false %}, {% endif %}{% endfor %}.
+  {{ paper.authors | join: ", " }}.
   &quot;<a href="{{ paper.external_url }}" target="_blank">{{ paper.title }}{% if paper.subtitle %}: {{ paper.subtitle }}{% endif %}</a>&quot;.
   {{ paper.journal }} <span class="volume">{{ paper.volume }}</span>, {{ paper.pages }} ({{ paper.date | date: '%Y' }}).
   {% if paper.doi %}<a href="https://dx.doi.org/{{ paper.doi }}" target="_blank">[DOI:{{ paper.doi }}]</a>{% endif %}
@@ -54,28 +57,13 @@ quantum technology to become more efficient and realize its potential sooner.
 {% endfor %}
 </ul>
 
-## Conference talks
+<h2>Conference talks</h2>
 <ul>
 {% assign conferences = site.conferences | reverse %}
-{% for conference in conferences limit:5 %}
-  {{ conference }}
+{% for conference in conferences %}
   {% if conference.talk %}
   <li>
-  {% for author in conference.talk_authors %}{{ author }}{% if forloop.last == false %}, {% endif %}{% endfor %}.
-  &quot;{{ conference.talk }}&quot;.
-  {{ conference.name }} {{ conference.date | date: '%Y' }} ({{ conference.location }}).
-  </li>
-  {% endif %}
-{% endfor %}
-</ul>
-
-## Conference posters
-<ul>
-{% for conference in conferences limit:5 %}
-  {% if conference.poster %}
-  <li>
-  {% for author in conference.poster_authors %}{{ author }}{% if forloop.last == false %}, {% endif %}{% endfor %}.
-  &quot;{{ conference.poster }}&quot;.
+  {{ conference.talk_authors | join: ", " }}.  &quot;{{ conference.talk }}&quot;.
   {{ conference.name }} {{ conference.date | date: '%Y' }} ({{ conference.location }}).
   </li>
   {% endif %}
