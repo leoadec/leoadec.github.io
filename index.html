@@ -7,13 +7,6 @@ Quantum devices have the potential to revolutionize many areas of technology,
 from computers to sensors. I work with the development of software that enables
 quantum technology to become more efficient and realize its potential sooner.
 </p>
-{%- if site.data.links -%}
-<p>
-{%- for link in site.data.links -%}
-<a href="{{ link.url }}" target="_blank">{{ link.title }}</a>
-{%- endfor -%}
-</p>
-{%- endif -%}
 
 <hr/>
 
@@ -50,6 +43,13 @@ quantum technology to become more efficient and realize its potential sooner.
 </ul>
 
 <h2>Selected papers</h2>
+{%- if site.data.papers.links -%}
+<p class="menu">
+{%- for link in site.data.papers.links -%}
+<a href="{{ link.url }}" target="_blank">{{ link.title }}</a>
+{%- endfor -%}
+</p>
+{%- endif -%}
 <p>See also the <a href="/papers">complete list of papers</a>.</p>
 <ul>
 {% assign papers = site.papers | reverse %}
