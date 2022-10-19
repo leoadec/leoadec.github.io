@@ -44,17 +44,20 @@ quantum technology to become more efficient and realize its potential sooner.
 
 <h2>Selected papers</h2>
 {%- if site.data.papers.links -%}
-<p class="menu">
+{%- endif -%}
+<p>
+  See also the <a href="/papers">complete list of papers</a>,
+  and other external bibliographies:
+<span class="menu">
 {%- for link in site.data.papers.links -%}
 <a href="{{ link.url }}" target="_blank">{{ link.title }}</a>
 {%- endfor -%}
+</span>
 </p>
-{%- endif -%}
-<p>See also the <a href="/papers">complete list of papers</a>.</p>
 <ul>
 {% assign papers = site.papers | reverse %}
 {% for paper in papers %}
-{%- if paper.citations -%}
+{%- if paper.citations.size > 1 -%}
   <li>{% include paper.html paper=paper %}</li>
 {%- endif -%}
 {% endfor %}

@@ -11,4 +11,8 @@ date: 2014-01-01
 external_url: https://link.springer.com/article/10.1140/epjp/i2014-14206-0
 doi: 10.1140/epjp/i2014-14206-0
 arXiv: "1309.3621"
+citations:
+  - arXiv: "1711.10257"
+    title: On the role of the measurement apparatus in quantum measurements
+    citation: 16
 ---

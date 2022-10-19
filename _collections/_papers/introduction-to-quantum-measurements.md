@@ -10,4 +10,8 @@ pages: 1
 date: 2019-01-01
 external_url: http://www.physics.sk/aps/pub.php?y=2019&pub=aps-19-01
 arXiv: "1908.03949"
+citations:
+  - arXiv: "2204.12470"
+    title: Structured unitary matrices and quantum measurement
+    citation: 61
 ---
