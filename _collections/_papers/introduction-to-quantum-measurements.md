@@ -1,8 +1,8 @@
 ---
 authors:
- - Leonardo Andreta de Castro
- - Ol&iacute;mpio Pereira de S&aacute; Neto
- - Carlos Alexandre Brasil
+  - Leonardo Andreta de Castro
+  - Ol&iacute;mpio Pereira de S&aacute; Neto
+  - Carlos Alexandre Brasil
 title: An introduction to quantum measurements with a historical motivation
 ournal: Acta Physica Slovaca
 volume: 69
@@ -14,4 +14,12 @@ citations:
   - arXiv: "2204.12470"
     title: Structured unitary matrices and quantum measurement
     citation: 61
+  - arXiv: "2111.09000"
+    title: Toward a quantum computing algorithm to quantify classical and quantum correlation of system states
+    citation: 27
+  - arXiv: "2110.11085"
+    title: Qubit-based momentum measurement of a particle
+    citation: 7
 ---
+This issue-long paper presents a history of the measurement problem in quantum
+mechanics, and of the attempts to solve it across history.

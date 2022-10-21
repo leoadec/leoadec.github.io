@@ -57,7 +57,7 @@ quantum technology to become more efficient and realize its potential sooner.
 <ul>
 {% assign papers = site.papers | reverse %}
 {% for paper in papers %}
-{%- if paper.citations.size > 1 -%}
+{%- if paper.citations.size >= 3 -%}
   <li>{% include paper.html paper=paper %}</li>
 {%- endif -%}
 {% endfor %}
