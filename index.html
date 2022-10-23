@@ -69,7 +69,8 @@ quantum technology to become more efficient and realize its potential sooner.
 {% for conference in conferences %}
   {% if conference.talk %}
   <li>
-  {{ conference.talk_authors | join: ", " }}.  &quot;{{ conference.talk }}&quot;.
+  <span class="authors">{{ conference.talk_authors | join: ", " }}.</span>
+  &quot;{{ conference.talk }}&quot;.
   {{ conference.name }} {{ conference.date | date: '%Y' }} ({{ conference.location }}).
   </li>
   {% endif %}

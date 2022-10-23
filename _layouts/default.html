@@ -17,7 +17,6 @@
   header = document.getElementById("header");
   h1 = document.getElementById("titleh1");
   menu = document.getElementById("menu");
-  originalText = h1.innerHTML
   originalHeaderFontSize = 2.5;
   originalMenuFontSize = 1;
 
@@ -27,20 +26,25 @@
 
     h1.style.fontSize = (originalHeaderFontSize * fontSizePenalty) + "em";
     menu.style.fontSize = Math.max(originalMenuFontSize * fontSizePenalty, 0.8) + "em";
-
-    if (scrollPosition > 0) {
-      h1.innerHTML = "LEOADEC";
-    } else {
-      h1.innerHTML = originalText;
-    };
   }
 
   window.onscroll = resizeEverything;
 </script>
 
+
 <div id="content">
 {{ content }}
 </div>
+
+<script>
+  const authors = document.getElementsByClassName("authors");
+  const leo = "Leonardo Andreta de Castro"
+
+  for (var i = 0; i < authors.length; i++) {
+    var originalText = authors[i].innerHTML;
+    authors[i].innerHTML = originalText.replace(leo, leo.bold());
+  }
+</script>
 </body>
 
 </html>
