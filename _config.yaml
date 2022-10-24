@@ -1,8 +1,8 @@
 collections_dir: _collections
 
 collections:
-  - conferences
   - degrees
+  - events
   - grants
   - jobs
   - papers
