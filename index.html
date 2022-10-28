@@ -31,6 +31,10 @@ quantum technology to become more efficient and realize its potential sooner.
   <li seq="{% include year_range.html date=degree.date end_date=degree.end_date -%}">
     <strong>{{ degree.title }}</strong> <br>
     {{ degree.university }} ({{ degree.location }}).
+    {% if degree.thesis %} <br/>
+     Thesis:  <a href="{{ degree.thesis.external_url }}" class="title">{{ degree.thesis.title }}</a>.
+     {% if degree.thesis.supervisor %}(Supervisor: {{ degree.thesis.supervisor }}){% endif %}
+    {% endif %}
     {% if degree.grant %} <br/>
      Grant: {{ degree.grant.agency }}. <a href="{{ degree.grant.external_url }}" class="title">{{ degree.grant.project }}</a>.
      ({% include year_range.html date=degree.grant.date end_date=degree.grant.end_date -%})
