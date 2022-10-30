@@ -1,0 +1,16 @@
+{% assign degree = include.degree %}
+  <li seq="{% include year_range.html date=degree.date end_date=degree.end_date -%}">
+    <span class="degree">{{ degree.title }}</span> <br>
+    {{ degree.university }} ({{ degree.location }}).
+    {% if degree.thesis %} <br/>
+     <span class="degree-part">Thesis</span>:  <a href="{{ degree.thesis.external_url }}" class="title">&ldquo;{{ degree.thesis.title }}&rdquo;</a>.
+     {% if degree.thesis.supervisor %}(Supervisor: {{ degree.thesis.supervisor }}){% endif %}
+    {% endif %}
+    {% if degree.grant %} <br/>
+     <span class="degree-part">Grant</span>: {{ degree.grant.agency }}. <a href="{{ degree.grant.external_url }}" class="title">{{ degree.grant.project }}</a>.
+     ({% include year_range.html date=degree.grant.date end_date=degree.grant.end_date -%})
+    {% endif %}
+    <div class="details">
+      {{ degree.content | markdownify }}
+    </div>
+  </li>
