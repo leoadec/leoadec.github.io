@@ -4,18 +4,65 @@
 @import "papers";
 
 $background-color: #f4f0de;
+$background-color-dark: #060f12;
+$link-color: #6060c5;
+$link-color-dark: #b0b0e8;
+$text-color: #f0f0f0;
+$text-color-dark: #d0d0c8;
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+  font-family: sans-serif;
+  height: 100%;
+  margin: 0;
+  @media (prefers-color-scheme: dark) {
+    background-color: $background-color-dark;
+    color: $text-color-dark;
+  }
+  @media print {
+    background-color: none;
+    margin: 0.5in;
+  }
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: $background-color;
+  @media (prefers-color-scheme: dark) {
+    background-color: $background-color-dark;
+  }
+  @media print {
+    position: relative;
+  }
+}
+
+article {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3em;
+  max-width: 60em;
+  padding-bottom: 1em;
+  padding-top: 5em;
+  @media print {
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+
+address {
+  align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: none;
+}
 
 %heading {
   font-variant: small-caps;
   padding: 0em;
   text-align: center;
-}
-
-body {
-  background-color: $background-color;
-  font-family: sans-serif;
-  height: 100%;
-  margin: 0pt;
 }
 
 h1 {
@@ -44,8 +91,14 @@ h5 {
 }
 
 a, a:active, a:visited {
-  color: #6060c5;
+  color: $link-color;
   text-decoration: none;
+  @media (prefers-color-scheme: dark) {
+    color: $link-color-dark;
+  }
+  @media print {
+    color: $text-color;
+  }
 }
 
 a.title {
@@ -64,8 +117,10 @@ ul {
 }
 
 .details {
-  font-size: 0.8em;
+  font-size: 0.9em;
   list-style-type: disc;
+  padding-left: 0.5em;
+  margin: 0;
 }
 
 ul {
@@ -95,59 +150,15 @@ p {
   text-align: left;
 }
 
-p:menu {
-  text-align: center;
-}
-
 div.snippet {
   padding: 20em 0em 0em 0em;
-}
-
-#content {
-  margin-top: 3em;
-  padding-bottom: 1em;
-  padding-top: 5em;
-  max-width: 60em;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: $background-color;
 }
 
 a.title {
   font-variant: italic;
 }
 
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #060f12;
-    color: #d0d0c8;
-  }
-
-  #header {
-    background-color: #060f12;
-  }
-
-  a, a:active, a:visited, .show-more {
-    color: #b0b0e8;
-  }
-}
-
 @media print {
-  #header {
-    position: relative;
-  }
-
-  #content {
-    padding: 0;
-  }
-
   hr {
     width: 75%;
     size: 1px;

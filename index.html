@@ -2,13 +2,21 @@
 layout: default
 ---
 
+<address>
+{% for data in site.data.contact %}
+<a href="{{data.external_url}}">{{data.title}}</a>
+{% endfor %}
+</address>
+
+<hr>
+
 <p>
 Quantum devices have the potential to revolutionize many areas of technology,
 from computers to sensors. I work with the development of software that enables
 quantum technology to become more efficient and realize its potential sooner.
 </p>
 
-<hr/>
+<hr>
 
 <h2>Professional experience</h2>
 <ul>
@@ -18,7 +26,7 @@ quantum technology to become more efficient and realize its potential sooner.
     <strong>{{ job.title }}</strong> <br>
     {{ job.employer }} ({{ job.location }}).
     <div class="details">
-      {{ job.content | markdownify }}
+    {{ job.content | markdownify }}
     </div>
   </li>
 {% endfor %}
