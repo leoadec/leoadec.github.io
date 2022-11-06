@@ -4,7 +4,7 @@ authors:
   - Ol&iacute;mpio Pereira de S&aacute; Neto
   - Carlos Alexandre Brasil
 title: An introduction to quantum measurements with a historical motivation
-ournal: Acta Physica Slovaca
+journal: Acta Physica Slovaca
 volume: 69
 pages: 1
 date: 2019-01-01

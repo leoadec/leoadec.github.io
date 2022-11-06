@@ -1,0 +1,4 @@
+{% assign job = include.job -%}
+<span class="period">{%- include year_range.html date=job.date end_date=job.end_date -%}</span>
+<span class="title">{{ job.title }}</span>
+{{ job.employer }} ({{ job.location }}).

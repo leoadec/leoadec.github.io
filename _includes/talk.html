@@ -1,0 +1,4 @@
+{% assign event = include.event -%}
+<span class="authors">{{ event.talk_authors | join: ", " }}.</span>
+&quot;{{ event.talk }}&quot;.
+{{ event.name }} {{ event.date | date: '%Y' }} ({{ event.location }}).
