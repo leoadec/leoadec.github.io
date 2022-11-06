@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en
 ---
 
 <address>
@@ -60,6 +61,7 @@ quantum technology to become more efficient and realize its potential sooner.
   </dd>
 {%- endif -%}
 {%- endfor %}
+</dl>
 <details>
   <summary>More papers</summary>
   <ul>
@@ -73,16 +75,29 @@ quantum technology to become more efficient and realize its potential sooner.
   {%- endfor %}
   </ul>
 </details>
-</dl>
 
 <h2>Conference talks</h2>
 <dl>
-{% assign conferences = site.events | reverse %}
-{% for conference in conferences %}
-  {% if conference.talk %}
+{% assign events = site.events | reverse %}
+{% for event in events %}
+  {% if event.talk %}
   <dt>
-    {% include talk.html event=conference %}
+    {% include talk.html event=event %}
   </dt>
+  <dd>
+    {{ event.content | summary | markdownify }}
+  </dd>
   {% endif %}
 {% endfor %}
 </dl>
+<details>
+  <summary>Conference posters</summary>
+  <ul>
+  {% for event in events -%}
+    {%- if event.poster %}
+    <li>{% include poster.html poster=poster %}</li>
+    {%- endif %}
+  {%- endfor %}
+  </ul>
+</details>
+

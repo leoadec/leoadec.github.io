@@ -22,7 +22,6 @@ body {
   }
   @media print {
     background-color: none;
-    font-family: serif;
     margin: 0.5in;
   }
 }
@@ -60,10 +59,6 @@ main {
 address {
   padding: 0.3em;
   text-align: center;
-
-  &.links {
-    @media print { display: none; }
-  }
 }
 
 p {
@@ -162,16 +157,27 @@ dl {
       margin-left: -1em;
       display: block;
     }
+
+    details {
+      margin-left: 0;
+    }
   }
 
   dd {
     font-size: 0.9em;
     margin-left: 0.5em;
     padding-bottom: 0.5em;
+
+    p {
+      margin-left: 0.2em;
+      padding-top: 0;
+    }
   }
 }
 
 details {
+  margin-left: 1.5em;
+
   @media print {
     display: none;
   }
@@ -190,4 +196,8 @@ a, a:active, a:visited {
   &.title {
     font-weight: bold;
   }
+}
+
+.links {
+  @media print { display: none; }
 }
