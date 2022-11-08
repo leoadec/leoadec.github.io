@@ -22,4 +22,5 @@ citations:
     citation: 7
 ---
 This issue-long paper presents a history of the measurement problem in quantum
-mechanics, and of the attempts to solve it across history.
+mechanics, and how the attempts to solve it resulted in different interepretations
+of quantum mechanics.

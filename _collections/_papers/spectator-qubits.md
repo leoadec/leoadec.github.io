@@ -44,5 +44,5 @@ citations:
     citation: 17
 ---
 In this paper, we analyse how much information about errors can be extracted
-from measurements of a qubit. My main contribution was on deriving the
+from measurements of a qubit. My main contribution was deriving the
 formulas for the limits on the amount of information that can be acquired.

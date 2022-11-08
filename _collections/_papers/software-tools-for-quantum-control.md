@@ -117,6 +117,6 @@ citations:
     title: "t|ket>"
     citation: 25
 ---
-In this paper, we describe the software tools developed at Q-CTRL, especially
-those constituing the Boulder Opal software suite for quantum control. My main
-contribution was the section on system identification.
+In this paper, we describe the software tools developed at Q-CTRL and their
+functionality, especially those constituing the Boulder Opal software suite for
+quantum control. My main contribution was the section on system identification.
