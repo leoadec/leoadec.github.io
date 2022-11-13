@@ -27,6 +27,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Add additional assets
+        run: |
+          docker run touch asset/js/something.js
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build with Jekyll
@@ -34,10 +37,6 @@ jobs:
         with:
           source: ./
           destination: ./_site
-      - name: Add additional assets
-        uses: actions/checkout@v3
-        run: |
-          docker run touch asset/js/something.js
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
