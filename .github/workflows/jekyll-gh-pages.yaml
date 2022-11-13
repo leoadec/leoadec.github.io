@@ -32,7 +32,7 @@ jobs:
       - name: Add additional assets
         run: |
           git clone https://github.com/leoadec/word-evolver.git;
-          mv word-evolver assets/js;
+          mv word-evolver/src assets/js;
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
