@@ -34,6 +34,10 @@ jobs:
         with:
           source: ./
           destination: ./_site
+      - name: Add additional assets
+        uses: actions/checkout@v3
+        run: |
+          docker run touch asset/js/something.js
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
