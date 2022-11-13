@@ -31,8 +31,8 @@ jobs:
         uses: actions/configure-pages@v2
       - name: Add additional assets
         run: |
-          mkdir assets/js;
-          touch assets/js/something.js
+          git clone https://github.com/leoadec/word-evolver.git;
+          mv word-evolver assets/js;
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
