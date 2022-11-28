@@ -66,6 +66,5 @@ jobs:
         run: |
           mkdir _site
           tar xf artifact.tar -C _site
-          rm -f _site/README.md
       - name: Deploy to AWS S3
         run: aws s3 sync ./_site/ s3://${{ secrets.AWS_S3_BUCKET }} --delete --cache-control max-age=604800
