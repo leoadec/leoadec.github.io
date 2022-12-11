@@ -32,9 +32,9 @@ jobs:
         with:
           ruby-version: 3.1
           bundler-cache: true
-      - name: Build with Jekyll
+      - name: Build with Ruby
         run: |
-          bundle exec jekyll build --destination _site
+          rake build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
