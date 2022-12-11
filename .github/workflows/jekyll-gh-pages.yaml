@@ -33,7 +33,7 @@ jobs:
           ruby-version: 3.1
           bundler-cache: true
       - name: Build with Jekyll
-        runs: |
+        run: |
           bundle exec jekyll build --destination _site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
