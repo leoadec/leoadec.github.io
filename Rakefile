@@ -1,5 +1,7 @@
+require "jekyll"
+
 task :build do
-  sh "bundle exec jekyll build --destination _site";
+  Jekyll::Site.new(Jekyll.configuration()).process
 end
 
 task serve:[:build] do

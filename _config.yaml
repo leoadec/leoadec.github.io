@@ -6,3 +6,6 @@ collections:
   - grants
   - jobs
   - papers
+exclude:
+  - CNAME
+  - Rakefile
