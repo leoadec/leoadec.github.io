@@ -34,8 +34,7 @@ jobs:
           bundler-cache: true
       - name: Build with Ruby
         run: |
-          bundle install
-          rake build
+          bundle exec rake build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
