@@ -4,7 +4,7 @@ name: Deploy Jekyll with GitHub Pages dependencies preinstalled
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["main", " test-ci"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -49,6 +49,9 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+      - name: Update README repo
+        run: |
+           curl -X POST -H "Authorization: Bearer ${{ secrets.README_UPDATE }}" https://api.github.com/repos/leoadec/leoadec/dispatches -d '{"event_type": "update-readme"}'
 
   deploy-aws-s3:
     runs-on: ubuntu-latest
