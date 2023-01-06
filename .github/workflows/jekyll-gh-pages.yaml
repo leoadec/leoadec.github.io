@@ -21,6 +21,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  update-readme-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update README repo
+        run: |
+           curl -X POST -H "Authorization: Bearer ${{ secrets.README_UPDATE }}" https://api.github.com/repos/leoadec/leoadec/dispatches -d '{"event_type": "update-readme"}'
+
   # Build job
   build:
     runs-on: ubuntu-latest
