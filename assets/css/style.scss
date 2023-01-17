@@ -201,3 +201,12 @@ a, a:active, a:visited {
 .links {
   @media print { display: none; }
 }
+
+input {
+  background-color: inherit;
+  color: inherit;
+}
+
+.input, .output {
+  text-align: center;
+}
