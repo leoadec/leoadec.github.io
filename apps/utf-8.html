@@ -1,0 +1,24 @@
+---
+layout: default
+title: UTF-8 conversion app
+---
+<p>
+Type words in ASCII to convert them to the likely UTF-8 equivalent.
+</p>
+
+<textarea id="app_input"> </textarea>
+
+<div id="app_output"></div>
+
+<script src="/assets/js/utf8Conversion.js"> </script>
+
+<script>
+const inputBox = document.getElementById("app_input");
+const outputBox = document.getElementById("app_output");
+
+function updateText() {
+   outputBox.innerHTML = utf8Conversion(inputBox.value);
+}
+
+inputBox.addEventListener("input", updateText);
+</script>
