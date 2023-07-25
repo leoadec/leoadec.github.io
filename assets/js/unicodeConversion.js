@@ -28,7 +28,7 @@ function convertWord(word) {
     return word;
 }
 
-function utf8Conversion(text) {
+function unicodeConversion(text) {
     const words = text.trim().replace(/ +/g, " ").split(" ");
 
     let updatedWords = words.map(convertWord);
