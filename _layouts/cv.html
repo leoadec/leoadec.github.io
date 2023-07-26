@@ -20,14 +20,20 @@ layout: default
 </p>
 
 <h2>Professional experience</h2>
-{% assign jobs = site.jobs | reverse -%}
+{% assign jobs = page.jobs -%}
 <dl>
 {% for job in jobs -%}
   <dt>
-    {% include job.html job=job %}
+    <span class="period">{%- include year_range.html date=job.start end_date=job.end -%}</span>
+    <span class="title">{{ job.title }}</span>
+    {{ job.employer }} ({{ job.location }}).
   </dt>
   <dd>
-    {{ job.content | summary | markdownify }}
+    <ul>
+      {% for duty in job.duties %}
+      <li>{{ duty }}</li>
+      {% endfor %}
+    </ul>
   </dd>
 {%- endfor %}
 </dl>

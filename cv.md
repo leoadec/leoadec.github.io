@@ -1,6 +1,7 @@
 ---
 layout: cv
 title: Leonardo Andreta de Castro
+published: false
 jobs:
   - start: 2023-02-01
     title: Staff Software Engineer, Quantum Product

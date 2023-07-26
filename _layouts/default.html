@@ -30,6 +30,13 @@
   window.onscroll = resizeEverything;
 </script>
 
+<script>
+  var style = location.search;
+  if (( style.length > 0 ) && ( style.substring(1) == "plain" )) {
+    document.styleSheets[0].disabled = true;
+  };
+</script>
+
 
 <main>
 {{ content }}

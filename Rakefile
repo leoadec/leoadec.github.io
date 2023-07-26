@@ -5,7 +5,7 @@ task :build do
   Jekyll::Site.new(Jekyll.configuration()).process
 end
 
-task :test do
+task test:[:build] do
   options = {
     ignore_urls: [
       /bv.fapesp.br/, /linkedin.com/, /physics.sk/, /sciencedirect.com/
