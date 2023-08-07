@@ -43,14 +43,32 @@ header {
   }
 }
 
+menu {
+  align: center;
+  display: relative;
+  border-bottom: 2px solid $text-color;
+  text-align: center;
+  padding-top: 5em;
+  width: 100%;
+  @media (prefers-color-scheme: dark) {
+    background-color: $background-color-dark;
+    border-bottom: 2px solid $text-color-dark;
+  }
+  @media print {
+    display: none;
+  }
+
+  li {
+    display: inline;
+  }
+}
+
 main {
   align: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 3em;
   max-width: 60em;
   padding-bottom: 1em;
-  padding-top: 4em;
   @media print {
     margin: 0;
     padding: 0;

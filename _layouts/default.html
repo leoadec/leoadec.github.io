@@ -10,12 +10,15 @@
 <body>
 <header>
   <h1 id="titleh1">{{ site.data.about.full_name }}</h1>
-  <!--
-  <menu style="display: none" >
-     {% for page in site.html_pages %}<li>{{ page.title }}</li>{% endfor %}
-  </menu>
-  -->
 </header>
+
+<menu>
+  {% if site.html_pages.size > 1 -%}
+  {% for page in site.html_pages -%}
+  <li><a href="{{ page.url }}">{{ page.title }}</a> | </li>
+  {%- endfor %}
+  {%- endif %}
+</menu>
 
 <script>
   header = document.getElementById("header");

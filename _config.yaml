@@ -1,5 +1,3 @@
-variable: Leonardo Andreta de Catro
-
 exclude:
   - CNAME
   - Rakefile

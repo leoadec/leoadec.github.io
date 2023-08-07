@@ -1,7 +1,7 @@
 ---
 layout: cv
-title: About
-lang: en
+title: CV
+published: false
 jobs:
   - start: 2023
     title: Staff Software Engineer, Quantum Product
