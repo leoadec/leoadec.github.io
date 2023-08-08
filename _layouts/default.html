@@ -12,11 +12,13 @@
   <h1 id="titleh1">{{ site.data.about.full_name }}</h1>
 </header>
 
-<menu>
+<menu id="menu">
   {% if site.html_pages.size > 1 -%}
-  {% for page in site.html_pages -%}
-  <li><a href="{{ page.url }}">{{ page.title }}</a> | </li>
-  {%- endfor %}
+  {% for page in site.html_pages %}
+  {%- assign components = page.url | split: "/" -%}
+  {% unless components.size > 2 -%}
+  <li>{% unless forloop.first %} | {% endunless %}<a href="{{ page.url }}">{{ page.title | upcase }}</a></li>
+  {%- endunless -%} {%- endfor %}
   {%- endif %}
 </menu>
 
@@ -32,10 +34,21 @@
     fontSizePenalty = Math.max(1 - scrollPosition * 0.0005, 0.6);
 
     h1.style.fontSize = (originalHeaderFontSize * fontSizePenalty) + "em";
-    menu.style.fontSize = Math.max(originalMenuFontSize * fontSizePenalty, 0.8) + "em";
+    menu.style.paddingTop = (90 * fontSizePenalty) + "px";
+  }
+
+  function toggleMenu() {
+    if ( menu.style.display != "none") {
+      menu.style.display = "none";
+    } else {
+      menu.style.display = "block";
+      menu.style.position = "fixed";
+    }
   }
 
   window.onscroll = resizeEverything;
+
+  h1.onclick = toggleMenu;
 </script>
 
 <script>

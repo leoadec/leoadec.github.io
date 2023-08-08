@@ -33,6 +33,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1;
   @media (prefers-color-scheme: dark) {
     background-color: $background-color-dark;
     border-bottom: 2px solid $text-color-dark;
@@ -45,11 +46,12 @@ header {
 
 menu {
   align: center;
-  display: relative;
   border-bottom: 2px solid $text-color;
   text-align: center;
-  padding-top: 5em;
+  padding-top: 90px;
+  position: absolute;
   width: 100%;
+  z-index: 0;
   @media (prefers-color-scheme: dark) {
     background-color: $background-color-dark;
     border-bottom: 2px solid $text-color-dark;
@@ -69,6 +71,7 @@ main {
   margin-right: auto;
   max-width: 60em;
   padding-bottom: 1em;
+  padding-top: 8em;
   @media print {
     margin: 0;
     padding: 0;
