@@ -42,19 +42,20 @@ header {
     border-bottom: 2pt solid black;
     position: relative;
   }
+  h1 {
+    margin: 0.5em;
+  }
 }
 
-menu {
+nav {
   align: center;
-  border-bottom: 2px solid $text-color;
+  margin: 0.5em;
   text-align: center;
-  padding-top: 90px;
-  position: absolute;
+  padding: 0px;
   width: 100%;
   z-index: 0;
   @media (prefers-color-scheme: dark) {
     background-color: $background-color-dark;
-    border-bottom: 2px solid $text-color-dark;
   }
   @media print {
     display: none;
@@ -71,7 +72,7 @@ main {
   margin-right: auto;
   max-width: 60em;
   padding-bottom: 1em;
-  padding-top: 8em;
+  padding-top: 7em;
   @media print {
     margin: 0;
     padding: 0;
