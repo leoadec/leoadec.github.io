@@ -22,7 +22,7 @@ body {
     color: $text-color-dark;
   }
   @media print {
-    background-color: none;
+    background-color: #ffffff;
     margin: 0.5in;
   }
 }
@@ -48,7 +48,6 @@ header {
 }
 
 nav {
-  align: center;
   margin: 0.5em;
   text-align: center;
   padding: 0px;
@@ -67,7 +66,6 @@ nav {
 }
 
 main {
-  align: center;
   margin-left: auto;
   margin-right: auto;
   max-width: 60em;
@@ -140,7 +138,7 @@ h3 {
 
 h4 {
   @extend %heading;
-  font-size: 1.0e0m;
+  font-size: 1.0em;
   @media print {
     font-size: 14pt;
   }
