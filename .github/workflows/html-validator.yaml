@@ -16,7 +16,8 @@ jobs:
           ruby-version: 3.2
           bundler-cache: true
       - name: Build with Ruby
-        run: |
-          bundle exec rake build
+        run: bundle exec rake build
+      - name: Run nu validator
+        run: docker run --mount type=bind,source=$(pwd)/_site,target=/_site ghcr.io/validator/validator:latest ls _site
       - name: Run nu validator
         run: docker run --mount type=bind,source=$(pwd)/_site,target=/_site ghcr.io/validator/validator:latest vnu --skip-non-html _site
