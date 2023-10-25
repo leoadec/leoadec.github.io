@@ -1,4 +1,4 @@
-This is a repository for my personal webpage and other personal projects.com
+This is a repository for my personal webpage.
 
 It is generated with Jekyll and pushed to GitHub Pages, where it can be seen at:
 https://leoadec.github.io or https://leoadec.com
@@ -17,16 +17,10 @@ bundle install
 ## Viewing locally
 
 ```
-bundle exec jekyll serve
+bundle exec rake serve
 ```
 
 The page will be available at localhost:4000 .
-
-You can also visualize the pages that are still in development.
-
-```
-bundle exec jekyll serve_dev
-```
 
 ## Testing
 

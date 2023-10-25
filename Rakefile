@@ -18,10 +18,6 @@ task serve:[:build] do
   sh "bundle exec jekyll serve";
 end
 
-task serve_dev:[:build] do
-  sh "bundle exec jekyll serve --unpublished";
-end
-
 task :clean do
   sh "rm -rf _site";
 end
