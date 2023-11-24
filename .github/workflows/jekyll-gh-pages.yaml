@@ -56,23 +56,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-
-  deploy-aws-s3:
-    runs-on: ubuntu-latest
-    needs: build
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_DEFAULT_REGION: "us-west-2"
-    steps:
-      - uses: actions/checkout@v3
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: github-pages
-      - name: Extract contents
-        run: |
-          mkdir _site
-          tar xf artifact.tar -C _site
-      - name: Deploy to AWS S3
-        run: aws s3 sync ./_site/ s3://${{ secrets.AWS_S3_BUCKET }} --delete --cache-control max-age=604800

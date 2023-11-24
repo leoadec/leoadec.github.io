@@ -1,75 +1,43 @@
-<!DOCTYPE html>
-<html lang="{{ page.lang }}">
+---
+---
+<!doctype html>
+<!--
+  Based on the minimal-mistakes-jekyll theme layout:
+  https://github.com/mmistakes/minimal-mistakes
+-->
+<html lang="{{ page.locale | slice: 0,2 | default: "en" }}" class="no-js">
+  <head>
+    <meta charset="utf-8">
 
-<head>
-  <meta charset="utf-8">
-  <title>{{ site.data.about.full_name }} &ndash; {{ page.title }}</title>
-  <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<body>
-<header>
-  <h1>{{ site.data.about.full_name }}</h1>
+    <link rel="stylesheet" href="{{ '/assets/css/light.css' | relative_url }}">
+    <style>
+      @import url("{{ '/assets/css/dark.css' | relative_url }}") (prefers-color-scheme: dark);
+   </style>
+   <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
 
-<nav>
-  {% if site.html_pages.size > 1 -%}
-  {% for page in site.html_pages %}
-  {%- assign components = page.url | split: "/" -%}
-  {% unless components.size > 2 -%}
-  {% unless forloop.first %} | {% endunless %}<a href="{{ page.url }}">{{ page.title | upcase }}</a>
-  {%- endunless -%} {%- endfor %}
-  {%- endif %}
-</nav>
-</header>
+    <title>{{ site.title }}{% if page.title %} - {{ page.title }}{% endif %}</title>
 
-<script>
-  let header = document.getElementsByTagName("header")[0];
-  let h1 = document.getElementsByTagName("h1")[0];
-  let menu = document.getElementsByTagName("nav")[0];
+    {% include head/custom.html %}
+  </head>
 
-  originalHeaderHeight = parseFloat(window.getComputedStyle(header).height);
-  headerHeightUnit = window.getComputedStyle(header).height.match(/(px|em|pt)/)[1];
+  <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
+    {% include_cached masthead.html %}
 
-  originalHeaderFontSize = parseFloat(window.getComputedStyle(h1).fontSize);
-  headerFontUnit = window.getComputedStyle(h1).fontSize.match(/(px|em|pt)/)[1];
+    <div class="initial-content">
+      {{ content }}
+    </div>
 
-  originalMenuFontSize = parseFloat(window.getComputedStyle(menu).fontSize);
-  menuFontUnit = window.getComputedStyle(menu).fontSize.match(/(px|em|pt)/)[1];
+    {% if site.search == true %}
+      <div class="search-content">
+        {% include_cached search/search_form.html %}
+      </div>
+    {% endif %}
 
-  function resizeEverything() {
-    let scrollPosition = window.pageYOffset;
-    let rescaleFactor = Math.max(1 - scrollPosition * 0.0005, 0.6);
-    let menuRescaleFactor = Math.max(1 - scrollPosition * 0.0004, 0.7);
+  <script src="{{ 'assets/js/resize.js' | relative_url }}"></script>
 
-    header.style.height = (originalHeaderHeight * rescaleFactor) + headerHeightUnit;
-    h1.style.fontSize = (originalHeaderFontSize * rescaleFactor) + headerFontUnit;
-    menu.style.fontSize = (originalMenuFontSize * menuRescaleFactor) + menuFontUnit;
-  }
-
-  window.onscroll = resizeEverything;
-</script>
-
-<script>
-  var style = location.search;
-  if (( style.length > 0 ) && ( style.substring(1) == "plain" )) {
-    document.styleSheets[0].disabled = true;
-  };
-</script>
-
-
-<main>
-{{ content }}
-</main>
-
-<script>
-  const authors = document.getElementsByClassName("authors");
-  const leo = "Leonardo Andreta de Castro"
-
-  for (var i = 0; i < authors.length; i++) {
-    var originalText = authors[i].innerHTML;
-    authors[i].innerHTML = originalText.replace(leo, leo.bold());
-  }
-</script>
-</body>
-
+  </body>
 </html>
+

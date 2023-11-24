@@ -2,3 +2,5 @@ exclude:
   - CNAME
   - Rakefile
   - README.md
+title: Leonardo Andreta de Castro
+theme: minimal-mistakes-jekyll

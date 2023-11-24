@@ -1,23 +1,6 @@
 ---
-layout: default
+layout: single
 ---
-
-<address>
-{% for data in site.data.contact %}
-{{ data.type }}: <a href="{{data.external_url}}" target="_blank">{{data.title}}</a>
-{% endfor %}
-</address>
-
-<address class="links">
-{% for data in site.data.links %}
-<a href="{{data.external_url}}" target="_blank">{{data.title}}</a>
-{%- unless forloop.last %} | {% endunless -%}
-{% endfor %}
-</address>
-
-<p id="summary">
-{%- include summary.html -%}
-</p>
 
 <h2>Professional experience</h2>
 {% assign jobs = page.jobs -%}
