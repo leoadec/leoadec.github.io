@@ -1,6 +1,10 @@
+collections:
+  pages:
+    output: true
 exclude:
   - CNAME
+  - Gemfile
+  - Gemfile.lock
   - Rakefile
   - README.md
-title: Leonardo Andreta de Castro
 theme: minimal-mistakes-jekyll
