@@ -1,0 +1,9 @@
+{
+  "name": "leoadec.github.io",
+  "scripts": {
+    "build": "rake build",
+    "clean": "rake clean",
+    "serve": "rake serve",
+    "test": "rake test"
+  }
+}
