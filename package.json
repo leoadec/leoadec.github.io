@@ -1,9 +1,9 @@
 {
   "name": "leoadec.github.io",
   "scripts": {
-    "build": "rake build",
-    "clean": "rake clean",
-    "serve": "rake serve",
-    "test": "rake test"
+    "build": "bundle exec rake build",
+    "clean": "bundle exec rake clean",
+    "serve": "bundle exec rake serve",
+    "test": "bundle exec rake test"
   }
 }
