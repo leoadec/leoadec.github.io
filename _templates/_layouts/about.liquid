@@ -1,19 +1,17 @@
 ---
-layout: single
+layout: default.liquid
 ---
 <address>
-{% for data in site.data.contact %}
+{%- for data in contact %}
 {{ data.type }}: <a href="{{data.external_url}}" target="_blank">{{data.title}}</a>
-{% endfor %}
+{% endfor -%}
 </address>
 
 <address class="links">
-{% for data in site.data.links %}
+{%- for data in links %}
 <a href="{{data.external_url}}" target="_blank">{{data.title}}</a>
 {%- unless forloop.last %} | {% endunless -%}
-{% endfor %}
+{% endfor -%}
 </address>
 
-<p id="summary">
-{%- include summary.html -%}
-</p>
+{{ content }}

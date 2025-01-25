@@ -1,13 +1,14 @@
 ---
-layout: single
+layout: default.liquid
 ---
 
 <h2>Professional experience</h2>
-{% assign jobs = page.jobs -%}
 <dl>
-{% for job in jobs -%}
+{%- for job in jobs %}
   <dt>
-    <span class="period">{%- include year_range.html date=job.start end_date=job.end -%}</span>
+    <span class="period">
+    {{- job.start -}}&ndash;{%- if job.end -%}{{- job.end -}}{%- else -%}current{%- endif -%}
+    </span>
     <span class="title">{{ job.title }}</span>
     {{ job.employer }} ({{ job.location }}).
   </dt>
@@ -16,16 +17,15 @@ layout: single
       {% for duty in job.duties %}<li>{{ duty }}</li>{% endfor %}
     </ul>
   </dd>
-{%- endfor %}
+{% endfor -%}
 </dl>
 
 <h2>Education</h2>
-{% assign degrees = page.degrees %}
 <dl>
 {% for degree in degrees %}
   <dt>
     <span class="period">
-      {% include year_range.html date=degree.start end_date=degree.end -%}
+    {{- degree.start -}}&ndash;{%- if degree.end -%}{{- degree.end -}}{%- else -%}current{%- endif -%}
     </span>
     <span class="title">{{ degree.title }}</span>
     {{ degree.university }} ({{ degree.location }}).
@@ -44,7 +44,6 @@ layout: single
         Grant: <a href="{{ degree.grant.external_url }}" target=" _blank">&ldquo;{{ degree.grant.project }}&rdquo;</a>.
       </summary>
       Agency: {{ degree.grant.agency }}.
-      ({% include year_range.html date=degree.grant.start end_date=degree.grant.end -%})
     </details>
     {% endif %}
   <dt>
@@ -53,11 +52,10 @@ layout: single
     {% for duty in degree.duties %}<li>{{ duty }}</li>{% endfor %}
     </ul>
   </dd>
-{% endfor %}
+{% endfor -%}
 </dl>
 
 <h2>Selected papers</h2>
-{% assign papers = page.papers %}
 <dl>
 {% for paper in papers limit: 5 -%}
   <dt>
@@ -103,8 +101,7 @@ layout: single
 
 <h2>Conference talks</h2>
 <dl>
-{% assign events = page.conferences %}
-{% for event in events %}
+{% for event in conferences %}
   {% if event.talk %}
   <dt>
     <span class="authors">{{ event.talk.authors | join: ", " }}.</span>
@@ -117,10 +114,11 @@ layout: single
   {% endif %}
 {% endfor %}
 </dl>
+
 <details>
   <summary>Conference posters</summary>
   <ul>
-  {% for event in events -%}
+  {% for event in conferences -%}
     {%- if event.poster %}
     <li>
       <span class="authors">{{ event.poster.authors | join: ", " }}.</span>

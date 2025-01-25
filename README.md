@@ -1,27 +1,27 @@
 This is a repository for my personal webpage.
 
-It is generated with Jekyll and pushed to GitHub Pages, where it can be seen at:
-https://leoadec.github.io or https://leoadec.com
+It is generated with [Eleventy](https://11ty.dev) and pushed to GitHub Pages,
+where it can be seen at: https://leoadec.github.io or https://leoadec.com
 
 # Building
 ## Installing 
 
-Make sure you have Ruby 3.2 installed.
+Make sure you have Node.js installed.
 
 ```
-bundle install
+npm install
 ```
 
 ## Viewing locally
 
 ```
-bundle exec rake serve
+npm run serve
 ```
 
-The page will be available at localhost:4000 .
+The page will be available at http://localhost:8080 .
 
 ## Testing
 
 ```
-bundle exec rake test
+npm run check
 ```

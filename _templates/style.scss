@@ -1,0 +1,78 @@
+$dark-bg: #101525;
+$dark-fg: #d0e0e0;
+$light-bg: #f8f8ff;
+$light-fg: #202040;
+
+* {
+  font-size: 1rem;
+}
+
+html {
+  font-size: max(12px, 2vh);
+
+  background-color: $dark-bg;
+  color: $dark-fg;
+
+  @media (prefers-color-scheme: light) {
+    background-color: $light-bg;
+    color: $light-fg;
+  }
+
+  a {
+    color: $dark-fg;
+
+    @media (prefers-color-scheme: light) {
+      color: $light-fg;
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  h1, p {
+    text-align: center;
+  }
+
+  h1, main, p {
+    display: block;
+    margin: auto;
+    max-width: 50rem;
+    padding: 0.5rem;
+  }
+}
+
+main {
+  address {
+    margin: auto;
+    text-align: center;
+  }
+
+  dt {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+
+    .period{
+      text-indent: -1rem;
+    }
+
+    .period, .title {
+      display: block;
+    }
+
+    .period, .title, .volume {
+      font-weight: bold;
+    }
+  }
+
+  p {
+    text-align: left;
+  }
+}
