@@ -72,7 +72,20 @@ main {
     }
   }
 
+  li.post {
+    font-style: italic;
+
+    a {
+       font-style: normal;
+    }
+  }
+
   p {
     text-align: left;
+  }
+
+  p.date {
+    font-style: italic;
+    text-indent: 1rem;
   }
 }
