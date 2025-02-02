@@ -1,4 +1,7 @@
-.jekyll-cache/
 _site/
 
+# JavaScript
 node_modules/
+
+# Rust
+crates/**/target
