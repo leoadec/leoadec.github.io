@@ -1,4 +1,5 @@
 mod screen;
+mod sprite;
 mod stack;
 
 use screen::Screen;
