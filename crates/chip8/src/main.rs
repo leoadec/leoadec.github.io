@@ -1,5 +1,7 @@
 use chip8::Chip8;
 
 fn main() {
-    println!("Test.");
+    let chip8 = Chip8::new();
+
+    println!("{:#?}", chip8);
 }
