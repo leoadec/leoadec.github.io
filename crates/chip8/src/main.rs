@@ -1,7 +1,8 @@
 use chip8::Chip8;
 
 fn main() {
-    let chip8 = Chip8::new();
+    let mut chip8 = Chip8::new();
 
-    println!("{:#?}", chip8);
+    chip8.stack_push(3);
+    print!("{}", chip8.stack_pop());
 }
