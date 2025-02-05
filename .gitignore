@@ -1,5 +1,8 @@
 _site/
 
+# vim
+*.swp
+
 # JavaScript
 node_modules/
 
