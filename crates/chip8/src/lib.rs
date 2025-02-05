@@ -1,9 +1,8 @@
+mod screen;
 mod stack;
 
+use screen::Screen;
 use stack::Stack;
-
-pub const SCREEN_HEIGHT: usize = 32;
-pub const SCREEN_WIDTH: usize = 64;
 
 #[derive(Debug)]
 pub struct Chip8 {
@@ -12,7 +11,7 @@ pub struct Chip8 {
     v_registers: [u8; 16],
     ram: [u8; 4098],
     stack: Stack,
-    screen: [bool; SCREEN_HEIGHT * SCREEN_WIDTH],
+    screen: Screen,
     sound_timer: u8,
     delay_timer: u8,
 }
@@ -25,7 +24,7 @@ impl Chip8 {
             v_registers: [0; 16],
             ram: [0; 4098],
             stack: Stack::new(),
-            screen: [false; SCREEN_HEIGHT * SCREEN_WIDTH],
+            screen: Screen::new(),
             sound_timer: 0,
             delay_timer: 0,
         }
