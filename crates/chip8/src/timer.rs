@@ -1,14 +1,37 @@
-#[derive(Debug)]
-pub struct Timer {
-    countdown: u8,
+trait TimedAction {
+    fn execute(&self);
 }
 
-impl Timer {
-    pub fn new() -> Self {
-        Timer { countdown: 0 }
-    }
+#[derive(Debug)]
+pub struct Beeper;
 
+impl TimedAction for Beeper {
+    fn execute(&self) {
+        println!("BEEP!");
+    }
+}
+
+#[derive(Debug)]
+pub struct Timer<T: TimedAction> {
+    countdown: u8,
+    timed_action: T,
+}
+
+impl Timer<Beeper> {
+    pub fn new() -> Self {
+        Timer::<Beeper> {
+            countdown: 0,
+            timed_action: Beeper {},
+        }
+    }
+}
+
+impl<T: TimedAction> Timer<T> {
     pub fn tick(&mut self) {
+        if self.countdown == 1 {
+            self.timed_action.execute();
+        }
+
         if self.countdown > 0 {
             self.countdown -= 1;
         };

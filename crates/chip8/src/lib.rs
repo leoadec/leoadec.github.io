@@ -7,7 +7,7 @@ mod timer;
 use ram::Ram;
 use screen::Screen;
 use stack::Stack;
-use timer::Timer;
+use timer::{Beeper, Timer};
 
 #[derive(Debug)]
 pub struct Chip8 {
@@ -17,8 +17,8 @@ pub struct Chip8 {
     ram: Ram,
     stack: Stack,
     screen: Screen,
-    sound_timer: Timer,
-    delay_timer: Timer,
+    sound_timer: Timer<Beeper>,
+    delay_timer: Timer<Beeper>,
 }
 
 impl Chip8 {
@@ -30,8 +30,8 @@ impl Chip8 {
             ram: Ram::new(),
             stack: Stack::new(),
             screen: Screen::new(),
-            sound_timer: Timer::new(),
-            delay_timer: Timer::new(),
+            sound_timer: Timer::<Beeper>::new(),
+            delay_timer: Timer::<Beeper>::new(),
         }
     }
 
