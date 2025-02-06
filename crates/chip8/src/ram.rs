@@ -17,6 +17,10 @@ impl Ram {
         }
     }
 
+    pub fn back(&mut self) {
+        self.program_counter -= 2;
+    }
+
     pub fn goto(&mut self, position: u16) {
         self.program_counter = position;
     }

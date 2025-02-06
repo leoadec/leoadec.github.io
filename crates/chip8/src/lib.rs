@@ -236,7 +236,10 @@ impl Chip8 {
             0x07 => {
                 self.v_registers[register_nb] = self.delay_timer.get_countdown();
             }
-            0x0a => (),
+            0x0a => match self.keyboard.any_key_pressed() {
+                Some(key_nb) => self.v_registers[register_nb] = key_nb,
+                None => self.ram.back(),
+            },
             0x15 => {
                 self.delay_timer
                     .set_countdown(self.v_registers[register_nb]);

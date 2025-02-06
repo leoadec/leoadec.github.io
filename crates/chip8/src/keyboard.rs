@@ -15,4 +15,13 @@ impl Keyboard {
 
         self.keys[key_nb as usize]
     }
+
+    pub fn any_key_pressed(&self) -> Option<u8> {
+        for key_nb in 0x0..0xf {
+            if self.keys[key_nb] {
+                return Some(key_nb as u8);
+            }
+        }
+        return None;
+    }
 }
