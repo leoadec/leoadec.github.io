@@ -50,6 +50,12 @@ impl Chip8 {
         self.ram.goto(address);
     }
 
+    fn jump_plus_register(&mut self, op: u16) {
+        let address = 0x0fff & op;
+
+        self.ram.goto(address + self.v_registers[0] as u16);
+    }
+
     fn call_subroutine(&mut self, op: u16) {
         let address = 0x0fff & op;
         self.stack.push(self.ram.get_current_counter());
@@ -107,6 +113,12 @@ impl Chip8 {
         self.v_registers[register_nb] = literal;
     }
 
+    fn assign_to_i_register(&mut self, op: u16) {
+        let literal = 0x0fff & op as u16;
+
+        self.i_register = literal;
+    }
+
     fn add_to_v_register(&mut self, op: u16) {
         let literal = 0x00ff & op as u8;
         let register_nb = ((0x0f00 & op) >> 8) as usize;
@@ -130,13 +142,15 @@ impl Chip8 {
             0x0000 => (),
             0x00e0 => self.screen.clear(),
             0x00ee => self.return_from_subroutine(),
-            0x1000..=0x1fff => self.jump(op),
             0x2000..=0x2fff => self.call_subroutine(op),
+            0x1000..=0x1fff => self.jump(op),
+            0xb000..=0xbfff => self.jump_plus_register(op),
             0x3000..=0x3fff => self.if_register_matches_literal(op),
             0x4000..=0x4fff => self.if_register_does_not_match_literal(op),
             0x5000..=0x5fff => self.if_register_matches_register(op),
             0x9000..=0x9fff => self.if_register_does_not_match_register(op),
             0x6000..=0x6fff => self.assign_to_v_register(op),
+            0xa000..=0xafff => self.assign_to_i_register(op),
             0x7000..=0x7fff => self.add_to_v_register(op),
             0x8000..=0x8fff => self.assign_from_v_register(op),
             _ => (),
