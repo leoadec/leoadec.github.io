@@ -58,7 +58,7 @@ impl Chip8 {
 
     fn skip_next_if_register_matches_literal(&mut self, op: u16) {
         let literal = 0x00ff & op as u8;
-        let register_nb = (0x0f00 & op) >> 8;
+        let register_nb = ((0x0f00 & op) >> 8) as usize;
 
         if self.v_registers[register_nb as usize] == literal {
             self.ram.next();
@@ -67,9 +67,18 @@ impl Chip8 {
 
     fn skip_next_if_register_does_not_match_literal(&mut self, op: u16) {
         let literal = 0x00ff & op as u8;
-        let register_nb = (0x0f00 & op) >> 8;
+        let register_nb = ((0x0f00 & op) >> 8) as usize;
 
         if self.v_registers[register_nb as usize] != literal {
+            self.ram.next();
+        }
+    }
+
+    fn skip_next_if_register_matches_register(&mut self, op: u16) {
+        let register_1 = ((0x0f00 & op) >> 8) as usize;
+        let register_2 = ((0x00f0 & op) >> 4) as usize;
+
+        if self.v_registers[register_1] == self.v_registers[register_2] {
             self.ram.next();
         }
     }
@@ -83,6 +92,7 @@ impl Chip8 {
             0x2000..=0x2fff => self.call_subroutine(op),
             0x3000..=0x3fff => self.skip_next_if_register_matches_literal(op),
             0x4000..=0x4fff => self.skip_next_if_register_does_not_match_literal(op),
+            0x5000..=0x5fff => self.skip_next_if_register_matches_register(op),
             _ => (),
         }
     }
