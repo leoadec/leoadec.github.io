@@ -2,27 +2,12 @@ mod ram;
 mod screen;
 mod sprite;
 mod stack;
+mod timer;
 
 use ram::Ram;
 use screen::Screen;
 use stack::Stack;
-
-#[derive(Debug)]
-struct Timer {
-    countdown: u8,
-}
-
-impl Timer {
-    pub fn new() -> Self {
-        Timer { countdown: 0 }
-    }
-
-    pub fn tick(&mut self) {
-        if self.countdown > 0 {
-            self.countdown -= 1;
-        };
-    }
-}
+use timer::Timer;
 
 #[derive(Debug)]
 pub struct Chip8 {
