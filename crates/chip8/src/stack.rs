@@ -25,7 +25,7 @@ impl Stack {
 
     pub fn pop(&mut self) -> u16 {
         if self.pointer <= 0 {
-            panic!("Trying to push to a full stack.");
+            panic!("Trying to read from an empty stack.");
         }
 
         self.pointer -= 1;

@@ -15,6 +15,10 @@ impl Ram {
         }
     }
 
+    pub fn goto(&mut self, position: u16) {
+        self.program_counter = position;
+    }
+
     pub fn load(&mut self, buffer: &[u8]) {
         let last_instruction = FIRST_INSTRUCTION as usize + buffer.len();
 

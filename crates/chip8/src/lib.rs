@@ -40,10 +40,15 @@ impl Chip8 {
         self.ram.load(buffer);
     }
 
+    fn return_from_subroutine(&mut self) {
+        self.ram.goto(self.stack.pop());
+    }
+
     fn run_op(&mut self, op: u16) {
         match op {
             0x00 => (),
             0xe0 => self.screen.clear(),
+            0xee => self.return_from_subroutine(),
             _ => (),
         }
     }
