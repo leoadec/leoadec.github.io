@@ -48,11 +48,17 @@ impl Chip8 {
         }
     }
 
-    pub fn tick(&mut self) {
+    fn tick(&mut self) {
         let op = self.ram.next();
         self.run_op(op);
 
         self.sound_timer.tick();
         self.delay_timer.tick();
+    }
+
+    pub fn run(&mut self) {
+        loop {
+            self.tick();
+        }
     }
 }

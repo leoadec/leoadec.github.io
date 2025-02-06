@@ -20,7 +20,9 @@ impl Ram {
 
         if last_instruction > RAM_SIZE {
             panic!("Program size is too long.");
-        }
+        };
+
+        self.memory[FIRST_INSTRUCTION as usize..last_instruction].copy_from_slice(buffer);
     }
 
     pub fn next(&mut self) -> u16 {
@@ -32,6 +34,8 @@ impl Ram {
         let second_byte = self.memory[self.program_counter as usize + 1] as u16;
 
         self.program_counter += 2;
+
+        dbg!(self.program_counter, first_byte, second_byte);
 
         (first_byte << 8) | second_byte
     }

@@ -25,5 +25,5 @@ fn main() {
 
     chip8.load(&buffer);
 
-    chip8.tick();
+    chip8.run();
 }
