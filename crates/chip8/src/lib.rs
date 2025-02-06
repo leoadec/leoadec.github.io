@@ -164,6 +164,25 @@ impl Chip8 {
         }
     }
 
+    fn handle_key_press(&mut self, op: u16) {
+        let trailing_byte = 0x00ff & op as u8;
+
+        let invert = match trailing_byte {
+            0x9e => true,
+            0xa1 => false,
+            _ => panic!("Unrecognized key press instruction."),
+        };
+
+        let register_nb = 0x0f00 & op >> 8 as u8;
+        let key = self.v_registers[register_nb as usize];
+
+        let condition = self.keyboard.is_pressed(key) ^ invert;
+
+        if condition {
+            self.ram.next();
+        };
+    }
+
     fn run_op(&mut self, op: u16) {
         match op {
             0x0000 => (),
@@ -181,6 +200,7 @@ impl Chip8 {
             0x7000..=0x7fff => self.add_to_v_register(op),
             0x8000..=0x8fff => self.assign_from_v_register(op),
             0xd000..=0xdfff => self.draw_sprite(op),
+            0xe09e..=0xefa1 => self.handle_key_press(op),
             _ => (),
         }
     }
