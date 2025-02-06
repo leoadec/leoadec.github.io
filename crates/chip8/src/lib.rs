@@ -1,7 +1,9 @@
+mod ram;
 mod screen;
 mod sprite;
 mod stack;
 
+use ram::Ram;
 use screen::Screen;
 use stack::Stack;
 
@@ -10,7 +12,7 @@ pub struct Chip8 {
     program_counter: u16,
     i_register: u16,
     v_registers: [u8; 16],
-    ram: [u8; 4098],
+    ram: Ram,
     stack: Stack,
     screen: Screen,
     sound_timer: u8,
@@ -23,7 +25,7 @@ impl Chip8 {
             program_counter: 512,
             i_register: 0,
             v_registers: [0; 16],
-            ram: [0; 4098],
+            ram: Ram::new(),
             stack: Stack::new(),
             screen: Screen::new(),
             sound_timer: 0,
