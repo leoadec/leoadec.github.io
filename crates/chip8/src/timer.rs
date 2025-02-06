@@ -36,4 +36,8 @@ impl<T: TimedAction> Timer<T> {
             self.countdown -= 1;
         };
     }
+
+    pub fn get_countdown(&self) -> u8 {
+        self.countdown
+    }
 }

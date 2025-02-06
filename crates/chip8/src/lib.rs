@@ -1,6 +1,8 @@
 use std::thread;
 use std::time;
 
+use rand::random;
+
 mod keyboard;
 mod ram;
 mod screen;
@@ -131,15 +133,13 @@ impl Chip8 {
         self.v_registers[register_nb] = self.v_registers[register_nb].wrapping_add(literal);
     }
 
-    fn assign_from_v_register(&mut self, op: u16) {
-        if ((0x000f & op) != 0) {
-            panic!("Unrecognized operation.");
-        }
+    fn rand(&mut self, op: u16) {
+        let literal = 0x00ff & op as u8;
+        let register_nb = ((0x0f00 & op) >> 8) as usize;
 
-        let register_1 = ((0x0f00 & op) >> 8) as usize;
-        let register_2 = ((0x00f0 & op) >> 4) as usize;
+        let rnd: u8 = random();
 
-        self.v_registers[register_1] = self.v_registers[register_2];
+        self.v_registers[register_nb] = rnd & literal;
     }
 
     fn draw_sprite(&mut self, op: u16) {
@@ -172,6 +172,8 @@ impl Chip8 {
 
         let value_1 = self.v_registers[register_1];
         let value_2 = self.v_registers[register_2];
+
+        dbg!(trailing_nb);
 
         match trailing_nb {
             0x0 => self.v_registers[register_1] = value_2,
@@ -224,14 +226,16 @@ impl Chip8 {
         };
     }
 
-    fn handle_timer_ops(&self, op: u16) {
+    fn handle_timer_ops(&mut self, op: u16) {
         let trailing_byte = 0x00ff & op as u8;
 
-        let register_nb = 0x0f00 & op >> 8 as u8;
-        let value = self.v_registers[register_nb as usize];
+        let register_nb = (0x0f00 & op >> 8) as usize;
+        let value = self.v_registers[register_nb];
 
         match trailing_byte {
-            0x07 => (),
+            0x07 => {
+                self.v_registers[register_nb] = self.delay_timer.get_countdown();
+            }
             0x0a => (),
             0x15 => (),
             0x18 => (),
@@ -245,6 +249,7 @@ impl Chip8 {
     }
 
     fn run_op(&mut self, op: u16) {
+        dbg!(op);
         match op {
             0x0000 => (),
             0x00e0 => self.screen.clear(),
@@ -259,12 +264,15 @@ impl Chip8 {
             0x6000..=0x6fff => self.assign_to_v_register(op),
             0xa000..=0xafff => self.assign_to_i_register(op),
             0x7000..=0x7fff => self.add_to_v_register(op),
-            0x8000..=0x8fff => self.assign_from_v_register(op),
+            0xc000..=0xcfff => self.rand(op),
             0xd000..=0xdfff => self.draw_sprite(op),
             0x8000..=0x8ffe => self.handle_bitwise_ops(op),
             0xe09e..=0xefa1 => self.handle_key_press(op),
             0xf007..=0xff65 => self.handle_timer_ops(op),
-            _ => panic!("Unrecognized operation."),
+            _ => {
+                dbg!(op);
+                panic!("Unrecognized operation.");
+            }
         }
     }
 
