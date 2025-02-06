@@ -1,4 +1,6 @@
 use std::env;
+use std::fs::File;
+use std::io::Read;
 
 use chip8::Chip8;
 
@@ -10,7 +12,16 @@ fn main() {
         Some(arg) => String::from(arg),
     };
 
-    let mut chip8 = Chip8::new(&filename);
+    let file = File::open(&filename);
+
+    let mut buffer = Vec::new();
+
+    match file {
+        Err(_) => panic!("Could not read file {filename}."),
+        Ok(mut f) => f.read(&mut buffer).expect("Could not read file."),
+    };
+
+    let mut chip8 = Chip8::new();
 
     chip8.tick();
 }
