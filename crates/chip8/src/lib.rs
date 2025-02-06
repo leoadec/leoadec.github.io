@@ -87,7 +87,7 @@ impl Chip8 {
     }
 
     fn if_register_matches_register(&mut self, op: u16) {
-        if ((0x000f & op) != 0) {
+        if (0x000f & op) != 0 {
             panic!("Unrecognized operation.");
         }
 
@@ -100,7 +100,7 @@ impl Chip8 {
     }
 
     fn if_register_does_not_match_register(&mut self, op: u16) {
-        if ((0x000f & op) != 0) {
+        if (0x000f & op) != 0 {
             panic!("Unrecognized operation.");
         }
 
