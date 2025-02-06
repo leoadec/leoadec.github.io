@@ -100,21 +100,21 @@ impl Chip8 {
         }
     }
 
-    fn assign_to_register(&mut self, op: u16) {
+    fn assign_to_v_register(&mut self, op: u16) {
         let literal = 0x00ff & op as u8;
         let register_nb = ((0x0f00 & op) >> 8) as usize;
 
         self.v_registers[register_nb] = literal;
     }
 
-    fn add_to_register(&mut self, op: u16) {
+    fn add_to_v_register(&mut self, op: u16) {
         let literal = 0x00ff & op as u8;
         let register_nb = ((0x0f00 & op) >> 8) as usize;
 
         self.v_registers[register_nb] = self.v_registers[register_nb].wrapping_add(literal);
     }
 
-    fn assign_from_register(&mut self, op: u16) {
+    fn assign_from_v_register(&mut self, op: u16) {
         if ((0x000f & op) != 0) {
             panic!("Unrecognized operation.");
         }
@@ -136,9 +136,9 @@ impl Chip8 {
             0x4000..=0x4fff => self.if_register_does_not_match_literal(op),
             0x5000..=0x5fff => self.if_register_matches_register(op),
             0x9000..=0x9fff => self.if_register_does_not_match_register(op),
-            0x6000..=0x6fff => self.assign_to_register(op),
-            0x7000..=0x7fff => self.add_to_register(op),
-            0x8000..=0x8fff => self.assign_from_register(op),
+            0x6000..=0x6fff => self.assign_to_v_register(op),
+            0x7000..=0x7fff => self.add_to_v_register(op),
+            0x8000..=0x8fff => self.assign_from_v_register(op),
             _ => (),
         }
     }
