@@ -237,8 +237,14 @@ impl Chip8 {
                 self.v_registers[register_nb] = self.delay_timer.get_countdown();
             }
             0x0a => (),
-            0x15 => (),
-            0x18 => (),
+            0x15 => {
+                self.delay_timer
+                    .set_countdown(self.v_registers[register_nb]);
+            }
+            0x18 => {
+                self.sound_timer
+                    .set_countdown(self.v_registers[register_nb]);
+            }
             0x1e => (),
             0x29 => (),
             0x33 => (),
