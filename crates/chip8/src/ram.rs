@@ -1,3 +1,5 @@
+use crate::sprite::Sprite;
+
 const RAM_SIZE: usize = 4 * 1024;
 const FIRST_INSTRUCTION: u16 = 512;
 
@@ -21,6 +23,10 @@ impl Ram {
 
     pub fn get_current_counter(&self) -> u16 {
         self.program_counter
+    }
+
+    pub fn get_sprite(&self, address: usize, size: usize) -> Sprite {
+        Sprite::from_bytes(&self.memory[address..address + size])
     }
 
     pub fn load(&mut self, buffer: &[u8]) {

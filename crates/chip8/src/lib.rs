@@ -3,12 +3,13 @@ use std::time;
 
 mod ram;
 mod screen;
-mod sprite;
+pub mod sprite;
 mod stack;
 mod timer;
 
 use ram::Ram;
 use screen::Screen;
+use sprite::Sprite;
 use stack::Stack;
 use timer::{Beeper, Timer};
 
@@ -135,6 +136,10 @@ impl Chip8 {
         let register_2 = ((0x00f0 & op) >> 4) as usize;
 
         self.v_registers[register_1] = self.v_registers[register_2];
+    }
+
+    fn draw_sprite(&mut self, op: u16) {
+        let sprite = self.ram.get_sprite(self.i_register as usize, 8);
     }
 
     fn run_op(&mut self, op: u16) {
