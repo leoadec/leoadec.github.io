@@ -19,6 +19,10 @@ impl Ram {
         self.program_counter = position;
     }
 
+    pub fn get_current_counter(&self) -> u16 {
+        self.program_counter
+    }
+
     pub fn load(&mut self, buffer: &[u8]) {
         let last_instruction = FIRST_INSTRUCTION as usize + buffer.len();
 

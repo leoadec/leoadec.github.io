@@ -50,12 +50,19 @@ impl Chip8 {
         self.ram.goto(address);
     }
 
+    fn call_subroutine(&mut self, op: u16) {
+        let address = 0x0fff & op;
+        self.stack.push(self.ram.get_current_counter());
+        self.ram.goto(address);
+    }
+
     fn run_op(&mut self, op: u16) {
         match op {
             0x0000 => (),
             0x00e0 => self.screen.clear(),
             0x00ee => self.return_from_subroutine(),
             0x1000..=0x1fff => self.jump(op),
+            0x2000..=0x2fff => self.call_subroutine(op),
             _ => (),
         }
     }
