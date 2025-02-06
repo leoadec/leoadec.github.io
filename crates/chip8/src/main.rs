@@ -18,7 +18,7 @@ fn main() {
 
     match file {
         Err(_) => panic!("Could not read file {filename}."),
-        Ok(mut f) => f.read(&mut buffer).expect("Could not read file."),
+        Ok(mut f) => f.read_to_end(&mut buffer).expect("Could not read file."),
     };
 
     let mut chip8 = Chip8::new();
