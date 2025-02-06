@@ -1,3 +1,6 @@
+use std::thread;
+use std::time;
+
 mod ram;
 mod screen;
 mod sprite;
@@ -59,6 +62,7 @@ impl Chip8 {
     pub fn run(&mut self) {
         loop {
             self.tick();
+            thread::sleep(time::Duration::from_millis(30));
             self.screen.print();
         }
     }
