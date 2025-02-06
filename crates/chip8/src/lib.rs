@@ -151,7 +151,13 @@ impl Chip8 {
         let pos_y = self.v_registers[register_y] as usize;
 
         let sprite = self.ram.get_sprite(self.i_register as usize, rows);
-        self.screen.draw_sprite(&sprite, (pos_x, pos_y));
+        let flipped = self.screen.draw_sprite(&sprite, (pos_x, pos_y));
+
+        if flipped {
+            self.v_registers[0xf] = 1;
+        } else {
+            self.v_registers[0xf] = 0;
+        }
     }
 
     fn run_op(&mut self, op: u16) {

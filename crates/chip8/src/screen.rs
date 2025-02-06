@@ -21,16 +21,28 @@ impl Screen {
         self.pixels = [Pixel(false); SCREEN_WIDTH * SCREEN_HEIGHT];
     }
 
-    pub fn draw_sprite(&mut self, sprite: &Sprite, offset: (usize, usize)) {
+    pub fn draw_sprite(&mut self, sprite: &Sprite, offset: (usize, usize)) -> bool {
+        let mut flipped = false;
         let height = sprite.get_height();
 
         for row in 0..height {
             for column in 0..8 {
-                let x = (offset.0 + column) % SCREEN_WIDTH;
-                let y = (offset.1 + row) % SCREEN_HEIGHT;
-                self.pixels[x + y * SCREEN_WIDTH] = sprite.get_pixel(column, row);
+                if sprite.get_pixel(column, row) == Pixel(true) {
+                    let x = (offset.0 + column) % SCREEN_WIDTH;
+                    let y = (offset.1 + row) % SCREEN_HEIGHT;
+                    let pos = x + y * SCREEN_WIDTH;
+                    self.pixels[pos] = match self.pixels[pos] {
+                        Pixel(true) => {
+                            flipped = true;
+                            Pixel(false)
+                        }
+                        Pixel(false) => Pixel(true),
+                    }
+                }
             }
         }
+
+        flipped
     }
 
     pub fn print(&self) {
