@@ -41,8 +41,20 @@ impl Chip8 {
         self.stack.pop()
     }
 
+    fn run_op(&mut self, op: u16) {
+        match op {
+            0 => {
+                return;
+            }
+            _ => {
+                return;
+            }
+        }
+    }
+
     pub fn tick(&mut self) {
-        let instruction = self.ram.fetch();
+        let op = self.ram.next();
+        self.run_op(op);
 
         self.sound_timer.tick();
         self.delay_timer.tick();
