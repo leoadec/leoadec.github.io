@@ -173,8 +173,6 @@ impl Chip8 {
         let value_1 = self.v_registers[register_1];
         let value_2 = self.v_registers[register_2];
 
-        dbg!(trailing_nb);
-
         match trailing_nb {
             0x0 => self.v_registers[register_1] = value_2,
             0x1 => self.v_registers[register_1] |= value_2,
@@ -271,7 +269,6 @@ impl Chip8 {
     }
 
     fn run_op(&mut self, op: u16) {
-        dbg!(op);
         match op {
             0x0000 => (),
             0x00e0 => self.screen.clear(),
@@ -292,7 +289,6 @@ impl Chip8 {
             0xe09e..=0xefa1 => self.handle_key_press(op),
             0xf007..=0xff65 => self.handle_timer_ops(op),
             _ => {
-                dbg!(op);
                 panic!("Unrecognized operation.");
             }
         }
@@ -301,15 +297,17 @@ impl Chip8 {
     fn tick(&mut self) {
         let op = self.ram.next();
         self.run_op(op);
-
-        self.sound_timer.tick();
-        self.delay_timer.tick();
     }
 
     pub fn run(&mut self) {
         loop {
-            self.tick();
+            for _ in 0..10 {
+                self.tick();
+            }
             thread::sleep(time::Duration::from_millis(30));
+
+            self.sound_timer.tick();
+            self.delay_timer.tick();
             self.screen.print();
         }
     }
