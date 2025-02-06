@@ -1,6 +1,7 @@
 #[derive(Clone, Copy, Debug)]
 pub struct Pixel(pub bool);
 
+#[derive(Debug)]
 pub struct Sprite {
     pixels: Vec<Pixel>,
     height: u8,
@@ -26,5 +27,19 @@ impl Sprite {
             pixels: pixels,
             height: height as u8,
         }
+    }
+
+    pub fn get_pixel(&self, x: usize, y: usize) -> Pixel {
+        let pos = x + 8 * y;
+
+        if (pos >= 8 * self.height as usize) {
+            panic!("Attempting to read beyond the size of the Sprite.");
+        };
+
+        self.pixels[pos]
+    }
+
+    pub fn get_height(&self) -> usize {
+        self.height as usize
     }
 }

@@ -22,7 +22,15 @@ impl Screen {
     }
 
     pub fn draw_sprite(&mut self, sprite: &Sprite, offset: (usize, usize)) {
-        self.pixels[offset.0 + offset.1 * SCREEN_WIDTH] = Pixel(true);
+        let height = sprite.get_height();
+
+        for row in 0..height {
+            for column in 0..8 {
+                let x = (offset.0 + column) % SCREEN_WIDTH;
+                let y = (offset.1 + row) % SCREEN_HEIGHT;
+                self.pixels[x + y * SCREEN_WIDTH] = sprite.get_pixel(column, row);
+            }
+        }
     }
 
     pub fn print(&self) {
