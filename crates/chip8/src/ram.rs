@@ -1,8 +1,9 @@
 const RAM_SIZE: usize = 4 * 1024;
+const FIRST_INSTRUCTION: u16 = 512;
 
 #[derive(Debug)]
 pub struct Ram {
-    program_counter: u8,
+    program_counter: u16,
     memory: [u8; RAM_SIZE],
 }
 
@@ -10,7 +11,7 @@ impl Ram {
     pub fn new() -> Self {
         Ram {
             memory: [0; RAM_SIZE],
-            program_counter: 0,
+            program_counter: FIRST_INSTRUCTION,
         }
     }
 

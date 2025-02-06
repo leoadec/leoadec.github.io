@@ -11,7 +11,6 @@ use timer::{Beeper, Timer};
 
 #[derive(Debug)]
 pub struct Chip8 {
-    program_counter: u16,
     i_register: u16,
     v_registers: [u8; 16],
     ram: Ram,
@@ -24,7 +23,6 @@ pub struct Chip8 {
 impl Chip8 {
     pub fn new() -> Self {
         Chip8 {
-            program_counter: 512,
             i_register: 0,
             v_registers: [0; 16],
             ram: Ram::new(),
