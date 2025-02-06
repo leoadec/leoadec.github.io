@@ -33,6 +33,10 @@ impl Chip8 {
         }
     }
 
+    pub fn load(&mut self, buffer: &[u8]) {
+        return;
+    }
+
     pub fn stack_push(&mut self, value: u16) {
         self.stack.push(value);
     }
