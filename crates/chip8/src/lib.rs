@@ -178,8 +178,16 @@ impl Chip8 {
             0x1 => self.v_registers[register_1] |= value_2,
             0x2 => self.v_registers[register_1] &= value_2,
             0x3 => self.v_registers[register_1] ^= value_2,
-            0x4 => (),
-            0x5 => (),
+            0x4 => {
+                let (result, of) = self.v_registers[register_1].overflowing_add(value_2);
+                self.v_registers[0xf] = if of { 1 } else { 0 };
+                self.v_registers[register_1] = result;
+            }
+            0x5 => {
+                let (result, uf) = self.v_registers[register_1].overflowing_sub(value_2);
+                self.v_registers[0xf] = if uf { 0 } else { 0 };
+                self.v_registers[register_1] = result;
+            }
             0x6 => (),
             0x7 => (),
             0xe => (),
