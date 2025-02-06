@@ -12,15 +12,14 @@ impl Sprite {
         let height = bytes.len();
         let mut pixels: Vec<Pixel> = Vec::new();
         for row in 0..height {
-            let mut byte = bytes[row];
+            let byte = bytes[row];
             for column in 0..8 {
-                let pixel = match byte & 1 {
+                let pixel = match (byte >> column) & 1 {
                     0 => Pixel(false),
                     1 => Pixel(true),
                     _ => panic!("Unreachable code."),
                 };
                 pixels.push(pixel);
-                byte = byte >> 1;
             }
         }
         Sprite {

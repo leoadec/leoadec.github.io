@@ -1,4 +1,4 @@
-trait TimedAction {
+pub trait TimedAction {
     fn execute(&self);
 }
 
