@@ -174,7 +174,7 @@ impl Chip8 {
         let value_2 = self.v_registers[register_2];
 
         match trailing_nb {
-            0x0 => (),
+            0x0 => self.v_registers[register_1] = value_2,
             0x1 => (),
             0x2 => (),
             0x3 => (),
