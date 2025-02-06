@@ -15,6 +15,10 @@ impl Ram {
         }
     }
 
+    pub fn load(&mut self, buffer: &[u8]) {
+        let len = buffer.len();
+    }
+
     pub fn next(&mut self) -> u16 {
         if (self.program_counter as usize) >= (RAM_SIZE - 1) {
             panic!("Attempt to read beyond the size of the RAM.");
