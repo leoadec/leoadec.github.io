@@ -165,7 +165,26 @@ impl Chip8 {
     }
 
     fn handle_bitwise_ops(&mut self, op: u16) {
-        return;
+        let trailing_nb = 0x000f & op as u8;
+
+        let register_1 = ((0x0f00 & op) >> 8) as usize;
+        let register_2 = ((0x00f0 & op) >> 4) as usize;
+
+        let value_1 = self.v_registers[register_1];
+        let value_2 = self.v_registers[register_2];
+
+        match trailing_nb {
+            0x0 => (),
+            0x1 => (),
+            0x2 => (),
+            0x3 => (),
+            0x4 => (),
+            0x5 => (),
+            0x6 => (),
+            0x7 => (),
+            0xe => (),
+            _ => panic!("Unrecognized operation."),
+        }
     }
 
     fn handle_key_press(&mut self, op: u16) {
