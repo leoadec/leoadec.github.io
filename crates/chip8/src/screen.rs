@@ -53,14 +53,14 @@ impl Screen {
             for x in 0..SCREEN_WIDTH {
                 match self.pixels[x + SCREEN_WIDTH * y] {
                     Pixel(false) => {
-                        out.write(&[0x2e]);
+                        out.write(&[0x20]);
                     }
                     Pixel(true) => {
                         out.write(&[0x23]);
                     }
                 }
             }
-            stdout().write(&[0x0a]);
+            stdout().write(&[0x7c, 0x0a, 0x7c]);
         }
     }
 }
