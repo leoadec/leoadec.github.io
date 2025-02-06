@@ -9,8 +9,6 @@ use screen::Screen;
 use stack::Stack;
 use timer::{Beeper, Timer};
 
-use termion::clear;
-
 #[derive(Debug)]
 pub struct Chip8 {
     i_register: u16,
@@ -59,11 +57,9 @@ impl Chip8 {
     }
 
     pub fn run(&mut self) {
-        println!("{}", clear::All);
-        return;
-
         loop {
             self.tick();
+            self.screen.print();
         }
     }
 }
