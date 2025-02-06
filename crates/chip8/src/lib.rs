@@ -188,9 +188,15 @@ impl Chip8 {
                 self.v_registers[0xf] = if uf { 0 } else { 0 };
                 self.v_registers[register_1] = result;
             }
-            0x6 => (),
+            0x6 => {
+                self.v_registers[0xf] = value_1 & 1;
+                self.v_registers[register_1] >>= 1;
+            }
+            0xe => {
+                self.v_registers[0xf] = (value_1 >> 7) & 1;
+                self.v_registers[register_1] <<= 1;
+            }
             0x7 => (),
-            0xe => (),
             _ => panic!("Unrecognized operation."),
         }
     }
