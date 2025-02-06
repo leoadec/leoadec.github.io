@@ -42,12 +42,9 @@ impl Chip8 {
 
     fn run_op(&mut self, op: u16) {
         match op {
-            0 => {
-                return;
-            }
-            _ => {
-                return;
-            }
+            0x00 => (),
+            0xe0 => self.screen.clear(),
+            _ => (),
         }
     }
 

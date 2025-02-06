@@ -17,6 +17,10 @@ impl Screen {
         }
     }
 
+    pub fn clear(&mut self) {
+        self.pixels = [Pixel(false); SCREEN_WIDTH * SCREEN_HEIGHT];
+    }
+
     pub fn print(&self) {
         let mut out = stdout();
 
