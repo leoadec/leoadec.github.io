@@ -164,6 +164,10 @@ impl Chip8 {
         }
     }
 
+    fn handle_bitwise_ops(&mut self, op: u16) {
+        return;
+    }
+
     fn handle_key_press(&mut self, op: u16) {
         let trailing_byte = 0x00ff & op as u8;
 
@@ -183,6 +187,10 @@ impl Chip8 {
         };
     }
 
+    fn handle_timer_ops(&self, op: u16) {
+        return;
+    }
+
     fn run_op(&mut self, op: u16) {
         match op {
             0x0000 => (),
@@ -200,8 +208,10 @@ impl Chip8 {
             0x7000..=0x7fff => self.add_to_v_register(op),
             0x8000..=0x8fff => self.assign_from_v_register(op),
             0xd000..=0xdfff => self.draw_sprite(op),
+            0x8000..=0x8ffe => self.handle_bitwise_ops(op),
             0xe09e..=0xefa1 => self.handle_key_press(op),
-            _ => (),
+            0xf007..=0xff65 => self.handle_timer_ops(op),
+            _ => panic!("Unrecognized operation."),
         }
     }
 
