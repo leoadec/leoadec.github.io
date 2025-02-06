@@ -25,8 +25,8 @@ impl Ram {
         self.program_counter
     }
 
-    pub fn get_sprite(&self, address: usize, size: usize) -> Sprite {
-        Sprite::from_bytes(&self.memory[address..address + size])
+    pub fn get_sprite(&self, address: usize, rows: usize) -> Sprite {
+        Sprite::from_bytes(&self.memory[address..address + rows + 1])
     }
 
     pub fn load(&mut self, buffer: &[u8]) {

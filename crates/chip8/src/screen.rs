@@ -1,6 +1,6 @@
 use std::io::{stdout, Write};
 
-use crate::sprite::Pixel;
+use crate::sprite::{Pixel, Sprite};
 
 pub const SCREEN_HEIGHT: usize = 32;
 pub const SCREEN_WIDTH: usize = 64;
@@ -19,6 +19,10 @@ impl Screen {
 
     pub fn clear(&mut self) {
         self.pixels = [Pixel(false); SCREEN_WIDTH * SCREEN_HEIGHT];
+    }
+
+    pub fn draw_sprite(&mut self, sprite: &Sprite, offset: (usize, usize)) {
+        self.pixels[offset.0 + offset.1 * SCREEN_WIDTH] = Pixel(true);
     }
 
     pub fn print(&self) {

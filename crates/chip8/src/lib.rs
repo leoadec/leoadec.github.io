@@ -139,7 +139,19 @@ impl Chip8 {
     }
 
     fn draw_sprite(&mut self, op: u16) {
-        let sprite = self.ram.get_sprite(self.i_register as usize, 8);
+        let register_x = (op & 0x0f00 >> 8) as usize;
+        let register_y = (op & 0x00f0 >> 4) as usize;
+        let rows = (op & 0x000f) as usize;
+
+        if rows == 0 {
+            panic!("Trying to create a sprite with zero pixels.");
+        }
+
+        let pos_x = self.v_registers[register_x] as usize;
+        let pos_y = self.v_registers[register_y] as usize;
+
+        let sprite = self.ram.get_sprite(self.i_register as usize, rows);
+        self.screen.draw_sprite(&sprite, (pos_x, pos_y));
     }
 
     fn run_op(&mut self, op: u16) {
@@ -158,6 +170,7 @@ impl Chip8 {
             0xa000..=0xafff => self.assign_to_i_register(op),
             0x7000..=0x7fff => self.add_to_v_register(op),
             0x8000..=0x8fff => self.assign_from_v_register(op),
+            0xd000..=0xdfff => self.draw_sprite(op),
             _ => (),
         }
     }
