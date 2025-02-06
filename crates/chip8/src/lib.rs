@@ -75,6 +75,10 @@ impl Chip8 {
     }
 
     fn if_register_matches_register(&mut self, op: u16) {
+        if ((0x000f & op) != 0) {
+            panic!("Unrecognized operation.");
+        }
+
         let register_1 = ((0x0f00 & op) >> 8) as usize;
         let register_2 = ((0x00f0 & op) >> 4) as usize;
 
