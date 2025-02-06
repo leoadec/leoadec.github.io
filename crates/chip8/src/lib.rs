@@ -188,7 +188,23 @@ impl Chip8 {
     }
 
     fn handle_timer_ops(&self, op: u16) {
-        return;
+        let trailing_byte = 0x00ff & op as u8;
+
+        let register_nb = 0x0f00 & op >> 8 as u8;
+        let value = self.v_registers[register_nb as usize];
+
+        match trailing_byte {
+            0x07 => (),
+            0x0a => (),
+            0x15 => (),
+            0x18 => (),
+            0x1e => (),
+            0x29 => (),
+            0x33 => (),
+            0x55 => (),
+            0x65 => (),
+            _ => panic!("Unrecognized operation."),
+        }
     }
 
     fn run_op(&mut self, op: u16) {
