@@ -83,6 +83,13 @@ impl Chip8 {
         }
     }
 
+    fn assign_to_register(&mut self, op: u16) {
+        let literal = 0x00ff & op as u8;
+        let register_nb = ((0x0f00 & op) >> 8) as usize;
+
+        self.v_registers[register_nb] = literal;
+    }
+
     fn run_op(&mut self, op: u16) {
         match op {
             0x0000 => (),
@@ -93,6 +100,7 @@ impl Chip8 {
             0x3000..=0x3fff => self.if_register_matches_literal(op),
             0x4000..=0x4fff => self.if_register_does_not_match_literal(op),
             0x5000..=0x5fff => self.if_register_matches_register(op),
+            0x6000..=0x6fff => self.assign_to_register(op),
             _ => (),
         }
     }
