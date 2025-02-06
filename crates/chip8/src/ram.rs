@@ -16,7 +16,11 @@ impl Ram {
     }
 
     pub fn load(&mut self, buffer: &[u8]) {
-        let len = buffer.len();
+        let last_instruction = FIRST_INSTRUCTION as usize + buffer.len();
+
+        if last_instruction > RAM_SIZE {
+            panic!("Program size is too long.");
+        }
     }
 
     pub fn next(&mut self) -> u16 {
