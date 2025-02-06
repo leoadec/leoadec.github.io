@@ -13,7 +13,6 @@ mod timer;
 use keyboard::Keyboard;
 use ram::Ram;
 use screen::Screen;
-use sprite::Sprite;
 use stack::Stack;
 use timer::{Beeper, Timer};
 
@@ -252,7 +251,15 @@ impl Chip8 {
             0x29 => {
                 self.i_register = 0;
             }
-            0x33 => (),
+            0x33 => {
+                self.ram
+                    .write_byte(self.i_register, (value as f32 / 100.0).floor() as u8);
+                self.ram.write_byte(
+                    self.i_register + 1,
+                    ((value as f32 / 10.0) % 10.0).floor() as u8,
+                );
+                self.ram.write_byte(self.i_register + 2, (value % 10) as u8);
+            }
             0x55 => {
                 for nb in 0..=register_nb {
                     self.ram
@@ -309,6 +316,7 @@ impl Chip8 {
             self.sound_timer.tick();
             self.delay_timer.tick();
             self.screen.print();
+            self.keyboard.reset();
         }
     }
 }

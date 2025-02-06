@@ -32,7 +32,7 @@ impl Sprite {
     pub fn get_pixel(&self, x: usize, y: usize) -> Pixel {
         let pos = x + 8 * y;
 
-        if (pos >= 8 * self.height as usize) {
+        if pos >= 8 * self.height as usize {
             panic!("Attempting to read beyond the size of the Sprite.");
         };
 
