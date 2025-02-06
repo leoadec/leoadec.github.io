@@ -41,7 +41,13 @@ impl Chip8 {
     }
 
     fn return_from_subroutine(&mut self) {
-        self.ram.goto(self.stack.pop());
+        let address = self.stack.pop();
+        self.ram.goto(address);
+    }
+
+    fn jump(&mut self, op: u16) {
+        let address = 0x0fff & op;
+        self.ram.goto(address);
     }
 
     fn run_op(&mut self, op: u16) {
@@ -49,6 +55,7 @@ impl Chip8 {
             0x0000 => (),
             0x00e0 => self.screen.clear(),
             0x00ee => self.return_from_subroutine(),
+            0x1000..=0x1fff => self.jump(op),
             _ => (),
         }
     }
