@@ -33,6 +33,14 @@ impl Ram {
         Sprite::from_bytes(&self.memory[address..address + rows + 1])
     }
 
+    pub fn read_byte(&self, address: u16) -> u8 {
+        self.memory[address as usize]
+    }
+
+    pub fn write_byte(&mut self, address: u16, value: u8) {
+        self.memory[address as usize] = value;
+    }
+
     pub fn load(&mut self, buffer: &[u8]) {
         let last_instruction = FIRST_INSTRUCTION as usize + buffer.len();
 
@@ -52,8 +60,6 @@ impl Ram {
         let second_byte = self.memory[self.program_counter as usize + 1] as u16;
 
         self.program_counter += 2;
-
-        dbg!(self.program_counter, first_byte, second_byte);
 
         (first_byte << 8) | second_byte
     }
