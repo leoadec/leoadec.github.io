@@ -245,8 +245,12 @@ impl Chip8 {
                 self.sound_timer
                     .set_countdown(self.v_registers[register_nb]);
             }
-            0x1e => (),
-            0x29 => (),
+            0x1e => {
+                self.i_register = self.i_register.wrapping_add(value as u16);
+            }
+            0x29 => {
+                self.i_register = 0;
+            }
             0x33 => (),
             0x55 => (),
             0x65 => (),
