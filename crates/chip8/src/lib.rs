@@ -1,12 +1,14 @@
 use std::thread;
 use std::time;
 
+mod keyboard;
 mod ram;
 mod screen;
 pub mod sprite;
 mod stack;
 mod timer;
 
+use keyboard::Keyboard;
 use ram::Ram;
 use screen::Screen;
 use sprite::Sprite;
@@ -22,6 +24,7 @@ pub struct Chip8 {
     screen: Screen,
     sound_timer: Timer<Beeper>,
     delay_timer: Timer<Beeper>,
+    keyboard: Keyboard,
 }
 
 impl Chip8 {
@@ -34,6 +37,7 @@ impl Chip8 {
             screen: Screen::new(),
             sound_timer: Timer::<Beeper>::new(),
             delay_timer: Timer::<Beeper>::new(),
+            keyboard: Keyboard::new(),
         }
     }
 
