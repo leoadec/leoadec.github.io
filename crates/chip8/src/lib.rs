@@ -8,6 +8,23 @@ use screen::Screen;
 use stack::Stack;
 
 #[derive(Debug)]
+struct Timer {
+    countdown: u8,
+}
+
+impl Timer {
+    pub fn new() -> Self {
+        Timer { countdown: 0 }
+    }
+
+    pub fn tick(&mut self) {
+        if self.countdown > 0 {
+            self.countdown -= 1;
+        };
+    }
+}
+
+#[derive(Debug)]
 pub struct Chip8 {
     program_counter: u16,
     i_register: u16,
@@ -15,8 +32,8 @@ pub struct Chip8 {
     ram: Ram,
     stack: Stack,
     screen: Screen,
-    sound_timer: u8,
-    delay_timer: u8,
+    sound_timer: Timer,
+    delay_timer: Timer,
 }
 
 impl Chip8 {
@@ -28,8 +45,8 @@ impl Chip8 {
             ram: Ram::new(),
             stack: Stack::new(),
             screen: Screen::new(),
-            sound_timer: 0,
-            delay_timer: 0,
+            sound_timer: Timer::new(),
+            delay_timer: Timer::new(),
         }
     }
 
@@ -39,5 +56,12 @@ impl Chip8 {
 
     pub fn stack_pop(&mut self) -> u16 {
         self.stack.pop()
+    }
+
+    pub fn tick(&mut self) {
+        let instruction = self.ram.fetch();
+
+        self.sound_timer.tick();
+        self.delay_timer.tick();
     }
 }

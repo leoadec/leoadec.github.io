@@ -5,4 +5,6 @@ fn main() {
 
     chip8.stack_push(3);
     print!("{}", chip8.stack_pop());
+
+    chip8.tick();
 }
