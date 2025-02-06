@@ -21,7 +21,7 @@ pub struct Chip8 {
 }
 
 impl Chip8 {
-    pub fn new() -> Self {
+    pub fn build(filename: &str) -> Self {
         Chip8 {
             i_register: 0,
             v_registers: [0; 16],
