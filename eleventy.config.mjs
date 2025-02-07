@@ -13,4 +13,16 @@ export default async function(eleventyConfig) {
         return async (data) => { return result.css };
       }
     });
+
+    eleventyConfig.addTemplateFormats('js');
+    eleventyConfig.addExtension('js', {
+      outputFileExtension: 'js',
+      compile: async function(inputContent) {
+        return async (data) => { return inputContent; };
+      }
+    });
+
+    eleventyConfig.addPassthroughCopy({ "crates/*/pkg/*.wasm": "wasm" });
+    eleventyConfig.addPassthroughCopy({ "crates/*/pkg/*.js": "wasm" });
+
 }

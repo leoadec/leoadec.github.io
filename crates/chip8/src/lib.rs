@@ -1,7 +1,9 @@
-use std::thread;
+use std::fs::File;
+use std::io::Read;
 use std::time;
 
 use rand::random;
+use wasm_bindgen::prelude::*;
 
 mod keyboard;
 mod ram;
@@ -17,6 +19,7 @@ use stack::Stack;
 use timer::{Beeper, Timer};
 
 #[derive(Debug)]
+#[wasm_bindgen]
 pub struct Chip8 {
     i_register: u16,
     v_registers: [u8; 16],
@@ -28,7 +31,9 @@ pub struct Chip8 {
     keyboard: Keyboard,
 }
 
+#[wasm_bindgen]
 impl Chip8 {
+    #[wasm_bindgen(constructor)]
     pub fn new() -> Self {
         Chip8 {
             i_register: 0,
@@ -42,6 +47,7 @@ impl Chip8 {
         }
     }
 
+    #[wasm_bindgen]
     pub fn load(&mut self, buffer: &[u8]) {
         self.ram.load(buffer);
     }
@@ -306,13 +312,23 @@ impl Chip8 {
         self.run_op(op);
     }
 
+    #[wasm_bindgen]
+    pub fn update_frame(&mut self) {
+        for _ in 0..10 {
+            self.tick();
+        };
+        self.sound_timer.tick();
+        self.delay_timer.tick();
+
+        self.screen.print();
+    }
+
+    #[wasm_bindgen]
     pub fn run(&mut self) {
         loop {
             for _ in 0..10 {
                 self.tick();
             }
-            thread::sleep(time::Duration::from_millis(30));
-
             self.sound_timer.tick();
             self.delay_timer.tick();
             self.screen.print();

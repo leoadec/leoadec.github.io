@@ -8,3 +8,4 @@ node_modules/
 
 # Rust
 crates/**/target
+crates/**/pkg

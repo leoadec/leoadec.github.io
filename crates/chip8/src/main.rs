@@ -2,7 +2,7 @@ use std::env;
 use std::fs::File;
 use std::io::Read;
 
-use chip8::Chip8;
+use crate::Chip8;
 
 fn main() {
     let mut args = env::args().skip(1);
