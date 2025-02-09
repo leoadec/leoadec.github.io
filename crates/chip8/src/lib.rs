@@ -1,8 +1,10 @@
 use std::fs::File;
 use std::io::Read;
+use std::str;
 use std::time;
 
 use rand::random;
+use js_sys::Uint8Array;
 use wasm_bindgen::prelude::*;
 
 mod keyboard;
@@ -17,6 +19,14 @@ use ram::Ram;
 use screen::Screen;
 use stack::Stack;
 use timer::{Beeper, Timer};
+
+#[wasm_bindgen]
+extern "C" {
+    // Use `js_namespace` here to bind `console.log(..)` instead of just
+    // `log(..)`
+    #[wasm_bindgen(js_namespace = console)]
+    pub fn log(s: &str);
+}
 
 #[derive(Debug)]
 #[wasm_bindgen]
@@ -48,8 +58,12 @@ impl Chip8 {
     }
 
     #[wasm_bindgen]
-    pub fn load(&mut self, buffer: &[u8]) {
-        self.ram.load(buffer);
+    pub fn load(&mut self, data: Uint8Array) {
+        self.load_original(data.to_vec());
+    }
+
+    pub fn load_original(&mut self, buffer: Vec<u8>) {
+        self.ram.load(&buffer);
     }
 
     fn return_from_subroutine(&mut self) {
@@ -58,7 +72,9 @@ impl Chip8 {
     }
 
     fn jump(&mut self, op: u16) {
+        log("Jump instruction called!");
         let address = 0x0fff & op;
+        log(&address.to_string());
         self.ram.goto(address);
     }
 
@@ -119,14 +135,19 @@ impl Chip8 {
     }
 
     fn assign_to_v_register(&mut self, op: u16) {
+        log("Assigning value to v regsiter.");
         let literal = 0x00ff & op as u8;
         let register_nb = ((0x0f00 & op) >> 8) as usize;
+        log(&literal.to_string());
+        log(&register_nb.to_string());
 
         self.v_registers[register_nb] = literal;
     }
 
     fn assign_to_i_register(&mut self, op: u16) {
+        log("Assigning value to i register.");
         let literal = 0x0fff & op as u16;
+        log(&literal.to_string());
 
         self.i_register = literal;
     }
@@ -158,6 +179,10 @@ impl Chip8 {
 
         let pos_x = self.v_registers[register_x] as usize;
         let pos_y = self.v_registers[register_y] as usize;
+
+        log("Drawing at this point:");
+        log(&pos_x.to_string());
+        log(&pos_y.to_string());
 
         let sprite = self.ram.get_sprite(self.i_register as usize, rows);
         let flipped = self.screen.draw_sprite(&sprite, (pos_x, pos_y));
@@ -255,7 +280,7 @@ impl Chip8 {
                 self.i_register = self.i_register.wrapping_add(value as u16);
             }
             0x29 => {
-                self.i_register = 0;
+                self.i_register = 5 * value as u16;
             }
             0x33 => {
                 self.ram
@@ -307,20 +332,18 @@ impl Chip8 {
         }
     }
 
-    fn tick(&mut self) {
+    #[wasm_bindgen]
+    pub fn tick(&mut self) {
         let op = self.ram.next();
         self.run_op(op);
     }
 
     #[wasm_bindgen]
-    pub fn update_frame(&mut self) {
-        for _ in 0..10 {
-            self.tick();
-        };
+    pub fn update_frame(&mut self) -> String {
         self.sound_timer.tick();
         self.delay_timer.tick();
 
-        self.screen.print();
+        self.screen.print()
     }
 
     #[wasm_bindgen]

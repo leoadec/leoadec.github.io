@@ -1,4 +1,7 @@
+use std::str;
+
 use crate::sprite::Sprite;
+use crate::log;
 
 const RAM_SIZE: usize = 4 * 1024;
 const FIRST_INSTRUCTION: u16 = 512;
@@ -49,7 +52,7 @@ impl Ram {
     }
 
     pub fn get_sprite(&self, address: usize, rows: usize) -> Sprite {
-        Sprite::from_bytes(&self.memory[address..=address + rows])
+        Sprite::from_bytes(&self.memory[address..address + rows])
     }
 
     pub fn read_byte(&self, address: u16) -> u8 {
@@ -82,6 +85,7 @@ impl Ram {
 
         self.program_counter += 2;
 
-        (first_byte << 8) | second_byte
+        let return_value = (first_byte << 8) | second_byte;
+        return_value
     }
 }
