@@ -14,7 +14,7 @@ impl Sprite {
         for row in 0..height {
             let byte = bytes[row];
             for column in 0..8 {
-                let pixel = match (byte >> column) & 1 {
+                let pixel = match (byte << column) & 128 {
                     0 => Pixel(false),
                     1 => Pixel(true),
                     _ => panic!("Unreachable code."),
