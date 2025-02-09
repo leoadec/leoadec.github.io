@@ -1,7 +1,7 @@
 use std::str;
 
-use crate::sprite::Sprite;
 use crate::log;
+use crate::sprite::Sprite;
 
 const RAM_SIZE: usize = 4 * 1024;
 const FIRST_INSTRUCTION: u16 = 512;

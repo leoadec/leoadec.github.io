@@ -3,8 +3,8 @@ use std::io::Read;
 use std::str;
 use std::time;
 
-use rand::random;
 use js_sys::Uint8Array;
+use rand::random;
 use wasm_bindgen::prelude::*;
 
 mod keyboard;
