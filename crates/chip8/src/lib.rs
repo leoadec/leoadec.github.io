@@ -162,7 +162,6 @@ impl Chip8 {
         let pos_x = self.v_registers[register_x] as usize;
         let pos_y = self.v_registers[register_y] as usize;
 
-
         let sprite = self.ram.get_sprite(self.i_register as usize, rows);
         let flipped = self.screen.draw_sprite(&sprite, (pos_x, pos_y));
 
@@ -347,18 +346,5 @@ impl Chip8 {
             _ => return,
         };
         self.keyboard.update_key(key_nb, status);
-    }
-
-    #[wasm_bindgen]
-    pub fn run(&mut self) {
-        loop {
-            for _ in 0..10 {
-                self.tick();
-            }
-            self.sound_timer.tick();
-            self.delay_timer.tick();
-            self.screen.print();
-            self.keyboard.reset();
-        }
     }
 }

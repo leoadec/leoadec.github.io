@@ -8,14 +8,6 @@ impl Keyboard {
         Keyboard { keys: [false; 16] }
     }
 
-    pub fn reset(&mut self) {
-        for nb in 0x0..0xf {
-            self.keys[nb] = false;
-        }
-
-        self.keys[0xf] = true;
-    }
-
     pub fn update_key(&mut self, key_nb: u8, status: bool) {
         if key_nb > 0xf {
             panic!("Attempting to read key out of range.");
