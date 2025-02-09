@@ -297,7 +297,7 @@ impl Chip8 {
             }
             0x65 => {
                 for nb in 0..=register_nb {
-                    self.i_register = self.ram.read_byte(self.i_register + nb as u16) as u16;
+                    self.v_registers[nb] = self.ram.read_byte(self.i_register + nb as u16);
                 }
             }
             _ => panic!("Unrecognized operation."),
