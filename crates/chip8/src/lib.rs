@@ -345,6 +345,33 @@ impl Chip8 {
     }
 
     #[wasm_bindgen]
+    pub fn handle_keys(&mut self, key: &str, status: bool) {
+        log("Handle keys called.");
+        log(key);
+        let key_nb = match key.chars().next() {
+            Some('1') => 0x1,
+            Some('2') => 0x2,
+            Some('3') => 0x3,
+            Some('q') => 0x4,
+            Some('w') => 0x5,
+            Some('e') => 0x6,
+            Some('a') => 0x7,
+            Some('s') => 0x8,
+            Some('d') => 0x9,
+            Some('z') => 0x0,
+            Some('x') => 0xa,
+            Some('c') => 0xb,
+            Some('4') => 0xc,
+            Some('r') => 0xd,
+            Some('f') => 0xe,
+            Some('v') => 0xf,
+            _ => return,
+        };
+        log(&key_nb.to_string());
+        self.keyboard.update_key(key_nb, status);
+    }
+
+    #[wasm_bindgen]
     pub fn run(&mut self) {
         loop {
             for _ in 0..10 {

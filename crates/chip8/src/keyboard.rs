@@ -16,6 +16,14 @@ impl Keyboard {
         self.keys[0xf] = true;
     }
 
+    pub fn update_key(&mut self, key_nb: u8, status: bool) {
+        if key_nb > 0xf {
+            panic!("Attempting to read key out of range.");
+        };
+
+        self.keys[key_nb as usize] = status;
+    }
+
     pub fn is_pressed(&self, key_nb: u8) -> bool {
         if key_nb > 0xf {
             panic!("Attempting to read key out of range.");
