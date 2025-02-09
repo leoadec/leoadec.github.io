@@ -17,14 +17,6 @@ use screen::Screen;
 use stack::Stack;
 use timer::{Beeper, Timer};
 
-#[wasm_bindgen]
-extern "C" {
-    // Use `js_namespace` here to bind `console.log(..)` instead of just
-    // `log(..)`
-    #[wasm_bindgen(js_namespace = console)]
-    pub fn log(s: &str);
-}
-
 #[derive(Debug)]
 #[wasm_bindgen]
 pub struct Chip8 {
@@ -130,19 +122,14 @@ impl Chip8 {
     }
 
     fn assign_to_v_register(&mut self, op: u16) {
-        log("Assigning value to v regsiter.");
         let literal = 0x00ff & op as u8;
         let register_nb = ((0x0f00 & op) >> 8) as usize;
-        log(&literal.to_string());
-        log(&register_nb.to_string());
 
         self.v_registers[register_nb] = literal;
     }
 
     fn assign_to_i_register(&mut self, op: u16) {
-        log("Assigning value to i register.");
         let literal = 0x0fff & op as u16;
-        log(&literal.to_string());
 
         self.i_register = literal;
     }
@@ -175,9 +162,6 @@ impl Chip8 {
         let pos_x = self.v_registers[register_x] as usize;
         let pos_y = self.v_registers[register_y] as usize;
 
-        log("Drawing at this point:");
-        log(&pos_x.to_string());
-        log(&pos_y.to_string());
 
         let sprite = self.ram.get_sprite(self.i_register as usize, rows);
         let flipped = self.screen.draw_sprite(&sprite, (pos_x, pos_y));
@@ -343,8 +327,6 @@ impl Chip8 {
 
     #[wasm_bindgen]
     pub fn handle_keys(&mut self, key: &str, status: bool) {
-        log("Handle keys called.");
-        log(key);
         let key_nb = match key.chars().next() {
             Some('1') => 0x1,
             Some('2') => 0x2,
@@ -364,7 +346,6 @@ impl Chip8 {
             Some('v') => 0xf,
             _ => return,
         };
-        log(&key_nb.to_string());
         self.keyboard.update_key(key_nb, status);
     }
 
