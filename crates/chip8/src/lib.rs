@@ -72,9 +72,7 @@ impl Chip8 {
     }
 
     fn jump(&mut self, op: u16) {
-        log("Jump instruction called!");
         let address = 0x0fff & op;
-        log(&address.to_string());
         self.ram.goto(address);
     }
 
@@ -169,8 +167,8 @@ impl Chip8 {
     }
 
     fn draw_sprite(&mut self, op: u16) {
-        let register_x = (op & 0x0f00 >> 8) as usize;
-        let register_y = (op & 0x00f0 >> 4) as usize;
+        let register_x = ((0x0f00 & op) >> 8) as usize;
+        let register_y = ((0x00f0 & op) >> 4) as usize;
         let rows = (op & 0x000f) as usize;
 
         if rows == 0 {
@@ -244,7 +242,7 @@ impl Chip8 {
             _ => panic!("Unrecognized key press instruction."),
         };
 
-        let register_nb = 0x0f00 & op >> 8 as u8;
+        let register_nb = (0x0f00 & op) >> 8 as u8;
         let key = self.v_registers[register_nb as usize];
 
         let condition = self.keyboard.is_pressed(key) ^ invert;
@@ -257,7 +255,7 @@ impl Chip8 {
     fn handle_timer_ops(&mut self, op: u16) {
         let trailing_byte = 0x00ff & op as u8;
 
-        let register_nb = (0x0f00 & op >> 8) as usize;
+        let register_nb = ((0x0f00 & op) >> 8) as usize;
         let value = self.v_registers[register_nb];
 
         match trailing_byte {
