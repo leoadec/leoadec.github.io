@@ -1,6 +1,3 @@
-use std::str;
-
-use crate::log;
 use crate::sprite::Sprite;
 
 const RAM_SIZE: usize = 4 * 1024;

@@ -1,7 +1,4 @@
-use std::fs::File;
-use std::io::Read;
 use std::str;
-use std::time;
 
 use js_sys::Uint8Array;
 use rand::random;

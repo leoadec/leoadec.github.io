@@ -1,6 +1,3 @@
-use std::io::{stdout, Write};
-
-use crate::log;
 use crate::sprite::{Pixel, Sprite};
 
 pub const SCREEN_HEIGHT: usize = 32;
