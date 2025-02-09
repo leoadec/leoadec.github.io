@@ -25,17 +25,12 @@ impl Screen {
     pub fn draw_sprite(&mut self, sprite: &Sprite, offset: (usize, usize)) -> bool {
         let mut flipped = false;
         let height = sprite.get_height();
-        log("The sprite has this height");
-        log(&height.to_string());
 
         for row in 0..height {
             for column in 0..8 {
                 if sprite.get_pixel(column, row) == Pixel(true) {
                     let x = (offset.0 + column) % SCREEN_WIDTH;
                     let y = (offset.1 + row) % SCREEN_HEIGHT;
-                    log("Printing at this position");
-                    log(&x.to_string());
-                    log(&y.to_string());
                     let pos = x + y * SCREEN_WIDTH;
                     self.pixels[pos] = match self.pixels[pos] {
                         Pixel(true) => {

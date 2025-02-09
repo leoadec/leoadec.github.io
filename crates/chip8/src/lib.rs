@@ -213,12 +213,12 @@ impl Chip8 {
             }
             0x5 => {
                 let (result, uf) = self.v_registers[register_1].overflowing_sub(value_2);
-                self.v_registers[0xf] = if uf { 0 } else { 0 };
+                self.v_registers[0xf] = if uf { 0 } else { 1 };
                 self.v_registers[register_1] = result;
             }
             0x7 => {
                 let (result, uf) = self.v_registers[register_2].overflowing_sub(value_1);
-                self.v_registers[0xf] = if uf { 0 } else { 0 };
+                self.v_registers[0xf] = if uf { 0 } else { 1 };
                 self.v_registers[register_2] = result;
             }
             0x6 => {

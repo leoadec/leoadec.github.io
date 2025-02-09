@@ -39,7 +39,7 @@ async function mainLoop(chip8) {
         }
         let frame_state = chip8.update_frame();
         printScreen(frame_state);
-        await new Promise((r) => setTimeout(r, 30));
+        await new Promise((r) => setTimeout(r, 10));
     }
 }
 
