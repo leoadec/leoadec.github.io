@@ -26,12 +26,10 @@ jobs:
         with:
           node-version: 22
           cache: 'npm'
-      - name: Install dev dependencies
-        run: |
-          npm install
+      - name: Install dependencies
+        run: npm install
       - name: Build with Eleventy
-        run: |
-          npm run build
+        run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -1,4 +1,5 @@
-.jekyll-cache/
+*.swp
+
 _site/
 
 node_modules/

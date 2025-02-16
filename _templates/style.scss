@@ -36,11 +36,20 @@ html {
     font-weight: bold;
   }
 
+  h3, h3 a {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
   h1, p {
     text-align: center;
   }
 
-  h1, main, p {
+  p.tagline {
+    font-size: 1.1rem;
+  }
+
+  h1, img, main, p {
     display: block;
     margin: auto;
     max-width: 50rem;
@@ -49,9 +58,15 @@ html {
 }
 
 main {
+  font-size: 1rem;
+
   address {
     margin: auto;
     text-align: center;
+  }
+
+  code {
+    font-size: 0.8rem;
   }
 
   dt {
@@ -72,6 +87,14 @@ main {
     }
   }
 
+  img {
+    filter: invert(1) brightness(0.8);
+ 
+    @media (prefers-color-scheme: light) {
+      filter: brightness(0.8);
+    }
+  }
+
   li.post {
     font-style: italic;
 
@@ -84,8 +107,32 @@ main {
     text-align: left;
   }
 
-  p.date {
+  p.abstract {
+    border-bottom: 1px solid $dark-fg;
+    border-top: 1px solid $dark-fg;
+    font-style: normal;
+    font-size: 1.1em;
+    margin: 1rem;
+    padding: 1rem;
+
+    @media (prefers-color-scheme: light) {
+      border-bottom: 1px solid $light-fg;
+    }
+  }
+
+  p.description {
     font-style: italic;
-    text-indent: 1rem;
+    text-indent: 0.7rem;
+    padding: 0.1rem;
+  }
+
+  pre {
+    border: 1px dashed $dark-fg;
+    margin: 1rem;
+    padding: 0.7rem;
+
+    @media (prefers-color-scheme: light) {
+      border: 1px dashed $light-fg;
+    }
   }
 }

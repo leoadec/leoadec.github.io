@@ -1,8 +1,17 @@
 ---
 layout: default
-tagline: from leoadec's blog
 ---
 
-<p class="date">{{ published }}</p>
+<p class="description">Posted on {{ page.date | date: "%d %B %Y" }}
+{% if author and author_link -%}
+by <a href="{{ author_link }}">{{ author }}</a>
+{%- endif -%}
+.</p>
 
-{{ content }}
+{% assign paragraphs = page.rawInput | split: "\n\n" %}
+
+<p class="abstract">
+{{ paragraphs | first }}
+</p>
+
+{{ content | split: "</p>" | shift  }}

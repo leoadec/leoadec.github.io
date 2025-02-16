@@ -16,14 +16,16 @@ layout: default.liquid
 
 {{ content }}
 
-{% if collections.post %}
+{% if collections.tech %}
 <h2>Posts</h2>
-<ul>
- {% for post in collections.post -%}
- <li class="post">
-  <a href="{{ post.url }}">{{ post.data.title }}</a>
-  &mdash; {{ post.data.published }} 
- </li>
+ {% for post in collections.tech -%}
+ <h3>
+  <a href="{{ post.url }}">{{ post.data.title }}
+  </a>
+ </h3>
+  <p class="description">
+  {%- if post.data.tagline %}{{ post.data.tagline }} &mdash;{%- endif %}
+    {{ post.date | date: "%d %B %Y" }} </p>
+  <p> {{ post.rawInput | split: "\n\n" | first }} </p>
  {%- endfor %}
-</ul>
 {% endif %}
