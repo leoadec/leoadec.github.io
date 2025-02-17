@@ -89,6 +89,7 @@ main {
 
   img {
     filter: invert(1) brightness(0.8);
+    max-width: 100%;
  
     @media (prefers-color-scheme: light) {
       filter: brightness(0.8);
@@ -130,6 +131,7 @@ main {
     border: 1px dashed $dark-fg;
     margin: 1rem;
     padding: 0.7rem;
+    overflow: scroll;
 
     @media (prefers-color-scheme: light) {
       border: 1px dashed $light-fg;
