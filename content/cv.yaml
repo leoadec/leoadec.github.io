@@ -1,7 +1,3 @@
----
-layout: cv.liquid
-title: Leonardo Andreta de Castro
-tagline: Curriculum Vitae
 jobs:
   - start: 2023
     title: Staff Software Engineer, Quantum Product
@@ -200,7 +196,7 @@ papers:
     journal: Annals of Physics
     volume: 367
     pages: 199-211
-    date: 2016
+    year: 2016
     url: https://www.sciencedirect.com/science/article/abs/pii/S0003491616000257
     doi: 10.1016/j.aop.2016.01.014
     arXiv: "1109.4796"
@@ -257,4 +253,3 @@ conferences:
         - Leonardo Andreta de Castro
         - Reginaldo de Jesus Napolitano
       title: Quantum error correction theory during logical gates and finite syndrome measurements
----

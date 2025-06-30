@@ -1,0 +1,17 @@
+{% extends "section.html" %}
+
+{% block contact %}
+{% set contact = load_data(path="content/contact.yaml") %}
+<address>
+{%- for data in contact.contact %}
+{{ data.type }}: <a href="{{data.external_url}}" target="_blank">{{data.title}}</a>
+{% endfor -%}
+</address>
+
+<address class="links">
+{%- for data in contact.links %}
+<a href="{{data.external_url}}" target="_blank" style="padding-right: 1em;">{{data.title}}</a>
+{% endfor -%}
+</address>
+
+{% endblock %}

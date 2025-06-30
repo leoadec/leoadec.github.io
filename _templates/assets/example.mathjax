@@ -1,3 +1,0 @@
-\oint_{\partial \Sigma} \mathbf{E} \cdot \mathrm{d} \ell =
-- \frac{\mathrm{d}}{\mathrm{d} t} \int \int_{\Sigma} \mathbf{B}
-\cdot \mathrm{d} \mathbf{S}.

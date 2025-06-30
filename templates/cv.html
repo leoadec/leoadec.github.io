@@ -1,10 +1,10 @@
----
-layout: default.liquid
----
+{% extends "page.html" %}
 
+{% block content %}
+{% set data = load_data(path="content/cv.yaml") %}
 <h2>Professional experience</h2>
 <dl>
-{%- for job in jobs %}
+{%- for job in data.jobs %}
   <dt>
     <span class="period">
     {{- job.start -}}&ndash;{%- if job.end -%}{{- job.end -}}{%- else -%}current{%- endif -%}
@@ -12,17 +12,12 @@ layout: default.liquid
     <span class="title">{{ job.title }}</span>
     {{ job.employer }} ({{ job.location }}).
   </dt>
-  <dd>
-    <ul>
-      {% for duty in job.duties %}<li>{{ duty }}</li>{% endfor %}
-    </ul>
-  </dd>
 {% endfor -%}
 </dl>
 
 <h2>Education</h2>
 <dl>
-{% for degree in degrees %}
+{% for degree in data.degrees %}
   <dt>
     <span class="period">
     {{- degree.start -}}&ndash;{%- if degree.end -%}{{- degree.end -}}{%- else -%}current{%- endif -%}
@@ -57,9 +52,9 @@ layout: default.liquid
 
 <h2>Selected papers</h2>
 <dl>
-{% for paper in papers limit: 5 -%}
+{% for paper in data.papers -%}
   <dt>
-    <span class="authors">{{ paper.authors | join: ", " }}.</span>
+    <span class="authors">{{ paper.authors }}.</span>
     <a href="{{ paper.url }}" target="_blank">
        &ldquo;{{ paper.title }}{% if paper.subtitle %}: {{ paper.subtitle }}{% endif %}&rdquo;
     </a>.
@@ -72,17 +67,14 @@ layout: default.liquid
       <a href="https://arxiv.org/abs/{{ paper.arXiv }}" target="_blank">arXiv: {{ paper.arXiv }}</a>.
     </span>
   </dt>
-  <dd>
-    <p>{{ paper.description }}</p>
-  </dd>
 {%- endfor %}
 </dl>
 <details>
   <summary>More papers</summary>
   <ul>
-  {% for paper in papers offset: 5 -%}
+  {% for paper in data.papers -%}
     <li>
-      <span class="authors">{{ paper.authors | join: ", " }}.</span>
+      <span class="authors">{{ paper.authors }}.</span>
       <a href="{{ paper.url }}" target="_blank">
          &ldquo;{{ paper.title }}{% if paper.subtitle %}: {{ paper.subtitle }}{% endif %}&rdquo;
       </a>.
@@ -101,10 +93,10 @@ layout: default.liquid
 
 <h2>Conference talks</h2>
 <dl>
-{% for event in conferences %}
+{% for event in data.conferences %}
   {% if event.talk %}
   <dt>
-    <span class="authors">{{ event.talk.authors | join: ", " }}.</span>
+    <span class="authors">{{ event.talk.authors }}.</span>
     &quot;{{ event.talk.title }}&quot;.
     {{ event.name }} {{ event.year }} ({{ event.location }}).
   </dt>
@@ -118,10 +110,10 @@ layout: default.liquid
 <details>
   <summary>Conference posters</summary>
   <ul>
-  {% for event in conferences -%}
+  {% for event in data.conferences -%}
     {%- if event.poster %}
     <li>
-      <span class="authors">{{ event.poster.authors | join: ", " }}.</span>
+    <span class="authors">{{ event.poster.authors }}.</span>
       &quot;{{ event.poster.title }}&quot;.
       {{ event.name }} {{ event.year }} ({{ event.location }}).
     </li>
@@ -129,4 +121,4 @@ layout: default.liquid
   {%- endfor %}
   </ul>
 </details>
-
+{% endblock %}
