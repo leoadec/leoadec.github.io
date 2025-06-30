@@ -2,7 +2,7 @@ This is a repository for my personal webpage.
 
 # Building
 
-Make sure you have [Zola](https://getzola.org)contact:
+Make sure you have [Zola](https://getzola.org) installed:
 
 ```
 zola build
