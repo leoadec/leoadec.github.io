@@ -24,10 +24,10 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install pipenv
-          pipenv install
+          pipenv --python $(which python) install
       - name: Build website
         run: |
-          pipenv run python src/build
+          pipenv --python $(which python) run python src/build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
