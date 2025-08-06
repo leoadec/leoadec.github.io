@@ -1,0 +1,123 @@
+{% extends "default.jinja2" %}
+
+{% block contact %}
+<h2>Professional experience</h2>
+<dl>
+{%- for job in data.jobs %}
+  <dt>
+    <span class="period">
+    {{- job.start -}}&ndash;{%- if job.end -%}{{- job.end -}}{%- else -%}current{%- endif -%}
+    </span>
+    <span class="title">{{ job.title }}</span>
+    {{ job.employer }} ({{ job.location }}).
+  </dt>
+{% endfor -%}
+</dl>
+
+<h2>Education</h2>
+<dl>
+{% for degree in data.degrees %}
+  <dt>
+    <span class="period">
+    {{- degree.start -}}&ndash;{%- if degree.end -%}{{- degree.end -}}{%- else -%}current{%- endif -%}
+    </span>
+    <span class="title">{{ degree.title }}</span>
+    {{ degree.university }} ({{ degree.location }}).
+    {% if degree.thesis %}
+    <details>
+       <summary>
+        Thesis:
+        <a href="{{ degree.thesis.external_url }}" target="_blank">&ldquo;{{ degree.thesis.title }}&rdquo;</a>.
+      </summary>
+      Supervisor: {{ degree.thesis.supervisor }}.
+    </details>
+    {% endif %}
+    {% if degree.grant %}
+    <details>
+      <summary>
+        Grant: <a href="{{ degree.grant.external_url }}" target=" _blank">&ldquo;{{ degree.grant.project }}&rdquo;</a>.
+      </summary>
+      Agency: {{ degree.grant.agency }}.
+    </details>
+    {% endif %}
+  <dt>
+  <dd>
+    <ul>
+    {% for duty in degree.duties %}<li>{{ duty }}</li>{% endfor %}
+    </ul>
+  </dd>
+{% endfor -%}
+</dl>
+
+<h2>Selected papers</h2>
+<dl>
+{% for paper in data.papers -%}
+  <dt>
+    <span class="authors">{{ paper.authors }}.</span>
+    <a href="{{ paper.url }}" target="_blank">
+       &ldquo;{{ paper.title }}{% if paper.subtitle %}: {{ paper.subtitle }}{% endif %}&rdquo;
+    </a>.
+    {{ paper.journal }} <span class="volume">{{ paper.volume }}</span>,
+    {{ paper.pages }} ({{ paper.year }}).
+    <span class="links">
+    {% if paper.doi %}
+      <a href="https://dx.doi.org/{{ paper.doi }}" target="_blank">DOI: {{ paper.doi }}</a>,
+    {% endif %}
+      <a href="https://arxiv.org/abs/{{ paper.arXiv }}" target="_blank">arXiv: {{ paper.arXiv }}</a>.
+    </span>
+  </dt>
+{%- endfor %}
+</dl>
+<details>
+  <summary>More papers</summary>
+  <ul>
+  {% for paper in data.papers -%}
+    <li>
+      <span class="authors">{{ paper.authors }}.</span>
+      <a href="{{ paper.url }}" target="_blank">
+         &ldquo;{{ paper.title }}{% if paper.subtitle %}: {{ paper.subtitle }}{% endif %}&rdquo;
+      </a>.
+      {{ paper.journal }} <span class="volume">{{ paper.volume }}</span>,
+      {{ paper.pages }} ({{ paper.year }}).
+      <span class="links">
+      {% if paper.doi %}
+        <a href="https://dx.doi.org/{{ paper.doi }}" target="_blank">DOI: {{ paper.doi }}</a>,
+      {% endif %}
+        <a href="https://arxiv.org/abs/{{ paper.arXiv }}" target="_blank">arXiv: {{ paper.arXiv }}</a>.
+      </span>
+    </li>
+  {%- endfor %}
+  </ul>
+</details>
+
+<h2>Conference talks</h2>
+<dl>
+{% for event in data.conferences %}
+  {% if event.talk %}
+  <dt>
+    <span class="authors">{{ event.talk.authors }}.</span>
+    &quot;{{ event.talk.title }}&quot;.
+    {{ event.name }} {{ event.year }} ({{ event.location }}).
+  </dt>
+  <dd>
+    <p>{{ event.talk.description }}</p>
+  </dd>
+  {% endif %}
+{% endfor %}
+</dl>
+
+<details>
+  <summary>Conference posters</summary>
+  <ul>
+  {% for event in data.conferences -%}
+    {%- if event.poster %}
+    <li>
+    <span class="authors">{{ event.poster.authors }}.</span>
+      &quot;{{ event.poster.title }}&quot;.
+      {{ event.name }} {{ event.year }} ({{ event.location }}).
+    </li>
+    {%- endif %}
+  {%- endfor %}
+  </ul>
+</details>
+{% endblock %}
