@@ -1,7 +1,6 @@
-{% extends "page.html" %}
+{% extends "default.jinja2" %}
 
-{% block content %}
-{% set data = load_data(path="content/cv.yaml") %}
+{% block contact %}
 <h2>Professional experience</h2>
 <dl>
 {%- for job in data.jobs %}

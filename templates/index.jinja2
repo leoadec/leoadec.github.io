@@ -1,9 +1,8 @@
-{% extends "section.html" %}
+{% extends "default.jinja2" %}
 
 {% block contact %}
-{% set contact = load_data(path="content/contact.yaml") %}
 <address>
-{%- for data in contact.contact %}
+{%- for data in contact.contacts %}
 {{ data.type }}: <a href="{{data.external_url}}" target="_blank">{{data.title}}</a>
 {% endfor -%}
 </address>
