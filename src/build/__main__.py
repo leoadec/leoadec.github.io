@@ -20,10 +20,10 @@ if __name__=="__main__":
     with open("config.toml", "rb") as fp:
         config = tomllib.load(fp)
 
-    with open("content/contact.toml", "rb") as fp:
+    with open("data/contact.toml", "rb") as fp:
         contact = tomllib.load(fp)
 
-    with open("content/cv.yaml", "rb") as fp:
+    with open("data/cv.yaml", "rb") as fp:
         cv = yaml.safe_load(fp)
 
     with open("content/2025_about.md", "r", encoding="utf-8") as fp:

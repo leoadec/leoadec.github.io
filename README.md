@@ -1,14 +1,22 @@
+# leoadec.github.io
+
 This is a repository for my personal webpage.
 
-# Building
+## Installing
 
+```sh
+pipenv install
 ```
+
+## Building
+
+```sh
 pipenv run python src/build
 ```
 
-# Serving
+## Serving
 
-```
+```sh
 pipenv run python src/serve
 ```
 
