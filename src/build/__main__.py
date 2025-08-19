@@ -11,7 +11,7 @@ import yaml
 if __name__=="__main__":
     template_env = jinja2.Environment(
         loader=jinja2.FileSystemLoader("./templates"),
-        autoescape=True,
+        autoescape=False,
     )
 
     index_template = template_env.get_template("index.jinja2")
