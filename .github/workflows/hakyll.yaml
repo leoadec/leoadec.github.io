@@ -14,8 +14,6 @@ jobs:
       with:
         path: .stack/
         key: ${{ runner.os }}-hakyll-stack 
-    - name: Install Stack
-      run: curl -sSL https://get.haskellstack.org/ | sh
     - name: Build with Stack
       run: stack build
     - name: Save Stack cache
