@@ -8,6 +8,8 @@ import markdown
 import sass
 import yaml
 
+from locations import Location
+
 if __name__=="__main__":
     template_env = jinja2.Environment(
         loader=jinja2.FileSystemLoader("./templates"),
@@ -20,11 +22,25 @@ if __name__=="__main__":
     with open("config.toml", "rb") as fp:
         config = tomllib.load(fp)
 
+    locations = {}
+    with open("data/locations.toml", "rb") as fp:
+        data = tomllib.load(fp)
+        for key, location in data.items():
+            locations[key] = Location.from_dict(location)
+
     with open("data/contact.toml", "rb") as fp:
         contact = tomllib.load(fp)
 
     with open("data/cv.yaml", "rb") as fp:
         cv = yaml.safe_load(fp)
+
+    for job in cv["jobs"]:
+        location_key = job["location"]
+        job["location"] = locations[location_key].render()
+
+    for degree in cv["degrees"]:
+        location_key = degree["location"]
+        degree["location"] = locations[location_key].render()
 
     with open("content/2025_about.md", "r", encoding="utf-8") as fp:
         content = markdown.markdown(fp.read())

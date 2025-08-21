@@ -2,19 +2,19 @@ jobs:
   - start: 2023
     title: Staff Software Engineer, Quantum Product
     employer: Q-CTRL Pty. Ltd.
-    location: Sydney, NSW, Australia
+    location: sydney
   - start: 2021
     end: 2023
     title: Lead Software Engineer, Quantum Control (Australia)
     employer: Q-CTRL Pty. Ltd.
-    location: Sydney, NSW, Australia
+    location: sydney
     duties:
        - Managed a team of up to five developers of the quantum control software Boulder Opal.
   - start: 2019
     end: 2021
     title: Senior Quantum Control Engineer
     employer: Q-CTRL Pty. Ltd.
-    location: Sydney, NSW, Australia
+    location: sydney
     duties:
       - Developed numerical software for quantum control and optimization in Python using TensorFlow.
       - Wrote public technical documentation for quantum control software.
@@ -22,7 +22,7 @@ jobs:
     end: 2019
     title: Postdoctoral Associate
     employer: Duke University
-    location: Durham, NC, United States
+    location: durham
     duties:
       - Analysed the rate of information about the noise that can be extracted by measuring a qubit for the spectator qubit project.
       - Developed software in C++ to estimate thresholds for new quantum error correction codes.
@@ -31,7 +31,7 @@ degrees:
     end: 2016
     title: Doctorate in Physics
     university: University of S&atilde;o Paulo
-    location: S&atilde;o Carlos, SP, Brazil
+    location: sao_carlos
     thesis:
       title: Protection of quantum systems and the measurement postulate
       external_url: https://teses.usp.br/teses/disponiveis/76/76131/tde-20012017-090107/en.php
@@ -46,7 +46,7 @@ degrees:
     end: 2012
     title: Master's Degree in Physics
     university: University of S&atilde;o Paulo
-    location: S&atilde;o Carlos, SP, Brazil
+    location: sao_carlos
     grant:
       title: Master's scholarship
       project: Quantum error-correction theory during logical operations and finite-duration syndrome measurements
@@ -67,7 +67,7 @@ degrees:
     end: 2009
     title: Bachelor's Degree in Physics
     university: University of S&atilde;o Paulo
-    location: S&atilde;o Carlos, SP, Brazil
+    location: sao_carlos
     grant:
         title: Undergraduate research scholarship
         project: Decoherence in a two-qubit system and error correction theory
