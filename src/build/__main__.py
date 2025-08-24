@@ -8,7 +8,10 @@ import markdown
 import sass
 import yaml
 
+from authors import Author
+from jobs import Job
 from locations import Location
+from posters import Poster
 
 if __name__=="__main__":
     template_env = jinja2.Environment(
@@ -28,19 +31,36 @@ if __name__=="__main__":
         for key, location in data.items():
             locations[key] = Location.from_dict(location)
 
+    with open("data/jobs.toml", "rb") as fp:
+        jobs = [
+            Job.from_dict(job, locations) for job in tomllib.load(fp).values()
+        ]
+
     with open("data/contact.toml", "rb") as fp:
         contact = tomllib.load(fp)
+
+    with open("data/authors.toml", "rb") as fp:
+        authors = {
+            key: Author.from_dict(author) for key, author in tomllib.load(fp).items()
+        }
+
+    with open("data/posters.toml", "rb") as fp:
+        posters = {
+            key: Poster.from_dict(poster, authors) for key, poster in tomllib.load(fp).items()
+        }
 
     with open("data/cv.yaml", "rb") as fp:
         cv = yaml.safe_load(fp)
 
-    for job in cv["jobs"]:
-        location_key = job["location"]
-        job["location"] = locations[location_key].render()
-
     for degree in cv["degrees"]:
         location_key = degree["location"]
         degree["location"] = locations[location_key].render()
+
+    for conference in cv["conferences"]:
+        location_key = conference["location"]
+        conference["location"] = locations[location_key].render()
+
+    cv["jobs"] = [job.render() for job in jobs]
 
     with open("content/2025_about.md", "r", encoding="utf-8") as fp:
         content = markdown.markdown(fp.read())

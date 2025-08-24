@@ -1,0 +1,7 @@
+[aip_2017]
+authors = [ "me" ]
+title = "Quantum error correction with continuous measurements"
+
+[icssur_2010]
+authors = [ "me", "reginaldo" ]
+title = "Quantum error correction theory during logical gates and finite syndrome measurements"

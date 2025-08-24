@@ -1,31 +1,3 @@
-jobs:
-  - start: 2023
-    title: Staff Software Engineer, Quantum Product
-    employer: Q-CTRL Pty. Ltd.
-    location: sydney
-  - start: 2021
-    end: 2023
-    title: Lead Software Engineer, Quantum Control (Australia)
-    employer: Q-CTRL Pty. Ltd.
-    location: sydney
-    duties:
-       - Managed a team of up to five developers of the quantum control software Boulder Opal.
-  - start: 2019
-    end: 2021
-    title: Senior Quantum Control Engineer
-    employer: Q-CTRL Pty. Ltd.
-    location: sydney
-    duties:
-      - Developed numerical software for quantum control and optimization in Python using TensorFlow.
-      - Wrote public technical documentation for quantum control software.
-  - start: 2018
-    end: 2019
-    title: Postdoctoral Associate
-    employer: Duke University
-    location: durham
-    duties:
-      - Analysed the rate of information about the noise that can be extracted by measuring a qubit for the spectator qubit project.
-      - Developed software in C++ to estimate thresholds for new quantum error correction codes.
 degrees:
   - start: 2012
     end: 2016
@@ -228,7 +200,7 @@ papers:
     description: In this paper, we analyse how a model where the interaction of the measurement apparatus with the quantum system is modeled as a Redfield master equation affects the time of the decoherence. My main contribution was simulating numerically the evolution with C code.
 conferences:
   - name: APS March Meeting
-    location: Boston, MA, United States
+    location: boston
     year: 2019
     talk:
       authors:
@@ -240,14 +212,14 @@ conferences:
       description: In this conference we presented a talk where we discussed how to derive the equation that describe errors for certain types of two-qubit gates in ion trap quantum computers.
   - name: AIP Summer Meeting
     year: 2017
-    location: Sydney, NSW, Australia
+    location: sydney
     poster:
       authors:
         - Leonardo Andreta de Castro
       title: Quantum error correction with continuous measurements
   - name: International Conference on Squeezed States and Uncertainty Relations (ICSSUR) and Feynmanfest
     year: 2010
-    location: Foz do Igua&ccedil;u, Paran&aacute;, Brazil
+    location: foz_do_iguacu
     poster:
       authors:
         - Leonardo Andreta de Castro

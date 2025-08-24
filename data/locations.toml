@@ -1,0 +1,24 @@
+[sao_carlos]
+city = "S&atilde;o Carlos"
+state = "SP"
+country = "Brazil"
+
+[durham]
+city = "Durham"
+state = "NC"
+country = "United States"
+
+[sydney]
+city = "Sydney"
+state = "NSW"
+country = "Australia"
+
+[boston]
+city = "Boston"
+state = "MA"
+country = "United States"
+
+[foz_do_iguacu]
+city = "Foz do Igua&ccedil;u"
+state = "PR"
+country = "Brazil"

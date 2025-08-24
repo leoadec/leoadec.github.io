@@ -1,0 +1,31 @@
+[qctrl_staff]
+start = 2023
+title = "Staff Software Engineer, Quantum Control"
+employer = "Q-CTRL Pty. Ltd."
+location = "sydney"
+
+[qctrl_lead]
+# Managed a team of up to five developers of the quantum control software Boulder Opal.
+end = 2023
+start = 2021
+title = "Lead Software Engineer, Quantum Control (Australia)"
+employer = "Q-CTRL Pty. Ltd."
+location = "sydney"
+
+[qctrl_senior]
+# Developed numerical software for quantum control and optimization in Python using TensorFlow.
+# Wrote public technical documentation for quantum control software.
+end = 2021
+start = 2019
+title = "Senior Quantum Control Engineer"
+employer = "Q-CTRL Pty. Ltd."
+location = "sydney"
+
+[duke]
+# Analysed the rate of information about the noise that can be extracted by measuring a qubit for the spectator qubit project.
+# Developed software in C++ to estimate thresholds for new quantum error correction codes.
+end = 2019
+start = 2018
+title = "Postdoctoral Associate"
+employer = "Duke University"
+location = "durham"
