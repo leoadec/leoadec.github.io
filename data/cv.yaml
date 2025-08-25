@@ -113,18 +113,6 @@ papers:
     doi: 10.1088/0143-0807/36/6/065024
     arXiv: "1508.04101"
     description: In this paper, we explain what pointer states are and how they emerged in the history of quantum mechanics.
-  - title: Protecting a quantum state from environmental noise by an incompatible finite-time measurement
-    authors:
-     - Carlos Alexandre Brasil
-     - Leonardo Andreta de Castro
-     - Reginaldo de Jesus Napolitano
-    journal: Physical Review A
-    volume: 84
-    pages: 022112
-    year: 2011
-    url: https://journals.aps.org/pra/abstract/10.1103/PhysRevA.84.022112
-    doi: 10.1103/PhysRevA.84.022112
-    arXiv: "1106.4537"
   - title: An introduction to quantum measurements with a historical motivation
     authors:
       - Leonardo Andreta de Castro
@@ -198,16 +186,3 @@ papers:
     doi: 10.1007/s10701-013-9707-7
     arXiv: "1109.4613"
     description: In this paper, we analyse how a model where the interaction of the measurement apparatus with the quantum system is modeled as a Redfield master equation affects the time of the decoherence. My main contribution was simulating numerically the evolution with C code.
-conferences:
-  - name: APS March Meeting
-    location: boston
-    year: 2019
-    talk: march_meeting_2019
-  - name: AIP Summer Meeting
-    year: 2017
-    location: sydney
-    poster: aip_2017
-  - name: International Conference on Squeezed States and Uncertainty Relations (ICSSUR) and Feynmanfest
-    year: 2010
-    location: foz_do_iguacu
-    poster: icssur_2010

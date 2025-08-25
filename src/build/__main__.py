@@ -12,6 +12,7 @@ from authors import Author
 from conferences import Conference
 from jobs import Job
 from locations import Location
+from papers import Paper
 from posters import Poster
 from talks import Talk
 
@@ -62,6 +63,11 @@ if __name__=="__main__":
             for conference in tomllib.load(fp).values()
         ]
 
+    with open("data/papers.toml", "rb") as fp:
+        papers = [
+            Paper.from_dict(paper, authors) for paper in tomllib.load(fp).values()
+        ]
+
     with open("data/cv.yaml", "rb") as fp:
         cv = yaml.safe_load(fp)
 
@@ -71,6 +77,7 @@ if __name__=="__main__":
 
     cv["jobs"] = [job.render() for job in jobs]
     cv["conferences"] = [conference.render() for conference in conferences]
+    cv["papers"] += [paper.render() for paper in papers]
 
     with open("content/2025_about.md", "r", encoding="utf-8") as fp:
         content = markdown.markdown(fp.read())
