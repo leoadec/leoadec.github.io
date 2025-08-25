@@ -16,5 +16,6 @@ class Poster:
 
     def render(self) -> dict:
         return {
-            "title": self.title, "authors": [author.render() for author in self.authors]
+            "title": self.title,
+            "authors": ", ".join([author.render() for author in self.authors]),
         }

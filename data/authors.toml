@@ -4,5 +4,20 @@ full_name = "Leonardo Andreta de Castro"
 [carlos]
 full_name = "Carlos Alexandre Brasil"
 
+[james]
+[james.given_name]
+anglicized = "James"
+transliteration = "Pak Hong"
+[james.family_name]
+transliteration = "Leung"
+
+[pavi]
+full_name = "Pavithran Sridharan Iyer"
+
 [reginaldo]
 full_name = "Reginaldo de Jesus Napolitano"
+
+[ken]
+first_name = "Kenneth"
+middle_initial = "R"
+last_name = "Brown"

@@ -12,6 +12,7 @@ from authors import Author
 from jobs import Job
 from locations import Location
 from posters import Poster
+from talks import Talk
 
 if __name__=="__main__":
     template_env = jinja2.Environment(
@@ -49,6 +50,11 @@ if __name__=="__main__":
             key: Poster.from_dict(poster, authors) for key, poster in tomllib.load(fp).items()
         }
 
+    with open("data/talks.toml", "rb") as fp:
+        talks = {
+            key: Talk.from_dict(talk, authors) for key, talk in tomllib.load(fp).items()
+        }
+
     with open("data/cv.yaml", "rb") as fp:
         cv = yaml.safe_load(fp)
 
@@ -59,6 +65,10 @@ if __name__=="__main__":
     for conference in cv["conferences"]:
         location_key = conference["location"]
         conference["location"] = locations[location_key].render()
+        if poster_key := conference.get("poster"):
+            conference["poster"] = posters[poster_key].render()
+        if talk_key := conference.get("talk"):
+            conference["talk"] = talks[talk_key].render()
 
     cv["jobs"] = [job.render() for job in jobs]
 
