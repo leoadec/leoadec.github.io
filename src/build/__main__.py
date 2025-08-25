@@ -9,6 +9,7 @@ import sass
 import yaml
 
 from authors import Author
+from conferences import Conference
 from jobs import Job
 from locations import Location
 from posters import Poster
@@ -55,6 +56,12 @@ if __name__=="__main__":
             key: Talk.from_dict(talk, authors) for key, talk in tomllib.load(fp).items()
         }
 
+    with open("data/conferences.toml", "rb") as fp:
+        conferences = [
+            Conference.from_dict(conference, locations=locations, posters=posters, talks=talks)
+            for conference in tomllib.load(fp).values()
+        ]
+
     with open("data/cv.yaml", "rb") as fp:
         cv = yaml.safe_load(fp)
 
@@ -62,15 +69,8 @@ if __name__=="__main__":
         location_key = degree["location"]
         degree["location"] = locations[location_key].render()
 
-    for conference in cv["conferences"]:
-        location_key = conference["location"]
-        conference["location"] = locations[location_key].render()
-        if poster_key := conference.get("poster"):
-            conference["poster"] = posters[poster_key].render()
-        if talk_key := conference.get("talk"):
-            conference["talk"] = talks[talk_key].render()
-
     cv["jobs"] = [job.render() for job in jobs]
+    cv["conferences"] = [conference.render() for conference in conferences]
 
     with open("content/2025_about.md", "r", encoding="utf-8") as fp:
         content = markdown.markdown(fp.read())
