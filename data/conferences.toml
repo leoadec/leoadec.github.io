@@ -1,0 +1,17 @@
+[march_meeting_2019]
+name = "APS March Meeting"
+location = "boston"
+year = 2019
+talk = "march_meeting_2019"
+
+[aip_2017]
+name = "AIP Summer Meeting"
+year = 2017
+location = "sydney"
+poster = "aip_2017"
+
+[icssur_2010]
+name = "International Conference on Squeezed States and Uncertainty Relations (ICSSUR) and Feynmanfest"
+year = 2010
+location = "foz_do_iguacu"
+poster = "icssur_2010"

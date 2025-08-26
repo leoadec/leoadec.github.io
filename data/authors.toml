@@ -11,13 +11,25 @@ transliteration = "Pak Hong"
 [james.family_name]
 transliteration = "Leung"
 
+[ken]
+first_name = "Kenneth"
+middle_initial = "R"
+last_name = "Brown"
+
+[mike]
+first_name = "Michael"
+middle_initial = "G"
+last_name = "Newman"
+
+[olimpio]
+full_name = "Ol&iacute;mpio Pereira de S&aacute; Neto"
+
 [pavi]
 full_name = "Pavithran Sridharan Iyer"
 
 [reginaldo]
 full_name = "Reginaldo de Jesus Napolitano"
 
-[ken]
-first_name = "Kenneth"
-middle_initial = "R"
-last_name = "Brown"
+[swarnadeep]
+full_name = "Swarnadeep Majumder"
+
