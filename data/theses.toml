@@ -1,0 +1,13 @@
+[phd_thesis]
+title = "Protection of quantum systems and the measurement postulate"
+external_url = "https://teses.usp.br/teses/disponiveis/76/76131/tde-20012017-090107/en.php"
+language = "Portuguese"
+original_title = "Prote&ccedil;&atilde;o de sistemas qu&acirc;nticos e o postulado da medida"
+supervisor = "reginaldo"
+
+[masters_thesis]
+title = "Quantum error correction during logical gates and finite-time syndrome measurements"
+external_url = "https://teses.usp.br/teses/disponiveis/76/76131/tde-26042012-144241/en.php"
+language = "Portuguese"
+original_title = "Teoria de corre&ccedil;&atilde;o de erros qu&acirc;nticos durante opera&ccedil;&otilde;es l&oacute;gicas e medidas de diagn&oacute;stico de dura&ccedil;&atilde;o finita"
+supervisor = "reginaldo"

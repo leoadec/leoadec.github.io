@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 jinja2 = "*"
-pyyaml = "*"
 markdown = "*"
 libsass = "*"
 

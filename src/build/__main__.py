@@ -6,15 +6,17 @@ from pathlib import Path
 import jinja2
 import markdown
 import sass
-import yaml
 
 from authors import Author
 from conferences import Conference
+from degrees import Degree
+from grants import Grant
 from jobs import Job
 from locations import Location
 from papers import Paper
 from posters import Poster
 from talks import Talk
+from theses import Thesis
 
 if __name__=="__main__":
     template_env = jinja2.Environment(
@@ -52,6 +54,16 @@ if __name__=="__main__":
             key: Poster.from_dict(poster, authors) for key, poster in tomllib.load(fp).items()
         }
 
+    with open("data/grants.toml", "rb") as fp:
+        grants = {
+            key: Grant.from_dict(grant) for key, grant in tomllib.load(fp).items()
+        }
+
+    with open("data/theses.toml", "rb") as fp:
+        theses = {
+            key: Thesis.from_dict(thesis, authors) for key, thesis in tomllib.load(fp).items()
+        }
+
     with open("data/talks.toml", "rb") as fp:
         talks = {
             key: Talk.from_dict(talk, authors) for key, talk in tomllib.load(fp).items()
@@ -68,16 +80,18 @@ if __name__=="__main__":
             Paper.from_dict(paper, authors) for paper in tomllib.load(fp).values()
         ]
 
-    with open("data/cv.yaml", "rb") as fp:
-        cv = yaml.safe_load(fp)
+    with open("data/degrees.toml", "rb") as fp:
+        degrees = [
+            Degree.from_dict(degree, locations=locations, grants=grants, theses=theses)
+            for degree in tomllib.load(fp).values()
+        ]
 
-    for degree in cv["degrees"]:
-        location_key = degree["location"]
-        degree["location"] = locations[location_key].render()
-
-    cv["jobs"] = [job.render() for job in jobs]
-    cv["conferences"] = [conference.render() for conference in conferences]
-    cv["papers"] += [paper.render() for paper in papers]
+    cv = {
+        "jobs": [job.render() for job in jobs],
+        "conferences": [conference.render() for conference in conferences],
+        "papers": [paper.render() for paper in papers],
+        "degrees": [degree.render() for degree in degrees],
+    }
 
     with open("content/2025_about.md", "r", encoding="utf-8") as fp:
         content = markdown.markdown(fp.read())

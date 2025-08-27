@@ -1,8 +1,32 @@
 [me]
 full_name = "Leonardo Andreta de Castro"
 
+[alistair_milne]
+first_name = "Alistair"
+last_name = "Milne"
+
+[andre]
+full_name = "Andr&eacute; R. R. Carvalho"
+
 [carlos]
 full_name = "Carlos Alexandre Brasil"
+
+[claire_edmunds]
+first_name = "Claire"
+last_name = "Edmunds"
+
+[cornelius_hempel]
+first_name = "Cornelius"
+last_name = "Hempel"
+
+[harrison]
+first_name = "Harrison"
+last_name = "Ball"
+
+[harry]
+first_name = "Harry"
+middle_initial = "J"
+last_name = "Slatyer"
 
 [james]
 [james.given_name]
@@ -11,15 +35,36 @@ transliteration = "Pak Hong"
 [james.family_name]
 transliteration = "Leung"
 
+[jiayin_chen]
+[jiayin_chen.given_name]
+transliteration = "Jiayin"
+[jiayin_chen.family_name]
+transliteration = "Chen"
+
 [ken]
 first_name = "Kenneth"
 middle_initial = "R"
 last_name = "Brown"
 
+[li]
+[li.given_name]
+transliteration = "Li"
+[li.family_name]
+transliteration = "Li"
+
+[michael_hush]
+first_name = "Michael"
+last_name = "Hush"
+
 [mike]
 first_name = "Michael"
 middle_initial = "G"
 last_name = "Newman"
+
+[mike_biercuk]
+first_name = "Michael"
+middle_initial = "J"
+last_name = "Biercuk"
 
 [olimpio]
 full_name = "Ol&iacute;mpio Pereira de S&aacute; Neto"
@@ -27,9 +72,17 @@ full_name = "Ol&iacute;mpio Pereira de S&aacute; Neto"
 [pavi]
 full_name = "Pavithran Sridharan Iyer"
 
+[per]
+first_name = "Per"
+middle_initial = "J"
+last_name = "Lieberman"
+
 [reginaldo]
 full_name = "Reginaldo de Jesus Napolitano"
 
 [swarnadeep]
 full_name = "Swarnadeep Majumder"
 
+[virginia_frey]
+first_name = "Virginia"
+last_name = "Frey"

@@ -1,3 +1,30 @@
+[boulder_opal]
+# In this paper, we describe the software tools developed at Q-CTRL and their functionality, especially those constituing the Boulder Opal software suite for quantum control. My main contribution was the section on system identification.
+title = "Software tools for quantum control"
+subtitle = "Improving quantum computer performance through noise and error suppression"
+authors = [
+    "harrison",
+    "mike_biercuk",
+    "andre",
+    "jiayin_chen",
+    "michael_hush",
+    "me",
+    "li",
+    "per",
+    "harry",
+    "claire_edmunds",
+    "virginia_frey",
+    "cornelius_hempel",
+    "alistair_milne",
+] 
+journal = "Quantum Science and Technology"
+volume = 6
+pages = "044011"
+year = 2021
+doi = "10.1088/2058-9565/abdca6"
+arXiv = "2001.04060"
+url = "https://iopscience.iop.org/article/10.1088/2058-9565/abdca6"
+
 [crystal_clusters]
 # In this paper we show how different crystal structures can be used to generate cluster states that have fault tolerant properties. My main contribution was writing the C++ code that calculates the thresholds for the cluster states based on each of the crystal lattices.
 title = "Generating fault-tolerant cluster states from crystal structures"

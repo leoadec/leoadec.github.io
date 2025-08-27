@@ -1,0 +1,31 @@
+[phd]
+# Published papers exploring the relationship between quantum measurement and protection of quantum states.
+# Published articles on historical and didactic aspects of quantum mechanics.
+# Tutored undergraduate physics students on Electromagnetism.
+start = 2012
+end = 2016
+title = "Doctorate in Physics"
+university = "University of S&atilde;o Paulo"
+location = "sao_carlos"
+thesis = "phd_thesis"
+
+[masters]
+# Researched the intersection between quantum error correction and measurement theory.
+# Wrote software in C to simulate the effects of frequent quantum measurements.
+start = 2010
+end = 2012
+title = "Master's Degree in Physics"
+university = "University of S&atilde;o Paulo"
+location = "sao_carlos"
+grant = "fapesp_masters"
+thesis = "masters_thesis"
+
+[bachelors]
+# Developed numerical software in FORTRAN for simulation of physical systems as part of coursework.
+# Researched continuous dynamical decoupling as part of an undergraduate research grant award.
+start = 2006
+end = 2009
+title = "Bachelor's Degree in Physics"
+university = "University of S&atilde;o Paulo"
+location = "sao_carlos"
+grant = "fapesp_undergrad"
