@@ -7,10 +7,14 @@
 {% endfor -%}
 </address>
 
-<address class="links">
+<h2>Links</h2>
+<ul class="links">
 {%- for data in contact.links %}
-<a href="{{data.external_url}}" target="_blank" style="padding-right: 1em;">{{data.title}}</a>
+<li>
+  <a href="{{data.external_url}}" target="_blank" style="padding-right: 1em;">{{data.title}}</a>
+</li>
 {% endfor -%}
-</address>
+</ul>
 
+<h2>About</h2>
 {% endblock %}
