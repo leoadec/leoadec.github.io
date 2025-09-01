@@ -1,3 +1,18 @@
 title = "Leonardo Andreta de Castro"
 author = "Leonardo Andreta de Castro"
 description = "Physicist and software developer"
+
+templates_dir = "./templates"
+
+data_dir = "./data"
+authors = "authors.toml"
+contact = "contact.toml"
+conferences = "conferences.toml"
+degrees = "degrees.toml"
+grants = "grants.toml"
+jobs = "jobs.toml"
+locations = "locations.toml"
+papers = "papers.toml"
+posters = "posters.toml"
+talks = "talks.toml"
+theses = "theses.toml"
