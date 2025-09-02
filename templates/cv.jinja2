@@ -24,21 +24,17 @@
     <span class="title">{{ degree.title }}</span>
     {{ degree.university }} ({{ degree.location }}).
     {% if degree.thesis %}
-    <details>
-       <summary>
-        Thesis:
-        <a href="{{ degree.thesis.external_url }}" target="_blank">&ldquo;{{ degree.thesis.title }}&rdquo;</a>.
-      </summary>
-      Supervisor: {{ degree.thesis.supervisor }}.
-    </details>
+    <summary>
+      Thesis:
+      <a href="{{ degree.thesis.external_url }}" target="_blank">&ldquo;{{ degree.thesis.title }}&rdquo;</a>.
+    </summary>
+    Supervisor: {{ degree.thesis.supervisor }}.
     {% endif %}
     {% if degree.grant %}
-    <details>
-      <summary>
-        Grant: <a href="{{ degree.grant.external_url }}" target=" _blank">&ldquo;{{ degree.grant.project }}&rdquo;</a>.
-      </summary>
-      Agency: {{ degree.grant.agency }}.
-    </details>
+    <summary>
+      Grant: <a href="{{ degree.grant.external_url }}" target=" _blank">&ldquo;{{ degree.grant.project }}&rdquo;</a>.
+    </summary>
+    Agency: {{ degree.grant.agency }}.
     {% endif %}
   <dt>
   <dd>
@@ -85,18 +81,16 @@
 {% endfor %}
 </dl>
 
-<details>
-  <summary>Conference posters</summary>
-  <ul>
-  {% for event in data.conferences -%}
-    {%- if event.poster %}
-    <li>
-    <span class="authors">{{ event.poster.authors }}.</span>
-      &quot;{{ event.poster.title }}&quot;.
-      {{ event.name }} {{ event.year }} ({{ event.location }}).
-    </li>
-    {%- endif %}
-  {%- endfor %}
-  </ul>
-</details>
+<h3>Conference posters</h3>
+<ul>
+{% for event in data.conferences -%}
+  {%- if event.poster %}
+  <li>
+  <span class="authors">{{ event.poster.authors }}.</span>
+    &quot;{{ event.poster.title }}&quot;.
+    {{ event.name }} {{ event.year }} ({{ event.location }}).
+  </li>
+  {%- endif %}
+{%- endfor %}
+</ul>
 {% endblock %}
