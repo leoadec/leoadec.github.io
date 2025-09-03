@@ -1,7 +1,9 @@
 # simple script to generate the website
 
 import tomllib
+from dataclasses import dataclass
 from pathlib import Path
+from typing import Self
 
 import jinja2
 import markdown
@@ -19,6 +21,27 @@ from talks import Talk
 from theses import Thesis
 
 
+@dataclass
+class KeyCache:
+    authors: dict[str, Author]
+    locations: dict[str, Location]
+
+    @classmethod
+    def from_config(cls, config: dict) -> Self:
+        data_dir = Path(config["data_dir"])
+
+        locations = {}
+        with open(data_dir / config["data"]["locations"], "rb") as fp:
+            data = tomllib.load(fp)
+            for key, location in data.items():
+                locations[key] = Location.from_dict(location)
+
+        with open(data_dir / config["data"]["authors"], "rb") as fp:
+            authors = {
+                key: Author.from_dict(author) for key, author in tomllib.load(fp).items()
+            }
+
+        return cls(authors=authors, locations=locations)
 
 if __name__=="__main__":
     with open("config.toml", "rb") as fp:
@@ -38,23 +61,14 @@ if __name__=="__main__":
     cv = {}
     data = config["data"]
 
-    locations = {}
-    with open(data_dir / data["locations"], "rb") as fp:
-        loc = tomllib.load(fp)
-        for key, location in loc.items():
-            locations[key] = Location.from_dict(location)
+    cache = KeyCache.from_config(config)
 
     with open(data_dir / data["contact"], "rb") as fp:
         contact = tomllib.load(fp)
 
-    with open(data_dir / data["authors"], "rb") as fp:
-        authors = {
-            key: Author.from_dict(author) for key, author in tomllib.load(fp).items()
-        }
-
     with open(data_dir / data["posters"], "rb") as fp:
         posters = {
-            key: Poster.from_dict(poster, authors) for key, poster in tomllib.load(fp).items()
+            key: Poster.from_dict(poster, cache.authors) for key, poster in tomllib.load(fp).items()
         }
 
     with open(data_dir / data["grants"], "rb") as fp:
@@ -64,41 +78,42 @@ if __name__=="__main__":
 
     with open(data_dir / data["theses"], "rb") as fp:
         theses = {
-            key: Thesis.from_dict(thesis, authors) for key, thesis in tomllib.load(fp).items()
+            key: Thesis.from_dict(thesis, cache.authors) for key, thesis in tomllib.load(fp).items()
         }
 
     with open(data_dir / data["talks"], "rb") as fp:
         talks = {
-            key: Talk.from_dict(talk, authors) for key, talk in tomllib.load(fp).items()
+            key: Talk.from_dict(talk, cache.authors) for key, talk in tomllib.load(fp).items()
         }
 
     with open(data_dir / data["jobs"], "rb") as fp:
         cv["jobs"] = [
-            Job.from_dict(job, locations).render()
+            Job.from_dict(job, cache.locations).render()
             for job in tomllib.load(fp).values()
         ]
 
     with open(data_dir / data["degrees"], "rb") as fp:
         cv["degrees"] = [
-            Degree.from_dict(degree, locations=locations, grants=grants, theses=theses).render()
+            Degree.from_dict(degree, locations=cache.locations, grants=grants, theses=theses).render()
             for degree in tomllib.load(fp).values()
         ]
 
     with open(data_dir / data["papers"], "rb") as fp:
         cv["papers"] = [
-            Paper.from_dict(paper, authors).render()
+            Paper.from_dict(paper, cache.authors).render()
             for paper in tomllib.load(fp).values()
         ]
 
     with open(data_dir / data["conferences"], "rb") as fp:
         cv["conferences"] = [
-            Conference.from_dict(conference, locations=locations, posters=posters, talks=talks).render()
+            Conference.from_dict(conference, locations=cache.locations, posters=posters, talks=talks).render()
             for conference in tomllib.load(fp).values()
         ]
 
+    content = ""
     for element in config["contents"]:
         with open(contents_dir / element["file"], "r", encoding="utf-8") as fp:
-            content = f"<h2>{element['title']}</h2>\n\n"
+            content += f"\n<h2>{element['title']}</h2>\n\n"
             content += markdown.markdown(fp.read())
 
     with open("sass/style.scss", "r", encoding="utf-8") as fp:

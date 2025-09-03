@@ -22,3 +22,7 @@ theses = "theses.toml"
 [[contents]]
 file = "about.md"
 title = "About"
+
+[[contents]]
+file = "website.md"
+title = "This website"
