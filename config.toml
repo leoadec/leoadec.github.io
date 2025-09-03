@@ -2,9 +2,11 @@ title = "Leonardo Andreta de Castro"
 author = "Leonardo Andreta de Castro"
 description = "Physicist and software developer"
 
+contents_dir = "./contents"
+data_dir = "./data"
 templates_dir = "./templates"
 
-data_dir = "./data"
+[data]
 authors = "authors.toml"
 contact = "contact.toml"
 conferences = "conferences.toml"
@@ -16,3 +18,7 @@ papers = "papers.toml"
 posters = "posters.toml"
 talks = "talks.toml"
 theses = "theses.toml"
+
+[[contents]]
+file = "about.md"
+title = "About"
