@@ -46,6 +46,8 @@ jobs:
       with:
         artifact-ids: ${{ needs.build.outputs.artifact_id }}
         path: _site/
+    - name: Untar the artifact
+      run: tar xf _site/artifact.tar
     - name: Install Vercel CLI
       run: npm install --global vercel@latest
     - name: Pull Vercel environment information
