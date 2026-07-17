@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to server
 
 on:
   push:
@@ -18,6 +18,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      artifact_id: ${{ steps.upload.outputs.artifact_id }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,9 +31,29 @@ jobs:
         run: |
           pipenv --python $(which python) run python src/build
       - name: Upload artifact
+        id: upload
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site/
+
+  deploy-vercel:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - uses: actions/download-artifact@v8
+      with:
+        artifact-ids: ${{ needs.build.outputs.artifact_id }}
+        path: _site/
+    - name: Install Vercel CLI
+      run: npm install --global vercel@latest
+    - name: Pull Vercel environment information
+      run: vercel pull --yes --cwd _site --token=${{ secrets.VERCEL_TOKEN }} --prod
+    - name: Build project artifacts
+      run: vercel build --cwd _site --token=${{ secrets.VERCEL_TOKEN }}
+    - name: Deploy project artifacts to Vercel
+      run: vercel deploy --prebuilt --cwd _site --token=${{ secrets.VERCEL_TOKEN }} --prod
 
   deploy-github-pages:
     environment:
