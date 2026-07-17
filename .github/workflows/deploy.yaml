@@ -49,9 +49,9 @@ jobs:
     - name: Install Vercel CLI
       run: npm install --global vercel@latest
     - name: Pull Vercel environment information
-      run: vercel pull --yes --cwd _site --token=${{ secrets.VERCEL_TOKEN }} --prod
+      run: vercel pull --yes --cwd _site --token=${{ secrets.VERCEL_TOKEN }}
     - name: Build project artifacts
-      run: vercel build --cwd _site --token=${{ secrets.VERCEL_TOKEN }}
+      run: vercel build --cwd _site --token=${{ secrets.VERCEL_TOKEN }} --prod
     - name: Deploy project artifacts to Vercel
       run: vercel deploy --prebuilt --cwd _site --token=${{ secrets.VERCEL_TOKEN }} --prod
 
