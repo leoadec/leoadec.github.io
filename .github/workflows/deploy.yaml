@@ -48,7 +48,7 @@ jobs:
         path: _site/
     - name: Untar the artifact
       run: |
-        tar xf artifact.tar -C _site
+        tar xf _site/artifact.tar -C _site
         rm _site/artifact.tar
         ls
     - name: Install Vercel CLI
