@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
  <title>{{ config.title }} &mdash; {{ config.description }}</title>
- <link href="/style.css" type="text/css" rel="stylesheet">
+ <link href="style.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
@@ -13,6 +13,7 @@
 <main>
 {% block contact %}{% endblock %}
 
+{{ content | safe }}
 </main>
 
 </body>
