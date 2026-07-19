@@ -9,39 +9,6 @@ import jinja2
 import markdown
 import sass
 
-from authors import Author
-from conferences import Conference
-from degrees import Degree
-from grants import Grant
-from jobs import Job
-from locations import Location
-from papers import Paper
-from posters import Poster
-from talks import Talk
-from theses import Thesis
-
-
-@dataclass
-class KeyCache:
-    authors: dict[str, Author]
-    locations: dict[str, Location]
-
-    @classmethod
-    def from_config(cls, config: dict) -> Self:
-        data_dir = Path(config["data_dir"])
-
-        locations = {}
-        with open(data_dir / config["data"]["locations"], "rb") as fp:
-            data = tomllib.load(fp)
-            for key, location in data.items():
-                locations[key] = Location.from_dict(location)
-
-        with open(data_dir / config["data"]["authors"], "rb") as fp:
-            authors = {
-                key: Author.from_dict(author) for key, author in tomllib.load(fp).items()
-            }
-
-        return cls(authors=authors, locations=locations)
 
 if __name__=="__main__":
     with open("config.toml", "rb") as fp:
@@ -61,54 +28,8 @@ if __name__=="__main__":
     cv = {}
     data = config["data"]
 
-    cache = KeyCache.from_config(config)
-
     with open(data_dir / data["contact"], "rb") as fp:
         contact = tomllib.load(fp)
-
-    with open(data_dir / data["posters"], "rb") as fp:
-        posters = {
-            key: Poster.from_dict(poster, cache.authors) for key, poster in tomllib.load(fp).items()
-        }
-
-    with open(data_dir / data["grants"], "rb") as fp:
-        grants = {
-            key: Grant.from_dict(grant) for key, grant in tomllib.load(fp).items()
-        }
-
-    with open(data_dir / data["theses"], "rb") as fp:
-        theses = {
-            key: Thesis.from_dict(thesis, cache.authors) for key, thesis in tomllib.load(fp).items()
-        }
-
-    with open(data_dir / data["talks"], "rb") as fp:
-        talks = {
-            key: Talk.from_dict(talk, cache.authors) for key, talk in tomllib.load(fp).items()
-        }
-
-    with open(data_dir / data["jobs"], "rb") as fp:
-        cv["jobs"] = [
-            Job.from_dict(job, cache.locations).render()
-            for job in tomllib.load(fp).values()
-        ]
-
-    with open(data_dir / data["degrees"], "rb") as fp:
-        cv["degrees"] = [
-            Degree.from_dict(degree, locations=cache.locations, grants=grants, theses=theses).render()
-            for degree in tomllib.load(fp).values()
-        ]
-
-    with open(data_dir / data["papers"], "rb") as fp:
-        cv["papers"] = [
-            Paper.from_dict(paper, cache.authors).render()
-            for paper in tomllib.load(fp).values()
-        ]
-
-    with open(data_dir / data["conferences"], "rb") as fp:
-        cv["conferences"] = [
-            Conference.from_dict(conference, locations=cache.locations, posters=posters, talks=talks).render()
-            for conference in tomllib.load(fp).values()
-        ]
 
     content = ""
     for element in config["contents"]:
@@ -127,11 +48,6 @@ if __name__=="__main__":
             index_template.render(
                 config=config, contact=contact, content=content
             )
-        )
-
-    with open(output_path / "cv.html", "w") as fp:
-        fp.write(
-            cv_template.render(config=config, data=cv)
         )
 
     with open(output_path / "style.css", "w") as fp:

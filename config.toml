@@ -7,17 +7,7 @@ data_dir = "./data"
 templates_dir = "./templates"
 
 [data]
-authors = "authors.toml"
 contact = "contact.toml"
-conferences = "conferences.toml"
-degrees = "degrees.toml"
-grants = "grants.toml"
-jobs = "jobs.toml"
-locations = "locations.toml"
-papers = "papers.toml"
-posters = "posters.toml"
-talks = "talks.toml"
-theses = "theses.toml"
 
 [[contents]]
 file = "about.md"
